@@ -2,19 +2,12 @@
 =========================================================
  Paper Kit 2 - v2.2.0
 =========================================================
-
  Product Page: https://www.creative-tim.com/product/paper-kit-2
  Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/paper-kit-2/blob/master/LICENSE.md)
-
- Coded by Creative Tim
-
+ Licensed under MIT
 =========================================================
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
-
+-->
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -22,22 +15,126 @@ The above copyright notice and this permission notice shall be included in all c
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img//biochar.jpg">
   <link rel="icon" type="image/png" href="./assets/img//biochar.jpg">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-   Heat and Fire Lab
-  </title>
+  <title>Heat and Fire Lab</title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
+  <!-- Fonts and icons -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,600" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- New display font for redesigned sections -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
+
+  <style>
+  /* ── design tokens (matches people.html) ─────────── */
+  :root {
+    --bg:      #f4f1ec;
+    --surface: #ffffff;
+    --alt:     #e8e3db;
+    --text:    #1b1714;
+    --muted:   #6a5f53;
+    --border:  #d4cec6;
+    --accent:  #c04a1e;
+    --blue:    #2b4665;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+  }
+
+  body { background: var(--bg); font-family: var(--ff-b); }
+
+  /* ── layout ──────────────────────────────────────── */
+  .section { padding: 5rem 2rem; background: var(--bg); }
+  .wrap    { max-width: 1100px; margin: 0 auto; }
+
+  .sh { margin-bottom: 3rem; }
+  .sh .eye {
+    font-size: .72rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: .4rem;
+    font-family: var(--ff-b);
+  }
+  .sh h2 {
+    font-family: var(--ff-d);
+    font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 600;
+    color: var(--text); line-height: 1.2;
+  }
+  .sh .rule { width: 2.5rem; height: 2px; background: var(--accent); margin-top: .9rem; }
+
+  /* ── news grid ───────────────────────────────────── */
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+  @media (max-width: 700px) { .news-grid { grid-template-columns: 1fr; } }
+
+  /* ── news card ───────────────────────────────────── */
+  .nc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    display: flex; flex-direction: column;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .nc:hover { box-shadow: 0 6px 24px rgba(0,0,0,.1); transform: translateY(-2px); }
+
+  .nc-img { width: 100%; overflow: hidden; background: var(--alt); }
+  .nc-img img { width: 100%; height: 200px; object-fit: cover; display: block; }
+
+  .nc-body { padding: 1.25rem 1.25rem .75rem; flex: 1; }
+
+  .nc-meta {
+    display: flex; align-items: center; gap: .6rem;
+    margin-bottom: .75rem; flex-wrap: wrap;
+  }
+  .nc-tag {
+    font-size: .65rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; font-family: var(--ff-b);
+    padding: .18em .65em; border-radius: 2px;
+  }
+  .tag-award  { background: rgba(180,140,0,.12);  color: #7a5e00; }
+  .tag-paper  { background: rgba(43,70,101,.12);  color: #2b4665; }
+  .tag-talk   { background: rgba(56,100,56,.12);  color: #2d6032; }
+  .tag-grant  { background: rgba(192,74,30,.12);  color: #8b3010; }
+  .tag-team   { background: rgba(80,50,110,.12);  color: #5a3278; }
+  .tag-media  { background: rgba(60,90,110,.12);  color: #2d4a5a; }
+  .tag-promo  { background: rgba(100,30,30,.12);  color: #6a1e1e; }
+
+  .nc-date {
+    font-size: .75rem; color: var(--muted); font-family: var(--ff-b);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .nc-title {
+    font-family: var(--ff-d); font-size: 1.2rem; font-weight: 600;
+    line-height: 1.25; color: var(--text); margin-bottom: .65rem;
+  }
+  .nc-desc {
+    font-size: .88rem; color: var(--muted); line-height: 1.6;
+    font-family: var(--ff-b);
+  }
+
+  .nc-foot { padding: .75rem 1.25rem 1.25rem; }
+  .btn-link-pill {
+    display: inline-block; font-size: .74rem; font-weight: 600;
+    letter-spacing: .06em; text-transform: uppercase; font-family: var(--ff-b);
+    border: 1px solid var(--accent); color: var(--accent);
+    padding: .35em .95em; border-radius: 2px; background: transparent;
+    transition: background .15s, color .15s; text-decoration: none;
+    margin-right: .5rem; margin-bottom: .4rem; display: inline-block;
+  }
+  .btn-link-pill:hover { background: var(--accent); color: #fff; text-decoration: none; }
+
+  /* ── responsive ──────────────────────────────────── */
+  @media (max-width: 768px) { .section { padding: 3.5rem 1.25rem; } }
+  </style>
 </head>
 
 <body class="landing-page sidebar-collapse">
-  <!-- Navigation bar -->
+
+<!-- Navigation bar — unchanged from original -->
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
     <div class="container">
         <div class="navbar-translate">
@@ -55,10 +152,10 @@ The above copyright notice and this permission notice shall be included in all c
                 <li class="nav-item">
                     <a href="index.html#Research" class="nav-link"><i class="fa fa-flask"></i> Research</a>
                 </li>
- 		 <li class="nav-item">
+                <li class="nav-item">
                     <a href="people.html" class="nav-link"><i class="fa fa-users"></i> People</a>
                 </li>
-		<li class="nav-item">
+                <li class="nav-item">
                     <a href="news.html" class="nav-link"><i class="fa fa-newspaper-o"></i> News</a>
                 </li>
                 <li class="nav-item">
@@ -70,810 +167,599 @@ The above copyright notice and this permission notice shall be included in all c
                 <li class="nav-item">
                     <a href="francesco-restuccia.html" class="nav-link"><i class="fa fa-user"></i> PI: Francesco Restuccia</a>
                 </li>
-		 <li class="nav-item">
-            	<a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/FranRestuccia" target="_blank">
-              <i class="fa fa-twitter"></i>
-              <p class="d-lg-none">Twitter</p>
-            </a>
-          </li>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/FranRestuccia" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                        <p class="d-lg-none">Twitter</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-<!-- End Navigation-bar -->
-<div class="page-header  page-header-xs" data-parallax="true" style="background-image: url('./assets/img/biochar2.jpg');">
+<!-- End Navigation bar -->
+
+<!-- Page header — unchanged from original -->
+<div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/biochar2.jpg');">
     <div class="filter"></div>
-  </div>
-<div class="main">
-    <div id="News" class="section section-gray text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <h2 class="title">News</h2>
-                </div>
-            </div>
-            <br>
-            <br>
-		    <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">	
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Carolina and Francesco participate in the kick-off of the new Safebatt project</h5>
-			<div class="row justify-content-md-center align-items-center">
-			 <div class="col-md-10">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/safebatt.jpg">
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <p class="card-footer">Carolina and Francesco participate in the kick-off meeting for the new round of Safebatt project 2026-2030. We're excited for the new research on battery sasfety in the coming 4 years!</p>
-                                <p class="card-footer">May 6, 2026.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div>
+</div>
 
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Visiting PhD student joins from University of Naples </h5>
-			<div class="row justify-content-md-center align-items-center">
-                            <div class="card-footer">
-                                <p class="card-footer">We welcome Domenico Enicchiaro, visiting PhD student from Prof Di Benedetto's research group at Universita' degli studi di Napoli Federico II, who is joining us for 6 months as a visiting PhD student!</p>
-                                <p class="card-footer">February 1, 2026.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                        </div>
-			
-		    <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">	
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Francesco gives Plenary at ISLBFS2025</h5>
-			<div class="row justify-content-md-center align-items-center">
-			 <div class="col-md-10">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/ISLBFS2025_FR.jpg">
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <p class="card-footer">Congratulations to Francesco for giving a plenary keynote on battery fire research in Hong Kong at ISLBFS2025!</p>
-                                <p class="card-footer">November 8, 2025.</p>
-				<a href="https://www.youtube.com/watch?v=CXSA-TIwYMU" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Watch the Plenary Here
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div>
+<!-- News -->
+<section class="section" id="News">
+  <div class="wrap">
+    <div class="sh">
+      <p class="eye">Latest Updates</p>
+      <h2>News</h2>
+      <div class="rule"></div>
+    </div>
 
-					<div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">	
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Hosein and Francesco recognised with best Paper award at ISLBFS2025</h5>
-			<div class="row justify-content-md-center align-items-center">
-			 <div class="col-md-10">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/ISLBFS2025.png">
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <p class="card-footer">Congratulations to Hosein for being recognized with a best Paper award at ISLBFS2025 in Hong Kong at ISLBFS2025!</p>
-                                <p class="card-footer">November 8, 2025.</p>
-                      </div>
-                        </div>
-                    </div>
-                    </div>
-						  </div>
-			
-		    <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">	
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Francesco gives Keynote at ESFSS2025</h5>
-			<div class="row justify-content-md-center align-items-center">
-			 <div class="col-md-10">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/ESFSS.jpg">
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <p class="card-footer">Congratulations to Francesco for giving a keynote on battery fire research at ESFSS2025!</p>
-                                <p class="card-footer">September 9, 2025.</p>
-				<a href="https://esfss2025.com/invited-plenary-speakers/" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read about the talk Here
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div>
-			
-		    <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
+    <div class="news-grid">
 
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Francesco promoted to Reader at KCL</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Group Lead Francesco Restuccia has been promoted to Reader in Engineering! Congratulations!</p>
-                                <p class="card-footer">July 23, 2025.</p>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
+      <!-- 2026 ─────────────────────────────────────── -->
 
-		    <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">	
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Hosein Participates in 3-min thesis KCL competition</h5>
-			<div class="row justify-content-md-center align-items-center">
-			 <div class="col-md-10">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/Hosein_thesis_competition.jpg">
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <p class="card-footer">Well done Hosein for participating in the 3-min thesis competiton, great video explaining your research!</p>
-                                <p class="card-footer">Jul 14, 2025.</p>
-				<a href="https://www.youtube.com/watch?v=EmcTf0tPO58" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Watch Video Here
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div>
-
-	
-		
-		    <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">King's College Education Award, Innovation in Teaching</h5>
-			<div class="row justify-content-md-center align-items-center">
-			 <div class="col-md-10">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/FR_award_2025.jpg">
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <p class="card-footer">Massive congratulations to Francesco for winning the college-wide Education award for Innovation in Teaching!</p>
-                                <p class="card-footer">Jun 28, 2025.</p>
-				<a href="https://www.kcl.ac.uk/academy/networks/kea" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read more here
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div>
-		
-		    <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Best Paper in Fire Technology</h5>
-			<div class="row justify-content-md-center align-items-center">
-			 <div class="col-md-10">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/FT_Award_2023.jpg">
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <p class="card-footer">Well done to Francesco and the Newcastle University team for receiving the Editors' Choice for Best Papers of 2023 in Fire Technology for the paper "Calculating Heat Release Rates from Lithium-Ion Battery Fires: A Methodology Using Digital Imaging".</p>
-                                <p class="card-footer">Apr 29, 2025.</p>
-                                <a href="https://link.springer.com/article/10.1007/s10694-023-01484-7" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read the paper here
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div> 
-	
-		    <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Royal Visit at KCL</h5>
-			<div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-10">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/visit.jpg">
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <p class="card-footer">We had the honour to be able to speak about our fire science research and our KCL undergraduate engineering education labs with HRH Princess Royal at the official opening of the quad today.</p>
-                                <p class="card-footer">March 5, 2025.</p>
-                                <a href="https://www.kcl.ac.uk/news/kings-welcomes-the-princess-royal-for-official-opening-of-the-quad" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read more about the visit here
-				<a href="https://www.linkedin.com/posts/nmeskings_it-was-an-honour-to-welcome-hrh-the-princess-activity-7312775970455732224-XxzO/" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Watch highlight video of the visit
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div> 
-			
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Francesco speaks on the Fire Science Show</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Francesco joins the Fire Science Show Podcast where he was interviewed about Wildfire Spread modelling and his recent ERC grant.</p>
-                                <p class="card-footer">November 13, 2024.</p>
-                                <a href="https://www.firescienceshow.com/177-physics-based-modelling-of-fire-spread-with-francesco-restuccia/" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Listen to the Podcast episode
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Francesco presents for HK SFPE Student Chapter</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Francesco gave an invited talk on wildfires at the Hong Kong Polytechnic University. You can watch the talk on Youtube.</p>
-                                <p class="card-footer">November 4, 2024.</p>
-                                <a href="https://www.youtube.com/watch?v=t2uYbWfX8nw" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Watch the talk on Youtube
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-		
-		                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">FUSE internship 2024</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">We've enjoyed having Anton Pustygin from Imperial in our group this summer as part of a Faraday Institution Summer Research Experience placement. You can read about his project in the attached poster</p>
-                                <p class="card-footer">October 3, 2024.</p>
-                                <a href="https://www.faraday.ac.uk/wp-content/uploads/2024/09/AntonPustyginFUSE24SafeBatt.pdf" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read poster here
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-					
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Francesco awarded an ERC Starting Grant</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Delighted to share that my project FIREMOD has been funded by an ERC Starting Grant. Very excited to embark on 5 years of engineering team research on wildfire modelling, to help improve predictions of when and why wildfires spread.</p>
-                                <p class="card-footer">September 5, 2024.</p>
-                                <a href="https://www.kcl.ac.uk/news/kings-engineer-receives-prestigious-european-research-council-funding-for-work-on-wildfires" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read press release
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-		                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Elena joins the Heat and Fire Lab </h5>
-			<div class="row justify-content-md-center align-items-center">
-                            <div class="card-footer">
-                                <p class="card-footer">We welcome Elena Funk, who is joining us as a  PhD student focused on the development of a methodology for the definition of battery fire scenarios. </p>
-                                <p class="card-footer">August 13, 2024.</p>
-                                <a href="people.html" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read More about Elena
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-					
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Abdullah joins the Heat and Fire Lab </h5>
-			<div class="row justify-content-md-center align-items-center">
-                            <div class="card-footer">
-                                <p class="card-footer">We welcome Abudllah Rehman, who is joining us as a  PhD student focused on the impact of wildfires in the wildland-urban interface as part of the Leverhulme Centre for Wildfires. </p>
-                                <p class="card-footer">August 13, 2024.</p>
-                                <a href="people.html" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read More about Abudllah
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div> 
-
-		                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Francesco contributes to a UK Parliament POST research briefing  </h5>
-			<div class="row justify-content-md-center align-items-center">
-                            <div class="card-footer">
-                                <p class="card-footer">Francesco contributed to a UK Parliament POST research briefing on the wildfire risk to the UK landscape.</p>
-                                <p class="card-footer">April 15, 2024.</p>
-                                <a href="https://post.parliament.uk/research-briefings/post-pn-0717/" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read the POST Briefing
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Hosein speaks about his PhD journey as part of KCL PhD informational video</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Hosein Sadeghi talks about his  PhD journey in Engineering here at KCL Heat and Fire Lab.</p>
-                                <p class="card-footer">November 27, 2023.</p>
-                                <a href="https://www.youtube.com/watch?v=cD65fLKv8Zs" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Watch the video on Youtube
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-		
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Francesco speaks on battery fires at the Green Fire Safety Conference</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Back in May 2023 Francesco presented on Battery Safety at the Green Fire Safety Conference, the talk is now available to all on youtube.</p>
-                                <p class="card-footer">October 6, 2023.</p>
-                                <a href="https://www.youtube.com/watch?v=rJsoWD0J7bQ" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Watch the talk on Youtube
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Francesco speaks on the Fire Science Show</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Francesco joins the Fire Science Show Podcast where he was interviewed about Battery Safety.</p>
-                                <p class="card-footer">September 13, 2023.</p>
-                                <a href="https://www.firescienceshow.com/118-different-batteries-different-challanges-with-francesco-restuccia/" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Listen to the Podcast episode
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">New Paper published in Fire Technology on battery heat release rate measurement</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">New paper comes out from the group led by Francesco in collaboration with Newcastle University, on digital imaging use for heat release rate measurements in LIB fires.</p>
-                                <p class="card-footer">September 12, 2023.</p>
-                                <a href="https://doi.org/10.1007/s10694-023-01484-7" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read the paper
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Francesco promoted to Senior Lecturer at KCL</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Group Lead Francesco Restuccia has been promoted to Senior Lecturer (Associate Professor UK). Congratulations!</p>
-                                <p class="card-footer">July 11, 2023.</p>
-                                <a href="https://www.linkedin.com/posts/francesco-restuccia-8b482972_extremely-happy-to-share-that-i-have-been-activity-7084159340214931456-z9yw?utm_source=share&utm_medium=member_desktop" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read More about it
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">New paper published in Journal of Energy Storage</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">New paper comes out from the group, led by Alireza Sarmadian and part of the EPSRC Prosperity partnership with JLR, on on simulations of a cylindrical battery using physics-based, simplified and generalised lumped models</p>
-                                <p class="card-footer">June 20, 2023.</p>
-                                <a href="https://www.sciencedirect.com/science/article/pii/S2352152X23013075" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read the paper here
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-              
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Ally joins the Heat and Fire Lab </h5>
-			<div class="row justify-content-md-center align-items-center">
-                            <div class="card-footer">
-                                <p class="card-footer">We welcome Ally Mamgain, who is joining us as a part-time PhD student focused on the impact of battery fires in subterranean environments! </p>
-                                <p class="card-footer">June 5, 2023.</p>
-                                <a href="people.html" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read More about Ally
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div> 
-
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Visiting PhD student joins from PolyU Fire Lab </h5>
-			<div class="row justify-content-md-center align-items-center">
-                            <div class="card-footer">
-                                <p class="card-footer">We welcome Zilong Wang, visiting PhD student from Prof Huang's Fire Lab at the Hong Kong Polytechnic University, who is joining us for 6 months as a visiting PhD student!</p>
-                                <p class="card-footer">April 6, 2023.</p>
-                                <a href="https://www.firelabxy.com/zilong-wang" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read more on Zilong at PolyU Fire Lab
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                        </div>
-
-		                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">New grant from Faraday Institution- SAFEBATT  </h5>
-			<div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-10">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/safebatt.jpg">
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <p class="card-footer">The Heat and Fire Lab is joining the Faraday Institution Major Project SAFEBATT! With a new project focussing on modelling thermal runaway and fire propagation in lithium-ion batteries, We hope that by including modelling fire dynamics aspects, to understand and predict the consequence of battery failure and the spike in heat output of flaming cells, fire science and fire engineering techniques can shed light on the thermal runaway so destructive to battery cells.</p>
-                                <p class="card-footer">March 30, 2023.</p>
-				<a href="http://www.faraday.ac.uk/welcoming-co-investigators" class="btn btn-primary btn-round card-link" target="_blank">                                
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read more in the feature article by FI
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div> 
-
-            <div class="row" style="min-height: 200px;">
-
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Francesco presents at the EFCE Spotlight Talks </h5>
-			<div class="row justify-content-md-center align-items-center">
-                            <div class="card-footer">
-                                <p class="card-footer">Francesco presented at the European Federation of Chemical Engineering some work on Electrostatic safety, funded by NFPA Research Fundation and lead by Ioana Sandu. You can watch the talk on youtube!</p>
-                                <p class="card-footer">November 21, 2022.</p>
-				<a href="http://www.youtube.com/watch?v=mxu8_OwF2dw" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Watch the talk here
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div>
-   </div>
-
-
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Best paper award at HEFAT-ATE22 </h5>
-			<div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-10">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/HEFAT.jpg">
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <p class="card-footer">The Heat and Fire Lab has won it's first best paper award! With a paper led by Dr Alireza Sarmadian on an experimentally verified thermal-electrochemical simulation model of a 21700 cell using a lumped semi-empirical battery model, the paper was awarded best paper in energy storage at HEFAT-ATE 2022.</p>
-                                <p class="card-footer">September 23, 2022.</p>
-                                <a href="https://kclpure.kcl.ac.uk/portal/files/178190312/C2._Sarmadian_HEFAT2022_thermal_electrical_model.pdf" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read the award winning paper here
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div> 
-
-
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Hosein joins Heat and Fire Lab</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Hosein Sadeghi joined our lab this week as a PhD student, and his research will focus on lithium-ion battery fires.</p>
-                                <p class="card-footer">June 20, 2022.</p>
-                                <a href="people.html" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read More about Hosein
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-             
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Fire Science Show Podcast</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Francesco joins the Fire Science Show Podcast to talk about battery fires and safety research around batteries.</p>
-                                <p class="card-footer">May 4, 2022.</p>
-                                <a href="https://www.firescienceshow.com/049-what-burns-inside-a-battery-with-francesco-restuccia/" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Listen to the Podcast
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Lab in the KCL climate change spotlight</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">On the week of COP26 conference, KCL included our group's research in the work the university is doing to help address the COP26 goals.</p>
-                                <p class="card-footer">November 1, 2021.</p>
-                                <a href="https://www.kcl.ac.uk/news/kings-engineering-and-climate-change" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read the Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-              
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Alireza joins Heat and Fire Lab</h5>
-                              <div class="card-footer">
-                                <p class="card-footer">Dr Alireza Sarmadian joined our lab this week as a Postdoctoral Research Associate, funded on an EPSRC Prosperty Partneship Project with Jaguar Land Rover. His work will focus on studying the thermophysical behaviour of a Lithium-ion battery cell during its operation and lifetime.</p>
-                                <p class="card-footer">October 1, 2021.</p>
-                                <a href="people.html" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read More about Alireza
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-          
-
-		<div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Imogen joins Heat and Fire Lab</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Imogen Richards joined our lab this week as a PhD student, and her research will focus on fire spread modelling in wildfires.</p>
-                                <p class="card-footer">October 1, 2021.</p>
-                                <a href="people.html" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read More about Imogen
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-              
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Leverhulme Centre for Wildfires posts a blog entry on our group's wildfire work</h5>
-                            <div class="card-footer">
-                                <p class="card-footer"> Leverhulme Centre for Wildfires posts a blog entry on our group's work in wildfires.</p>
-                                <p class="card-footer">August 16, 2021.</p>
-                                <a href="https://centreforwildfires.org/news/an-introduction-to-wildfire-ignition-fire-spread-and-fire-suppression/" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-       
-
-		<div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Leverhulme Centre for Wildfires posts a blog entry on our group's recent work on self-heating ignition </h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Leverhulme Centre for Wildfires posts a blog entry on our group's paper, Spontaneous ignition of smouldering peat fires (and how to simulate them in the field)</p>
-                                <p class="card-footer">May 10, 2021.</p>
-                                <a href="https://centreforwildfires.org/news/spontaneous-ignition-of-smouldering-peat-fires-and-how-to-simulate-them-in-the-field/" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-               
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Francesco awarded Jack Watts Award </h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Francesco has been awarded the 2020 Jack Watts Award for Outstanding Reviewer by Fire Technology for outstanding quality, in-depth, number, and timelieness of reviews.</p>
-                                <p class="card-footer">April 13, 2020.</p>
-                                <a href="https://www.springer.com/journal/10694/updates/17220990" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-
-		<div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Francesco joins KCL!</h5>
-                            <div class="card-footer">
-                                <p class="card-footer"> Research spotlight article from KCL introducing Francesco and 2 more new academics in the Department of Engineering.</p>
-                                <p class="card-footer">November 7, 2019.</p>
-                                <a href="https://www.kcl.ac.uk/news/interview-meeting-kings-new-engineers" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-     </div>
-
-   <!-- End of the Research and Publications section    -->
-
-    <!--  Lab members and contact section  -->
-     <div id="People" class="section section-dark text-center-tight">
-      <div class="container">
-  
-        <div class="row">
-          <div class="col-md-4  d-flex align-items-stretch">
-            <div class="card card-profile card-plain">
-              <div class="card-avatar">
-                  <img src="./assets/img/francesco_profile.jpg" alt="...">
-                </a>
-              </div>
-              <div class="card-body">
-                <a href="francesco-restuccia.html">
-                  <div class="author">
-                    <h4 class="card-title">Dr Francesco Restuccia</h4>
-                    <h6 class="card-category">Group Leader</h6>
-                  </div>
-                </a>
-                <p class="card-description text-center">
-                  Reader (UK Associate Professor), Department of Engineering, King's College London.<br>
-                </p>
-              </div>
-              <div class="card-footer text-center">
-                <a href="https://twitter.com/FranRestuccia" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
-                <a href="https://scholar.google.com/citations?user=-nE7xMYAAAAJ&hl=en" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-google"></i></a>
-                <a href="https://www.linkedin.com/in/francesco-restuccia-8b482972/" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-linkedin"></i></a>
-		<a href="mailto:francesco.restuccia@kcl.ac.uk" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-envelope"></i></a>
-              </div>
-  	 <div class="card-footer text-center">
-        <a href="francesco-restuccia.html" class="btn btn-outline-primary btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-   	 </div>
+      <div class="nc">
+        <div class="nc-img"><img src="./assets/img/safebatt.jpg" alt="Safebatt kick-off"></div>
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-grant">Grant</span>
+            <span class="nc-date">May 6, 2026</span>
           </div>
-
-                </div>
-                <div class="col-md-4 d-flex align-items-stretch">
-                    
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/KCL_logo.jpg" alt="...">
-    </div>
-    <div class="card-body">
-
-        <div class="author">
-            <h4 class="card-title">Where we are </h4>
-            <h6 class="card-category"> Department of Engineering, King's College London</h6>
+          <div class="nc-title">Carolina and Francesco participate in the kick-off of the new Safebatt project</div>
+          <p class="nc-desc">Carolina and Francesco participate in the kick-off meeting for the new round of the Safebatt project 2026–2030. Excited for four more years of battery safety research!</p>
         </div>
-
-        <p class="card-description text-center">
-            The Department of Engineering is a growing department at KCL, an internationally renowned university delivering exceptional education and world-leading research based in London, United Kingdom.
-        </p>
-    </div>
-    <div class="card-footer text-center">
-        <!-- Button trigger modal -->
-        <a href="index.html" data-toggle="modal" data-target="#where_we_are" class="btn btn-outline-primary btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-    </div>
-        </div>
-</div>
-                <div class="col-md-4 d-flex align-items-stretch">
-                    
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/experiment.jpg" alt="...">
-    </div>
-    <div class="card-body">
-
-        <div class="author">
-            <h4 class="card-title">Join us! </h4>
-            <h6 class="card-category"> Opportunities </h6>
-        </div>
-
-        <p class="card-description text-center">
-            We welcome highly-motivated students and
-            postdoctoral researchers with an interest in thermal engineering or fire science to join our group.
-        </p>
-    </div>
-    <div class="card-footer text-center">
-        <a href="mailto:francesco.restuccia@kcl.ac.uk" class="btn btn-outline-primary btn-round card-link"> <i aria-hidden="true"></i> Email
-        </a>
-    </div>
-</div>
-
-    <!-- Modal -->
-    
-</div>
-
-                </div>
-            </div>
       </div>
 
-<!-- Page footer-->
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-team">Team</span>
+            <span class="nc-date">February 1, 2026</span>
+          </div>
+          <div class="nc-title">Visiting PhD student joins from University of Naples</div>
+          <p class="nc-desc">We welcome Domenico Enicchiaro, visiting PhD student from Prof Di Benedetto's group at Università degli Studi di Napoli Federico II, joining us for 6 months.</p>
+        </div>
+      </div>
+
+      <!-- 2025 ─────────────────────────────────────── -->
+
+      <div class="nc">
+        <div class="nc-img"><img src="./assets/img/ISLBFS2025_FR.jpg" alt="ISLBFS2025 plenary"></div>
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-talk">Talk</span>
+            <span class="nc-date">November 8, 2025</span>
+          </div>
+          <div class="nc-title">Francesco gives Plenary at ISLBFS2025</div>
+          <p class="nc-desc">Congratulations to Francesco for giving a plenary keynote on battery fire research at ISLBFS2025 in Hong Kong.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.youtube.com/watch?v=CXSA-TIwYMU" class="btn-link-pill" target="_blank">Watch the Plenary</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-img"><img src="./assets/img/ISLBFS2025.png" alt="Best paper ISLBFS2025"></div>
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-award">Award</span>
+            <span class="nc-date">November 8, 2025</span>
+          </div>
+          <div class="nc-title">Hosein and Francesco recognised with Best Paper award at ISLBFS2025</div>
+          <p class="nc-desc">Congratulations to Hosein for being recognised with a Best Paper award at ISLBFS2025 in Hong Kong!</p>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-img"><img src="./assets/img/ESFSS.jpg" alt="ESFSS2025 keynote"></div>
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-talk">Talk</span>
+            <span class="nc-date">September 9, 2025</span>
+          </div>
+          <div class="nc-title">Francesco gives Keynote at ESFSS2025</div>
+          <p class="nc-desc">Congratulations to Francesco for giving a keynote on battery fire research at ESFSS2025.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://esfss2025.com/invited-plenary-speakers/" class="btn-link-pill" target="_blank">Read about the talk</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-promo">Promotion</span>
+            <span class="nc-date">July 23, 2025</span>
+          </div>
+          <div class="nc-title">Francesco promoted to Reader at KCL</div>
+          <p class="nc-desc">Group Lead Francesco Restuccia has been promoted to Reader in Engineering. Congratulations!</p>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-img"><img src="./assets/img/Hosein_thesis_competition.jpg" alt="3-min thesis competition"></div>
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-media">Media</span>
+            <span class="nc-date">July 14, 2025</span>
+          </div>
+          <div class="nc-title">Hosein participates in 3-minute thesis KCL competition</div>
+          <p class="nc-desc">Well done Hosein for participating in the 3-minute thesis competition — a great video explaining your research!</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.youtube.com/watch?v=EmcTf0tPO58" class="btn-link-pill" target="_blank">Watch Video</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-img"><img src="./assets/img/FR_award_2025.jpg" alt="KCL Education Award"></div>
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-award">Award</span>
+            <span class="nc-date">June 28, 2025</span>
+          </div>
+          <div class="nc-title">King's College Education Award — Innovation in Teaching</div>
+          <p class="nc-desc">Massive congratulations to Francesco for winning the college-wide Education Award for Innovation in Teaching!</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.kcl.ac.uk/academy/networks/kea" class="btn-link-pill" target="_blank">Read more</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-img"><img src="./assets/img/FT_Award_2023.jpg" alt="Best Paper Fire Technology"></div>
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-award">Award</span>
+            <span class="nc-date">April 29, 2025</span>
+          </div>
+          <div class="nc-title">Best Paper in Fire Technology</div>
+          <p class="nc-desc">Francesco and the Newcastle University team receive the Editors' Choice Best Papers of 2023 in Fire Technology for "Calculating Heat Release Rates from Lithium-Ion Battery Fires: A Methodology Using Digital Imaging".</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://link.springer.com/article/10.1007/s10694-023-01484-7" class="btn-link-pill" target="_blank">Read the paper</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-img"><img src="./assets/img/visit.jpg" alt="Royal Visit KCL"></div>
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-media">Media</span>
+            <span class="nc-date">March 5, 2025</span>
+          </div>
+          <div class="nc-title">Royal Visit at KCL</div>
+          <p class="nc-desc">We had the honour to speak about our fire science research and KCL engineering education labs with HRH Princess Royal at the official opening of the quad.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.kcl.ac.uk/news/kings-welcomes-the-princess-royal-for-official-opening-of-the-quad" class="btn-link-pill" target="_blank">Read more</a>
+          <a href="https://www.linkedin.com/posts/nmeskings_it-was-an-honour-to-welcome-hrh-the-princess-activity-7312775970455732224-XxzO/" class="btn-link-pill" target="_blank">Watch highlight video</a>
+        </div>
+      </div>
+
+      <!-- 2024 ─────────────────────────────────────── -->
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-media">Media</span>
+            <span class="nc-date">November 13, 2024</span>
+          </div>
+          <div class="nc-title">Francesco speaks on the Fire Science Show</div>
+          <p class="nc-desc">Francesco joins the Fire Science Show Podcast, interviewed about wildfire spread modelling and his recent ERC grant.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.firescienceshow.com/177-physics-based-modelling-of-fire-spread-with-francesco-restuccia/" class="btn-link-pill" target="_blank">Listen to episode</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-talk">Talk</span>
+            <span class="nc-date">November 4, 2024</span>
+          </div>
+          <div class="nc-title">Francesco presents for HK SFPE Student Chapter</div>
+          <p class="nc-desc">Francesco gave an invited talk on wildfires at the Hong Kong Polytechnic University. Watch on YouTube.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.youtube.com/watch?v=t2uYbWfX8nw" class="btn-link-pill" target="_blank">Watch on YouTube</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-grant">Grant</span>
+            <span class="nc-date">September 5, 2024</span>
+          </div>
+          <div class="nc-title">Francesco awarded an ERC Starting Grant</div>
+          <p class="nc-desc">Delighted to share that FIREMOD has been funded by an ERC Starting Grant — five years of engineering research on wildfire modelling to improve predictions of when and why wildfires spread.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.kcl.ac.uk/news/kings-engineer-receives-prestigious-european-research-council-funding-for-work-on-wildfires" class="btn-link-pill" target="_blank">Read press release</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-media">Media</span>
+            <span class="nc-date">October 3, 2024</span>
+          </div>
+          <div class="nc-title">FUSE internship 2024</div>
+          <p class="nc-desc">We've enjoyed having Anton Pustygin from Imperial in our group this summer as part of a Faraday Institution Summer Research Experience placement.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.faraday.ac.uk/wp-content/uploads/2024/09/AntonPustyginFUSE24SafeBatt.pdf" class="btn-link-pill" target="_blank">Read poster</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-team">Team</span>
+            <span class="nc-date">August 13, 2024</span>
+          </div>
+          <div class="nc-title">Elena joins the Heat and Fire Lab</div>
+          <p class="nc-desc">We welcome Elena Funk, joining as a PhD student focused on the development of a methodology for the definition of battery fire scenarios.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="people.html" class="btn-link-pill">Read more about Elena</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-team">Team</span>
+            <span class="nc-date">August 13, 2024</span>
+          </div>
+          <div class="nc-title">Abdullah joins the Heat and Fire Lab</div>
+          <p class="nc-desc">We welcome Abdullah Rehman, joining as a PhD student focused on the impact of wildfires in the wildland-urban interface as part of the Leverhulme Centre for Wildfires.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="people.html" class="btn-link-pill">Read more about Abdullah</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-media">Media</span>
+            <span class="nc-date">April 15, 2024</span>
+          </div>
+          <div class="nc-title">Francesco contributes to a UK Parliament POST research briefing</div>
+          <p class="nc-desc">Francesco contributed to a UK Parliament POST research briefing on the wildfire risk to the UK landscape.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://post.parliament.uk/research-briefings/post-pn-0717/" class="btn-link-pill" target="_blank">Read the POST Briefing</a>
+        </div>
+      </div>
+
+      <!-- 2023 ─────────────────────────────────────── -->
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-media">Media</span>
+            <span class="nc-date">November 27, 2023</span>
+          </div>
+          <div class="nc-title">Hosein speaks about his PhD journey</div>
+          <p class="nc-desc">Hosein Sadeghi talks about his PhD journey in Engineering at KCL Heat and Fire Lab as part of a KCL PhD informational video.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.youtube.com/watch?v=cD65fLKv8Zs" class="btn-link-pill" target="_blank">Watch on YouTube</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-talk">Talk</span>
+            <span class="nc-date">October 6, 2023</span>
+          </div>
+          <div class="nc-title">Francesco speaks on battery fires at the Green Fire Safety Conference</div>
+          <p class="nc-desc">Francesco presented on battery safety at the Green Fire Safety Conference (May 2023) — the talk is now available on YouTube.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.youtube.com/watch?v=rJsoWD0J7bQ" class="btn-link-pill" target="_blank">Watch on YouTube</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-media">Media</span>
+            <span class="nc-date">September 13, 2023</span>
+          </div>
+          <div class="nc-title">Francesco speaks on the Fire Science Show</div>
+          <p class="nc-desc">Francesco joins the Fire Science Show Podcast, interviewed about battery safety research.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.firescienceshow.com/118-different-batteries-different-challanges-with-francesco-restuccia/" class="btn-link-pill" target="_blank">Listen to episode</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-paper">Paper</span>
+            <span class="nc-date">September 12, 2023</span>
+          </div>
+          <div class="nc-title">New paper in Fire Technology on battery heat release rate measurement</div>
+          <p class="nc-desc">New paper from the group led by Francesco in collaboration with Newcastle University, on digital imaging for heat release rate measurements in LIB fires.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://doi.org/10.1007/s10694-023-01484-7" class="btn-link-pill" target="_blank">Read the paper</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-promo">Promotion</span>
+            <span class="nc-date">July 11, 2023</span>
+          </div>
+          <div class="nc-title">Francesco promoted to Senior Lecturer at KCL</div>
+          <p class="nc-desc">Group Lead Francesco Restuccia has been promoted to Senior Lecturer (Associate Professor UK). Congratulations!</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.linkedin.com/posts/francesco-restuccia-8b482972_extremely-happy-to-share-that-i-have-been-activity-7084159340214931456-z9yw" class="btn-link-pill" target="_blank">Read more</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-paper">Paper</span>
+            <span class="nc-date">June 20, 2023</span>
+          </div>
+          <div class="nc-title">New paper in Journal of Energy Storage</div>
+          <p class="nc-desc">New paper led by Alireza Sarmadian, part of the EPSRC Prosperity Partnership with JLR, on simulations of a cylindrical battery using physics-based, simplified and generalised lumped models.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.sciencedirect.com/science/article/pii/S2352152X23013075" class="btn-link-pill" target="_blank">Read the paper</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-team">Team</span>
+            <span class="nc-date">June 5, 2023</span>
+          </div>
+          <div class="nc-title">Ally joins the Heat and Fire Lab</div>
+          <p class="nc-desc">We welcome Ally Mamgain, joining as a part-time PhD student focused on the impact of battery fires in subterranean environments!</p>
+        </div>
+        <div class="nc-foot">
+          <a href="people.html" class="btn-link-pill">Read more about Ally</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-team">Team</span>
+            <span class="nc-date">April 6, 2023</span>
+          </div>
+          <div class="nc-title">Visiting PhD student joins from PolyU Fire Lab</div>
+          <p class="nc-desc">We welcome Zilong Wang, visiting PhD student from Prof Huang's Fire Lab at Hong Kong Polytechnic University, joining us for 6 months.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.firelabxy.com/zilong-wang" class="btn-link-pill" target="_blank">Read more at PolyU</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-img"><img src="./assets/img/safebatt.jpg" alt="SAFEBATT grant"></div>
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-grant">Grant</span>
+            <span class="nc-date">March 30, 2023</span>
+          </div>
+          <div class="nc-title">New grant from Faraday Institution — SAFEBATT</div>
+          <p class="nc-desc">The Heat and Fire Lab joins the Faraday Institution Major Project SAFEBATT, with a new project focusing on modelling thermal runaway and fire propagation in lithium-ion batteries.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="http://www.faraday.ac.uk/welcoming-co-investigators" class="btn-link-pill" target="_blank">Read FI feature article</a>
+        </div>
+      </div>
+
+      <!-- 2022 ─────────────────────────────────────── -->
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-talk">Talk</span>
+            <span class="nc-date">November 21, 2022</span>
+          </div>
+          <div class="nc-title">Francesco presents at the EFCE Spotlight Talks</div>
+          <p class="nc-desc">Francesco presented at the European Federation of Chemical Engineering on electrostatic safety, funded by NFPA Research Foundation and led by Ioana Sandu.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="http://www.youtube.com/watch?v=mxu8_OwF2dw" class="btn-link-pill" target="_blank">Watch the talk</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-img"><img src="./assets/img/HEFAT.jpg" alt="HEFAT best paper award"></div>
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-award">Award</span>
+            <span class="nc-date">September 23, 2022</span>
+          </div>
+          <div class="nc-title">Best paper award at HEFAT-ATE22</div>
+          <p class="nc-desc">The Heat and Fire Lab wins its first best paper award! Dr Alireza Sarmadian's paper on thermal-electrochemical simulation of a 21700 cell wins best paper in energy storage at HEFAT-ATE 2022.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://kclpure.kcl.ac.uk/portal/files/178190312/C2._Sarmadian_HEFAT2022_thermal_electrical_model.pdf" class="btn-link-pill" target="_blank">Read the paper</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-team">Team</span>
+            <span class="nc-date">June 20, 2022</span>
+          </div>
+          <div class="nc-title">Hosein joins the Heat and Fire Lab</div>
+          <p class="nc-desc">Hosein Sadeghi joined our lab as a PhD student, with research focusing on lithium-ion battery fires.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="people.html" class="btn-link-pill">Read more about Hosein</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-media">Media</span>
+            <span class="nc-date">May 4, 2022</span>
+          </div>
+          <div class="nc-title">Fire Science Show Podcast</div>
+          <p class="nc-desc">Francesco joins the Fire Science Show Podcast to talk about battery fires and safety research around batteries.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.firescienceshow.com/049-what-burns-inside-a-battery-with-francesco-restuccia/" class="btn-link-pill" target="_blank">Listen to the episode</a>
+        </div>
+      </div>
+
+      <!-- 2021 ─────────────────────────────────────── -->
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-media">Media</span>
+            <span class="nc-date">November 1, 2021</span>
+          </div>
+          <div class="nc-title">Lab in the KCL climate change spotlight</div>
+          <p class="nc-desc">On the week of COP26, KCL included our group's research in the work the university is doing to address the COP26 goals.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.kcl.ac.uk/news/kings-engineering-and-climate-change" class="btn-link-pill" target="_blank">Read the article</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-team">Team</span>
+            <span class="nc-date">October 1, 2021</span>
+          </div>
+          <div class="nc-title">Alireza joins the Heat and Fire Lab</div>
+          <p class="nc-desc">Dr Alireza Sarmadian joined as a Postdoctoral Research Associate, funded on an EPSRC Prosperity Partnership Project with Jaguar Land Rover, studying the thermophysical behaviour of a lithium-ion battery cell.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="people.html" class="btn-link-pill">Read more about Alireza</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-team">Team</span>
+            <span class="nc-date">October 1, 2021</span>
+          </div>
+          <div class="nc-title">Imogen joins the Heat and Fire Lab</div>
+          <p class="nc-desc">Imogen Richards joined our lab as a PhD student, with research focused on fire spread modelling in wildfires.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="people.html" class="btn-link-pill">Read more about Imogen</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-media">Media</span>
+            <span class="nc-date">August 16, 2021</span>
+          </div>
+          <div class="nc-title">Leverhulme Centre blog: our group's wildfire work</div>
+          <p class="nc-desc">The Leverhulme Centre for Wildfires posts a blog entry on our group's work in wildfires.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://centreforwildfires.org/news/an-introduction-to-wildfire-ignition-fire-spread-and-fire-suppression/" class="btn-link-pill" target="_blank">Read more</a>
+        </div>
+      </div>
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-media">Media</span>
+            <span class="nc-date">May 10, 2021</span>
+          </div>
+          <div class="nc-title">Leverhulme Centre blog: self-heating ignition in peat fires</div>
+          <p class="nc-desc">The Leverhulme Centre for Wildfires posts a blog entry on our group's paper, "Spontaneous ignition of smouldering peat fires (and how to simulate them in the field)".</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://centreforwildfires.org/news/spontaneous-ignition-of-smouldering-peat-fires-and-how-to-simulate-them-in-the-field/" class="btn-link-pill" target="_blank">Read more</a>
+        </div>
+      </div>
+
+      <!-- 2020 ─────────────────────────────────────── -->
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-award">Award</span>
+            <span class="nc-date">April 13, 2020</span>
+          </div>
+          <div class="nc-title">Francesco awarded Jack Watts Award</div>
+          <p class="nc-desc">Francesco has been awarded the 2020 Jack Watts Award for Outstanding Reviewer by Fire Technology, for outstanding quality, depth, number, and timeliness of reviews.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.springer.com/journal/10694/updates/17220990" class="btn-link-pill" target="_blank">Read more</a>
+        </div>
+      </div>
+
+      <!-- 2019 ─────────────────────────────────────── -->
+
+      <div class="nc">
+        <div class="nc-body">
+          <div class="nc-meta">
+            <span class="nc-tag tag-team">Team</span>
+            <span class="nc-date">November 7, 2019</span>
+          </div>
+          <div class="nc-title">Francesco joins KCL!</div>
+          <p class="nc-desc">Research spotlight article from KCL introducing Francesco and two more new academics in the Department of Engineering.</p>
+        </div>
+        <div class="nc-foot">
+          <a href="https://www.kcl.ac.uk/news/interview-meeting-kings-new-engineers" class="btn-link-pill" target="_blank">Read more</a>
+        </div>
+      </div>
+
+    </div><!-- /news-grid -->
+  </div>
+</section>
+
+<!-- Footer -->
 <footer class="footer">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-md-6 text-center">
                 <span class="copyright">
-                © Dr Francesco Restuccia,
-                <script>
-                  document.write(new Date().getFullYear())
-                </script>
+                &copy; Dr Francesco Restuccia,
+                <script>document.write(new Date().getFullYear())</script>
                 </span>
             </div>
-
             <div class="col-md-6 text-center">
-                  <span class="copyright">
-                      Built using
-                      <a class="thick" href="https://demos.creative-tim.com/paper-kit-2/index.html" target="_blank">Paper-Kit2 </a>
-                  </span>
+                <span class="copyright">
+                    Built using <a href="https://demos.creative-tim.com/paper-kit-2/index.html" target="_blank">Paper-Kit2</a>
+                </span>
             </div>
         </div>
     </div>
 </footer>
 
-  <!--   Core JS Files   -->
-  <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="./assets/js/plugins/bootstrap-switch.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="./assets/js/plugins/moment.min.js"></script>
-  <script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
-  <!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
-  <script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
-  <!--  Google Maps Plugin    -->
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!--   Core JS Files — unchanged from original   -->
+<script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/bootstrap-switch.js"></script>
+<script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/moment.min.js"></script>
+<script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
+
 </body>
-
 </html>
-
-<div class="modal fade" id="where_we_are" tabindex="-1" role="dialog" aria-labelledby="aboutRyanLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>King's College London</h5>
-
-                    King’s College London is an internationally renowned university delivering exceptional education and world-leading research. We are dedicated to driving positive and sustainable change in society and realising our vision of making the world a better place. 
-                    <br>
-                    <br>
-                    <div class="text-center">
-                        <a href="https://www.kcl.ac.uk/engineering" target="_blank" class="btn btn-sm btn-outline-primary btn-round card-link">
-                            Learn More about the Department of Engineering </a>
-                        <br>
-                        <br>
- 			<a href="https://www.kcl.ac.uk/about" target="_blank" class="btn btn-sm btn-outline-primary btn-round card-link">
-                            Learn more about KCL</a>
-                    </div>
-                </div>
-            </div>
-      </div>
-    </div></body></html>
