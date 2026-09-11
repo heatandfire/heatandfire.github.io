@@ -1,21 +1,13 @@
-
 <!--
 =========================================================
  Paper Kit 2 - v2.2.0
 =========================================================
-
  Product Page: https://www.creative-tim.com/product/paper-kit-2
  Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/paper-kit-2/blob/master/LICENSE.md)
-
- Coded by Creative Tim
-
+ Licensed under MIT
 =========================================================
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
-
+-->
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -23,22 +15,192 @@ The above copyright notice and this permission notice shall be included in all c
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img//biochar.jpg">
   <link rel="icon" type="image/png" href="./assets/img//biochar.jpg">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-   Heat and Fire Lab
-  </title>
+  <title>Heat and Fire Lab</title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
+  <!-- Fonts and icons -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,600" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- New display font for the redesigned sections -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
+
+  <style>
+  /* ── design tokens ───────────────────────────────── */
+  :root {
+    --bg:      #f4f1ec;
+    --surface: #ffffff;
+    --alt:     #e8e3db;
+    --text:    #1b1714;
+    --muted:   #6a5f53;
+    --border:  #d4cec6;
+    --accent:  #c04a1e;
+    --blue:    #2b4665;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+  }
+
+  /* ── base overrides ──────────────────────────────── */
+  body { background: var(--bg); }
+  a { color: var(--accent); }
+
+  /* ── section layout ──────────────────────────────── */
+  .section { padding: 5rem 2rem; background: var(--bg); }
+  .section-alt { background: var(--alt); }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+
+  .sh { margin-bottom: 3rem; }
+  .sh .eye {
+    font-size: .72rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: .4rem;
+    font-family: var(--ff-b);
+  }
+  .sh h2 {
+    font-family: var(--ff-d);
+    font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 600;
+    color: var(--text); line-height: 1.2;
+  }
+  .sh .rule { width: 2.5rem; height: 2px; background: var(--accent); margin-top: .9rem; }
+
+  /* ── person cards ────────────────────────────────── */
+  .people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    gap: 1.75rem;
+  }
+  .pc {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 3px; display: flex; flex-direction: column;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .pc:hover { box-shadow: 0 6px 24px rgba(0,0,0,.12); transform: translateY(-2px); }
+  .pc-photo { aspect-ratio: 1/1; overflow: hidden; background: var(--alt); width: 100%; }
+  .pc-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+  .pc-body { padding: 1.2rem 1.2rem .7rem; flex: 1; }
+  .pc-name {
+    font-family: var(--ff-d); font-size: 1.3rem; font-weight: 600;
+    line-height: 1.2; color: var(--text); margin-bottom: .45rem;
+  }
+  .pc-name a { color: inherit; transition: color .15s; text-decoration: none; }
+  .pc-name a:hover { color: var(--accent); }
+  .role-badge {
+    display: inline-block; font-size: .68rem; font-weight: 600;
+    letter-spacing: .09em; text-transform: uppercase; font-family: var(--ff-b);
+    padding: .18em .65em; border-radius: 2px; margin-bottom: .75rem;
+  }
+  .r-pi   { background: var(--accent); color: #fff; }
+  .r-pdra { background: var(--blue); color: #fff; }
+  .r-phd  { border: 1px solid var(--border); color: var(--muted); background: transparent; }
+  .r-vis  { border: 1px solid var(--border); color: var(--muted); background: transparent; font-style: italic; }
+  .pc-desc { font-size: .87rem; color: var(--muted); line-height: 1.5; font-family: var(--ff-b); }
+  .pc-foot { padding: .7rem 1.2rem 1.2rem; }
+  .btn-sm {
+    display: inline-block; font-size: .74rem; font-weight: 600;
+    letter-spacing: .07em; text-transform: uppercase; font-family: var(--ff-b);
+    border: 1px solid var(--accent); color: var(--accent);
+    padding: .35em .95em; border-radius: 2px; cursor: pointer; background: transparent;
+    transition: background .15s, color .15s; text-decoration: none;
+  }
+  .btn-sm:hover { background: var(--accent); color: #fff; text-decoration: none; }
+
+  /* ── alumni ledger ───────────────────────────────── */
+  .alumni-list { display: flex; flex-direction: column; gap: .55rem; }
+  .al {
+    display: flex; align-items: baseline; gap: .85rem;
+    padding: .75rem 1rem; background: var(--surface);
+    border-left: 3px solid var(--border); border-radius: 0 3px 3px 0;
+    transition: border-color .15s;
+  }
+  .al:hover { border-left-color: var(--accent); }
+  .al-tag {
+    flex-shrink: 0; font-size: .65rem; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; font-family: var(--ff-b);
+    padding: .2em .6em; border-radius: 2px;
+    min-width: 3.8rem; text-align: center;
+  }
+  .t-phd  { background: rgba(43,70,101,.12);  color: #2b4665; }
+  .t-pdra { background: rgba(56,100,56,.12);  color: #2d6032; }
+  .t-ug   { background: rgba(130,80,30,.12);  color: #7a4a18; }
+  .t-vis  { background: rgba(80,50,110,.12);  color: #5a3278; }
+  .t-fuse { background: rgba(130,80,30,.12);  color: #7a4a18; }
+  .al-wrap { flex: 1; min-width: 0; }
+  .al-name { font-size: .93rem; font-weight: 600; color: var(--text); font-family: var(--ff-b); }
+  .al-period { font-size: .8rem; color: var(--muted); margin-left: .5rem; font-family: var(--ff-b); }
+  .al-desc { font-size: .82rem; color: var(--muted); margin-top: .15rem; line-height: 1.4; font-family: var(--ff-b); }
+
+  /* ── thesis students ─────────────────────────────── */
+  .ty-group { margin-bottom: 2.5rem; }
+  .ty-year {
+    font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); font-family: var(--ff-b);
+    padding-bottom: .5rem; border-bottom: 1px solid var(--border); margin-bottom: .85rem;
+  }
+  .ty-list { display: flex; flex-direction: column; }
+  .ty-row {
+    display: flex; align-items: baseline; gap: .75rem;
+    padding: .5rem 0; border-bottom: 1px solid rgba(0,0,0,.06);
+  }
+  .ty-deg {
+    font-size: .68rem; font-weight: 600; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--muted); font-family: var(--ff-b);
+    min-width: 2.8rem; flex-shrink: 0;
+  }
+  .ty-body { flex: 1; min-width: 0; }
+  .ty-who { font-size: .9rem; font-weight: 600; color: var(--text); font-family: var(--ff-b); }
+  .ty-title { font-size: .83rem; color: var(--muted); margin-top: .1rem; line-height: 1.4; font-family: var(--ff-b); }
+
+  /* ── opportunities ───────────────────────────────── */
+  .opp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  @media (max-width: 640px) { .opp-grid { grid-template-columns: 1fr; } }
+  .opp-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 3px; padding: 2rem;
+  }
+  .opp-card h3 {
+    font-family: var(--ff-d); font-size: 1.6rem; font-weight: 600;
+    color: var(--text); margin-bottom: .3rem; line-height: 1.2;
+  }
+  .opp-card .sub {
+    font-size: .75rem; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; font-family: var(--ff-b);
+  }
+  .opp-card p { font-size: .9rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.25rem; font-family: var(--ff-b); }
+  .btn-pr {
+    display: inline-block; background: var(--accent); color: #fff;
+    font-size: .76rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; font-family: var(--ff-b);
+    padding: .55em 1.4em; border-radius: 2px; transition: opacity .15s; text-decoration: none;
+  }
+  .btn-pr:hover { opacity: .85; color: #fff; text-decoration: none; }
+  .btn-sc {
+    display: inline-block; border: 1px solid var(--blue); color: var(--blue);
+    font-size: .76rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; font-family: var(--ff-b);
+    padding: .5em 1.2em; border-radius: 2px; transition: background .15s, color .15s; text-decoration: none;
+  }
+  .btn-sc:hover { background: var(--blue); color: #fff; text-decoration: none; }
+
+  /* ── modal overrides ─────────────────────────────── */
+  .modal-body h5 {
+    font-family: var(--ff-d); font-size: 1.55rem; font-weight: 600;
+    color: var(--text); margin-bottom: .9rem; line-height: 1.2;
+  }
+  .modal-body { font-family: var(--ff-b); font-size: .92rem; line-height: 1.7; }
+
+  /* ── responsive ──────────────────────────────────── */
+  @media (max-width: 768px) {
+    .section { padding: 3.5rem 1.25rem; }
+    .al { flex-wrap: wrap; gap: .5rem; }
+  }
+  @media (max-width: 480px) {
+    .people-grid { grid-template-columns: 1fr 1fr; }
+  }
+  </style>
 </head>
 
 <body class="profile-page sidebar-collapse">
- <!-- Navigation bar -->
+
+<!-- Navigation bar — unchanged from original -->
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
     <div class="container">
         <div class="navbar-translate">
@@ -56,10 +218,10 @@ The above copyright notice and this permission notice shall be included in all c
                 <li class="nav-item">
                     <a href="index.html#Research" class="nav-link"><i class="fa fa-flask"></i> Research</a>
                 </li>
- 		 <li class="nav-item">
+                <li class="nav-item">
                     <a href="people.html" class="nav-link"><i class="fa fa-users"></i> People</a>
                 </li>
-		<li class="nav-item">
+                <li class="nav-item">
                     <a href="news.html" class="nav-link"><i class="fa fa-newspaper-o"></i> News</a>
                 </li>
                 <li class="nav-item">
@@ -71,605 +233,444 @@ The above copyright notice and this permission notice shall be included in all c
                 <li class="nav-item">
                     <a href="francesco-restuccia.html" class="nav-link"><i class="fa fa-user"></i> PI: Francesco Restuccia</a>
                 </li>
-		 <li class="nav-item">
-            	<a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/FranRestuccia" target="_blank">
-              <i class="fa fa-twitter"></i>
-              <p class="d-lg-none">Twitter</p>
-            </a>
-          </li>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/FranRestuccia" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                        <p class="d-lg-none">Twitter</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-<!-- End Navigation-bar -->
-  <div class="page-header  page-header-xs" data-parallax="true" style="background-image: url('./assets/img/biochar2.jpg');">
+<!-- End Navigation bar -->
+
+<!-- Page header — unchanged from original -->
+<div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/biochar2.jpg');">
     <div class="filter"></div>
-  </div>
-
-<!--  Group member section  -->
-  <!--  Lab members and contact section  -->
-
-<div id="People" class="section text-center section-tight">
-    <div class="container">
-        <h2 class="title">People</h2>
-        <div class="row justify-content-md-center">
-            <div class="col-md-4 d-flex align-items-stretch">
-                
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/francesco_profile.jpg" alt="...">
-    </div>
-
-    <div class="card-body">
-        <a href="francesco-restuccia.html">
-            <div class="author">
-                <h4 class="card-title">Dr Francesco Restuccia
-                </h4>
-                <h6 class="card-category">Group leader</h6>
-            </div>
-        </a>
-        <p class="card-description text-center">
-            Reader (Associate Professor) at King's College London.<br>
-        </p>
-
-    </div>
-    <div class="card-footer text-center">
-        <a href="francesco-restuccia.html" class="btn  btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-    </div>
 </div>
 
-            </div>
-            <div class="col-md-4 d-flex align-items-stretch">
-                
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/Carolina_profile.jpg" alt="...">
+<!-- Current Members -->
+<section class="section" id="People">
+  <div class="wrap">
+    <div class="sh">
+      <p class="eye">Current Members</p>
+      <h2>The Team</h2>
+      <div class="rule"></div>
     </div>
+    <div class="people-grid">
 
-    <div class="card-body">
-        <div class="author">
-            <h4 class="card-title">Dr Carolina Cruz-Cardona</h4>
-            <h6 class="card-category">Research Associate</h6>
+      <div class="pc">
+        <div class="pc-photo"><img src="./assets/img/francesco_profile.jpg" alt="Dr Francesco Restuccia"></div>
+        <div class="pc-body">
+          <div class="pc-name"><a href="francesco-restuccia.html">Dr Francesco Restuccia</a></div>
+          <span class="role-badge r-pi">Group Leader</span>
+          <p class="pc-desc">Reader (Associate Professor) at King's College London.</p>
         </div>
-        <p class="card-description text-center">
-            Lithium-ion battery fire propagation.
-        </p>
-    </div>
-
-    <div class="card-footer text-center">
-        <!-- Button trigger modal -->
-        <a href="people.html#" data-toggle="modal" data-target="#aboutCarolina" class="btn  btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-    </div>
-</div>				
-				
-
-            </div>
-            <div class="col-md-4 d-flex align-items-stretch">
-                
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/Hosein_profile.jpg" alt="...">
-    </div>
-
-    <div class="card-body">
-        <div class="author">
-            <h4 class="card-title">Dr Hosein Sadeghi</h4>
-            <h6 class="card-category">Visiting Research Associate</h6>
-        </div>
-        <p class="card-description text-center">
-           Multiphysics simulation of lithium-ion battery fires.
-        </p>
-    </div>
-
-    <div class="card-footer text-center">
-        <!-- Button trigger modal -->
-        <a href="people.html#" data-toggle="modal" data-target="#aboutHosein" class="btn  btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-    </div>
-
-    <!-- Modal -->
-
-</div>
-
-            </div>
-            <div class="col-md-4 d-flex align-items-stretch">
-                
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/Ally_profile.jpg" alt="...">
-    </div>
-
-    <div class="card-body">
-        <div class="author">
-            <h4 class="card-title">Ally Mamgain</h4>
-            <h6 class="card-category">PhD Student</h6>
-        </div>
-        <p class="card-description text-center">
-            Impact of lithium ion  battery fire in a confined subterranean environment.
-        </p>
-    </div>
-
-    <div class="card-footer text-center">
-        <!-- Button trigger modal -->
-        <a href="people.html#" data-toggle="modal" data-target="#aboutAlly" class="btn  btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-    </div>
-
-    <!-- Modal -->
-</div>
-
-            </div>
-            <div class="col-md-4 d-flex align-items-stretch">
-                
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/Abdullah_profile.jpg" alt="...">
-    </div>
-
-    <div class="card-body">
-        <div class="author">
-            <h4 class="card-title">Abdullah Rehman</h4>
-            <h6 class="card-category">PhD Student</h6>
-        </div>
-        <p class="card-description text-center">        
- Ignition and fire spread processes in the Wildland Urban Interface.
-        </p>
-    </div>
-
-    <div class="card-footer text-center">
-        <!-- Button trigger modal -->
-        <a href="people.html#" data-toggle="modal" data-target="#aboutAbdullah" class="btn  btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-    </div>
-    
-		    </div>
-            </div>
-            <div class="col-md-4 d-flex align-items-stretch">
-                
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/Elena_profile.jpg" alt="...">
-    </div>
-
-    <div class="card-body">
-        <div class="author">
-            <h4 class="card-title">Elena Funk</h4>
-            <h6 class="card-category">PhD Student</h6>
-        </div>
-        <p class="card-description text-center">        
- Development of a methodology for the definition of battery fire scenarios
-        </p>
-    </div>
-
-    <div class="card-footer text-center">
-        <!-- Button trigger modal -->
-        <a href="people.html#" data-toggle="modal" data-target="#aboutElena" class="btn  btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-    </div>
-
-    </div>
-
-					    </div>
-            <div class="col-md-4 d-flex align-items-stretch">
-                
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/Marissa_profile.jpg" alt="...">
-    </div>
-   
-    <div class="card-body">
-        <div class="author">
-            <h4 class="card-title">Marissa Dauner</h4>
-            <h6 class="card-category">PhD Student</h6>
-        </div>
-        <p class="card-description text-center">
-            Physics-based modelling of wildfire spread
-        </p>
-    </div>
-
-    <div class="card-footer text-center">
-        <!-- Button trigger modal -->
-        <a href="people.html#" data-toggle="modal" data-target="#aboutMarissa" class="btn  btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-    </div>
-    </div>
-
-					    </div>
-            <div class="col-md-4 d-flex align-items-stretch">
-                
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/Natalie_profile.jpg" alt="...">
-    </div>
-   
-    <div class="card-body">
-        <div class="author">
-            <h4 class="card-title">Natalie Yeap</h4>
-            <h6 class="card-category">PhD Student</h6>
-        </div>
-        <p class="card-description text-center">
-            The quantification of fire safety for new battery materials
-        </p>
-    </div>
-
-    <div class="card-footer text-center">
-        <!-- Button trigger modal -->
-        <a href="people.html#" data-toggle="modal" data-target="#aboutNatalie" class="btn  btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-    </div>
-    </div>
-
-					    </div>
-            <div class="col-md-4 d-flex align-items-stretch">
-                
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/Jiancheng_profile.jpg" alt="...">
-    </div>
-   
-    <div class="card-body">
-        <div class="author">
-            <h4 class="card-title">Jiancheng Lin</h4>
-            <h6 class="card-category">PhD Student</h6>
-        </div>
-        <p class="card-description text-center">
-            Sensitivity of fire spread models in wildfires
-        </p>
-    </div>
-
-    <div class="card-footer text-center">
-        <!-- Button trigger modal -->
-        <a href="people.html#" data-toggle="modal" data-target="#aboutJiancheng" class="btn  btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-    </div>
-    </div>
-    <!-- Modal -->
-     </div>   
-</div>
-	
-<div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <span class="anchor" id="alumni"></span>
-                    <h2 class="title">Alumni</h2>
-                </div>
-	            </div>
-<h6 class="card-title"><strong> Domenico Enicchiaro (PhD visiting student, Feb-Jul 2026)</strong> - Optimization of safety and risk management in lithium-based batteries- PhD Exchange from University of Naples Federico II.</h6> </p>
-<h6 class="card-title"><strong> Dr Hosein Sadeghi (PhD, 2022-2026)</strong> - Multiphysics modelling of lithium-ion battery fires in thermal runaway - Funded by NMES studentship.</h6> </p>
-<h6 class="card-title"><strong> Dr Francesca Lugaresi (PDRA, 2023-2026)</strong> - Lithium-ion battery fire spread modelling - Funded by Faraday Institution.</h6> </p>
-<h6 class="card-title"><strong> Dr Imogen Richards (PhD, 2021-2025)</strong> - Modelling small-scale fire spread in natural fuels - Funded by EPSRC DTP.</h6> </p>
-<h6 class="card-title"><strong>Anton Pustygin (FUSE, Summer 2024)</strong> - Faraday Undergraduate Student Experience.</h6> </p>
-<h6 class="card-title"><strong>Alvaro Vicente Tarrago (UG, Summer 2024)</strong> - Undergraduate Student Research Experience.</h6> </p>
-<h6 class="card-title"><strong>Zilong Wang (PhD visiting Student, Apr-Sept 2023)</strong> - PhD Exchange from Hong Kong Polytechnic University.</h6>   </p>
-<h6 class="card-title"><strong>Dr Alireza Sarmadian (PDRA, 2021-23)</strong> - Thermophysical behaviour of a LIB cell during its operation and lifetime, funded by EPSRC Prosperity Partnership.</h6>   </p>
-<h6 class="card-title"><strong>Alexandra Loja (UG, Summer 2023)</strong> - King's Undergraduate Research Fellow.</h6> </p>
-<h6 class="card-title"><strong>Matthieu Bou (UG, Summer 2023)</strong> - King's Undergraduate Research Fellow.</h6> </p>
-<h6 class="card-title"><strong>Ioana Sandu (UG, 2021)</strong> - Static Electricity incidents research, funded by NFPA.</h6>   </p>
-<h6 class="card-title"><strong>Graham Brantley (UG, Summer 2020)</strong> - FDS wildfire modelling and development of virtual mechanics teaching lab.</h6>  </p>
-
-	
-   <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <span class="anchor" id="students"></span>
-                    <h2 class="title">Undergraduate and Master Thesis Students</h2>
-                </div>
-            </div>
-<h6 class="card-title">Adham Alkoukou (BEng, 2023-24): Effect of Ignition Source Location and Airflow Velocity on Temperature and Heat Flux .</h6>   </p>
-<h6 class="card-title">Zakaria Nur (BEng, 2023-24): Powering Progress: Exploring Diverse Chemistries in Lithium-ion Battery Cycling.</h6>   </p>
-<h6 class="card-title">Afrin Basit (BEng, 2023-24): Flaming the Simulation: A Framework on Mesh Optimisation in Fire Dynamic Simulator.</h6>   </p>
-<h6 class="card-title">Emir Mukovic (MEng, 2022-23): Lithium-ion battery calendar life and cycle life analysis.</h6>   </p>
-<h6 class="card-title">Theodore Nash (BEng, 2022-23): Electric vehicle charge speed optimization for next-gen transport.</h6>   </p>
-<h6 class="card-title">Giulio Mosca Toba (BEng, 2022-2023): CPM-HP Coupled BTMS for an Electric Formula Student Battery System.</h6>  </p>
-<h6 class="card-title">Huzaifah Khan (BEng, 2022-23): Battery module performance validation of an electric vehicle using different designs of heat exchangers.</h6>   </p>
-<h6 class="card-title">Olivia Hackett (BEng, 2022-23): The effects of windspeed and matter accumulation on the propagation of fire over a bed of pine needles.</h6>   </p>
-<h6 class="card-title">Sophie Olsson Barnekow (BEng, 2022-23): CFD Relationship between Drag and Cooling on the Battery Pack of a Formula Student Vehicle.</h6>   </p>
-<h6 class="card-title">Mengying Yu (BEng, 2022-23): Lithium-ion Battery Thermal-Electrochemical Coupling Full Load Cycle (charge-discharge) Simulation Models.</h6>   </p>
-<h6 class="card-title">Hamad Khan(BEng, 2022-23): Experimentally validated thermal-electrochemical models of a high-powered density cylindrical cell .</h6>   </p>
-<h6 class="card-title">Mahreen Chaiwalla (BEng, 2022-23): Cooling performance for lithium-ion batteries management.</h6>   </p>
-<h6 class="card-title">Mikesh Hirani (BEng, 2022-23): Fire Dynamics Modelling for understanding Wildfire Behaviour.</h6>   </p>
-<h6 class="card-title">Emmanuel Dadzie (BEng, 2022-23): Mesh Sensitivity analysis for fire dynamic scenarios.</h6>   </p>
-<h6 class="card-title">Yifan Chen (BEng, 2021-22): Mechanistically Informed Machine Learning and Artificial Intelligence in Fire Science.</h6>   </p>
-<h6 class="card-title">Zirui Zhao (BEng, 2021-22): Mechanistically Informed Machine Learning and Artificial Intelligence in Fire Science.</h6>   </p>
-<h6 class="card-title">Angsi Chen (MSc, 2021-22): Mechanistically Informed Machine Learning and AI in Fire Science for fire supression.</h6>   </p>
-<h6 class="card-title">Siqi Ding (MSc, 2021-22): Fire Detection Based on YOLOv5. </h6>   </p>
-<h6 class="card-title">Weny Dong (MSc, 2021-22): Mechanistically Informed Machine Learning and AI in Fire Science for self-heating ignition.</h6>   </p>
-<h6 class="card-title">Mao Fan (MSc, 2021-22): Mechanistically Informed Machine Learning and AI in Coal Self-heating ignition. </h6>   </p>
-<h6 class="card-title">Ming Gao (MSc, 2021-22): Mechanistically Informed Machine Learning and AI in Fire Science for fire supression.</h6>   </p>
-<h6 class="card-title">Xuan Liang (MSc, 2021-22): Dynamic path analysis of subway fire emergency evacuation based on ant colony algorithm and A* algorithm. </h6>   </p>
-<h6 class="card-title">Yanbo Song (MSc, 2021-22): Dynamic Evacuation Path Planning in Fire based on Fingerprint Positioning and Ant Colony Algorithm. </h6>   </p>
-<h6 class="card-title">Yixin Tao (MSc, 2021-22): Mechanistically Informed Machine Learning and AI in Fire Science.</h6>   </p>
-<h6 class="card-title">Yixuan Wang (MSc, 2021-22): Mechanistically Informed Machine Learning and AI in Fire Science for evacuation. </h6>   </p>
-<h6 class="card-title">Huarui Yang (MSc, 2021-22): Mechanistically Informed Machine Learning and AI in Fire Science for self-heating ignition. </h6>   </p>
-<h6 class="card-title">Mac Geoffrey Ajaereh (MSc, 2020-21): Smart Grids - Planning and Optimising Distributed Generation Power Systems with the Use of Renewable Energy Sources. </h6>   </p>
-<h6 class="card-title">Noora Al-Kubaisi (MSc, 2020-21): Design renewable energy management system for home. </h6>   </p>
-<h6 class="card-title">Hao Chen (MSc, 2020-21): Numerical simulation of underground tunnel ﬁre and personnel escape based on Pyrosim and Pathﬁnder </h6>   </p>
-<h6 class="card-title">Zizhen Feng (MSc, 2020-21): Impact of fire on evacuation under different environmental conditions. </h6>   </p>
-<h6 class="card-title">Jiacheng Li (MSc, 2020-21): Forest wildfire spread model based on FDS. </h6>   </p>
-<h6 class="card-title">Haoxiang Qu (MSc, 2020-21): Urban Evacuation in Wildfire Condition. </h6>   </p>
-<h6 class="card-title">Youssef Sayed (MSc, 2020-21): Assessing the Impact of Varying Fire Exit Width and Agents Capacity on the Evacuation Time. </h6>   </p>
-<h6 class="card-title">Zi Ye (MSc, 2020-21): Simulation of Human Evacuating Behaviors in Public Library. </h6>   </p>
-<h6 class="card-title">Yifan Sun (MEng, 2020-21): The study of Buoyant plume model of log combustion under different wind condition.</h6>   </p>
-<h6 class="card-title">Ceinwen Cheng (MPhys, 2020-21): Developing a Physics-based model for ignition and fire spread of Douglas fir trees using FDS.</h6>   </p>
-<h6 class="card-title">Carolina Del Felice (MPhys, 2020-21): Developing a Model for Ignition and Fire Spread of Pine Trees for WUI Fires Using FDS.</h6>   </p>
-<div class="row">
-
-            </div>
-</div>
-	
-
-
- <div id="Opportunities" class="section section-dark text-center section-tight">
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-md-4 d-flex align-items-stretch">
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/KCL_logo.jpg" alt="...">
-    </div>
-    <div class="card-body">
-
-        <div class="author">
-            <h4 class="card-title">Where we are </h4>
-            <h6 class="card-category"> Department of Engineering, King's College London</h6>
-        </div>
-
-        <p class="card-description text-center">
-            The Department of Engineering is a growing department at KCL, an internationally renowned university delivering exceptional education and world-leading research based in London, United Kingdom.
-        </p>
-    </div>
-    <div class="card-footer text-center">
-        <!-- Button trigger modal -->
-        <a href="index.html" data-toggle="modal" data-target="#where_we_are" class="btn btn-outline-primary btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-    </div>
-        </div>
-</div>
-                <div class="col-md-4 d-flex align-items-stretch">
-                    
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/experiment.jpg" alt="...">
-    </div>
-    <div class="card-body">
-
-        <div class="author">
-            <h4 class="card-title">Join us! </h4>
-            <h6 class="card-category"> Opportunities </h6>
-        </div>
-
-        <p class="card-description text-center">
-            We welcome highly-motivated students and
-            postdoctoral researchers with an interest in thermal engineering or fire science to join our group.
-        </p>
-    </div>
-    <div class="card-footer text-center">
-        <a href="mailto:francesco.restuccia@kcl.ac.uk" class="btn btn-outline-primary btn-round card-link"> <i aria-hidden="true"></i> Email
-        </a>
-    </div>
-</div>
-
-    <!-- Modal -->
-    
-</div>
-
-                </div>
-            </div>
+        <div class="pc-foot"><a href="francesco-restuccia.html" class="btn-sm">See more</a></div>
       </div>
 
+      <div class="pc">
+        <div class="pc-photo"><img src="./assets/img/Carolina_profile.jpg" alt="Dr Carolina Cruz-Cardona"></div>
+        <div class="pc-body">
+          <div class="pc-name">Dr Carolina Cruz-Cardona</div>
+          <span class="role-badge r-pdra">Research Associate</span>
+          <p class="pc-desc">Lithium-ion battery fire propagation.</p>
+        </div>
+        <div class="pc-foot"><a href="#" data-toggle="modal" data-target="#aboutCarolina" class="btn-sm">See more</a></div>
+      </div>
 
+      <div class="pc">
+        <div class="pc-photo"><img src="./assets/img/Hosein_profile.jpg" alt="Dr Hosein Sadeghi"></div>
+        <div class="pc-body">
+          <div class="pc-name">Dr Hosein Sadeghi</div>
+          <span class="role-badge r-vis">Visiting Research Associate</span>
+          <p class="pc-desc">Multiphysics simulation of lithium-ion battery fires.</p>
+        </div>
+        <div class="pc-foot"><a href="#" data-toggle="modal" data-target="#aboutHosein" class="btn-sm">See more</a></div>
+      </div>
 
-<!-- Page footer-->
+      <div class="pc">
+        <div class="pc-photo"><img src="./assets/img/Ally_profile.jpg" alt="Ally Mamgain"></div>
+        <div class="pc-body">
+          <div class="pc-name">Ally Mamgain</div>
+          <span class="role-badge r-phd">PhD Student</span>
+          <p class="pc-desc">Impact of lithium-ion battery fire in a confined subterranean environment.</p>
+        </div>
+        <div class="pc-foot"><a href="#" data-toggle="modal" data-target="#aboutAlly" class="btn-sm">See more</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-photo"><img src="./assets/img/Abdullah_profile.jpg" alt="Abdullah Rehman"></div>
+        <div class="pc-body">
+          <div class="pc-name">Abdullah Rehman</div>
+          <span class="role-badge r-phd">PhD Student</span>
+          <p class="pc-desc">Ignition and fire spread processes in the Wildland Urban Interface.</p>
+        </div>
+        <div class="pc-foot"><a href="#" data-toggle="modal" data-target="#aboutAbdullah" class="btn-sm">See more</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-photo"><img src="./assets/img/Elena_profile.jpg" alt="Elena Funk"></div>
+        <div class="pc-body">
+          <div class="pc-name">Elena Funk</div>
+          <span class="role-badge r-phd">PhD Student</span>
+          <p class="pc-desc">Development of a methodology for the definition of battery fire scenarios.</p>
+        </div>
+        <div class="pc-foot"><a href="#" data-toggle="modal" data-target="#aboutElena" class="btn-sm">See more</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-photo"><img src="./assets/img/Marissa_profile.jpg" alt="Marissa Dauner"></div>
+        <div class="pc-body">
+          <div class="pc-name">Marissa Dauner</div>
+          <span class="role-badge r-phd">PhD Student</span>
+          <p class="pc-desc">Physics-based modelling of wildfire spread.</p>
+        </div>
+        <div class="pc-foot"><a href="#" data-toggle="modal" data-target="#aboutMarissa" class="btn-sm">See more</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-photo"><img src="./assets/img/Natalie_profile.jpg" alt="Natalie Yeap"></div>
+        <div class="pc-body">
+          <div class="pc-name">Natalie Yeap</div>
+          <span class="role-badge r-phd">PhD Student</span>
+          <p class="pc-desc">Quantification of fire safety for new battery materials.</p>
+        </div>
+        <div class="pc-foot"><a href="#" data-toggle="modal" data-target="#aboutNatalie" class="btn-sm">See more</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-photo"><img src="./assets/img/Jiancheng_profile.jpg" alt="Jiancheng Lin"></div>
+        <div class="pc-body">
+          <div class="pc-name">Jiancheng Lin</div>
+          <span class="role-badge r-phd">PhD Student</span>
+          <p class="pc-desc">Sensitivity of fire spread models in wildfires.</p>
+        </div>
+        <div class="pc-foot"><a href="#" data-toggle="modal" data-target="#aboutJiancheng" class="btn-sm">See more</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Alumni -->
+<section class="section section-alt" id="alumni">
+  <div class="wrap">
+    <div class="sh">
+      <p class="eye">Past Members</p>
+      <h2>Alumni</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="alumni-list">
+
+      <div class="al">
+        <span class="al-tag t-vis">Visiting</span>
+        <div class="al-wrap">
+          <span class="al-name">Domenico Enicchiaro</span><span class="al-period">Feb &ndash; Jul 2026</span>
+          <div class="al-desc">Optimization of safety and risk management in lithium-based batteries &mdash; PhD Exchange from University of Naples Federico II</div>
+        </div>
+      </div>
+
+      <div class="al">
+        <span class="al-tag t-phd">PhD</span>
+        <div class="al-wrap">
+          <span class="al-name">Dr Hosein Sadeghi</span><span class="al-period">2022 &ndash; 2026</span>
+          <div class="al-desc">Multiphysics modelling of lithium-ion battery fires in thermal runaway &mdash; Funded by NMES studentship</div>
+        </div>
+      </div>
+
+      <div class="al">
+        <span class="al-tag t-pdra">PDRA</span>
+        <div class="al-wrap">
+          <span class="al-name">Dr Francesca Lugaresi</span><span class="al-period">2023 &ndash; 2026</span>
+          <div class="al-desc">Lithium-ion battery fire spread modelling &mdash; Funded by Faraday Institution</div>
+        </div>
+      </div>
+
+      <div class="al">
+        <span class="al-tag t-phd">PhD</span>
+        <div class="al-wrap">
+          <span class="al-name">Dr Imogen Richards</span><span class="al-period">2021 &ndash; 2025</span>
+          <div class="al-desc">Modelling small-scale fire spread in natural fuels &mdash; Funded by EPSRC DTP</div>
+        </div>
+      </div>
+
+      <div class="al">
+        <span class="al-tag t-fuse">FUSE</span>
+        <div class="al-wrap">
+          <span class="al-name">Anton Pustygin</span><span class="al-period">Summer 2024</span>
+          <div class="al-desc">Faraday Undergraduate Student Experience</div>
+        </div>
+      </div>
+
+      <div class="al">
+        <span class="al-tag t-ug">UG</span>
+        <div class="al-wrap">
+          <span class="al-name">Alvaro Vicente Tarrago</span><span class="al-period">Summer 2024</span>
+          <div class="al-desc">Undergraduate Student Research Experience</div>
+        </div>
+      </div>
+
+      <div class="al">
+        <span class="al-tag t-vis">Visiting</span>
+        <div class="al-wrap">
+          <span class="al-name">Zilong Wang</span><span class="al-period">Apr &ndash; Sept 2023</span>
+          <div class="al-desc">PhD Exchange from Hong Kong Polytechnic University</div>
+        </div>
+      </div>
+
+      <div class="al">
+        <span class="al-tag t-pdra">PDRA</span>
+        <div class="al-wrap">
+          <span class="al-name">Dr Alireza Sarmadian</span><span class="al-period">2021 &ndash; 2023</span>
+          <div class="al-desc">Thermophysical behaviour of a LIB cell during its operation and lifetime &mdash; Funded by EPSRC Prosperity Partnership</div>
+        </div>
+      </div>
+
+      <div class="al">
+        <span class="al-tag t-ug">UG</span>
+        <div class="al-wrap">
+          <span class="al-name">Alexandra Loja</span><span class="al-period">Summer 2023</span>
+          <div class="al-desc">King's Undergraduate Research Fellow</div>
+        </div>
+      </div>
+
+      <div class="al">
+        <span class="al-tag t-ug">UG</span>
+        <div class="al-wrap">
+          <span class="al-name">Matthieu Bou</span><span class="al-period">Summer 2023</span>
+          <div class="al-desc">King's Undergraduate Research Fellow</div>
+        </div>
+      </div>
+
+      <div class="al">
+        <span class="al-tag t-ug">UG</span>
+        <div class="al-wrap">
+          <span class="al-name">Ioana Sandu</span><span class="al-period">2021</span>
+          <div class="al-desc">Static electricity incidents research &mdash; Funded by NFPA</div>
+        </div>
+      </div>
+
+      <div class="al">
+        <span class="al-tag t-ug">UG</span>
+        <div class="al-wrap">
+          <span class="al-name">Graham Brantley</span><span class="al-period">Summer 2020</span>
+          <div class="al-desc">FDS wildfire modelling and development of virtual mechanics teaching lab</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Thesis Students -->
+<section class="section" id="students">
+  <div class="wrap">
+    <div class="sh">
+      <p class="eye">Teaching &amp; Supervision</p>
+      <h2>Undergraduate &amp; Master Thesis Students</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="ty-group">
+      <div class="ty-year">2023 &ndash; 24</div>
+      <div class="ty-list">
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Adham Alkoukou</div><div class="ty-title">Effect of ignition source location and airflow velocity on temperature and heat flux</div></div></div>
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Zakaria Nur</div><div class="ty-title">Powering progress: exploring diverse chemistries in lithium-ion battery cycling</div></div></div>
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Afrin Basit</div><div class="ty-title">Flaming the simulation: a framework on mesh optimisation in Fire Dynamic Simulator</div></div></div>
+      </div>
+    </div>
+
+    <div class="ty-group">
+      <div class="ty-year">2022 &ndash; 23</div>
+      <div class="ty-list">
+        <div class="ty-row"><span class="ty-deg">MEng</span><div class="ty-body"><div class="ty-who">Emir Mukovic</div><div class="ty-title">Lithium-ion battery calendar life and cycle life analysis</div></div></div>
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Theodore Nash</div><div class="ty-title">Electric vehicle charge speed optimization for next-gen transport</div></div></div>
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Giulio Mosca Toba</div><div class="ty-title">CPM-HP coupled BTMS for an electric Formula Student battery system</div></div></div>
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Huzaifah Khan</div><div class="ty-title">Battery module performance validation of an electric vehicle using different heat exchanger designs</div></div></div>
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Olivia Hackett</div><div class="ty-title">Effects of windspeed and matter accumulation on fire propagation over pine needles</div></div></div>
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Sophie Olsson Barnekow</div><div class="ty-title">CFD relationship between drag and cooling on the battery pack of a Formula Student vehicle</div></div></div>
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Mengying Yu</div><div class="ty-title">Lithium-ion battery thermal-electrochemical coupling full load cycle simulation models</div></div></div>
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Hamad Khan</div><div class="ty-title">Experimentally validated thermal-electrochemical models of a high-power-density cylindrical cell</div></div></div>
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Mahreen Chaiwalla</div><div class="ty-title">Cooling performance for lithium-ion battery management</div></div></div>
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Mikesh Hirani</div><div class="ty-title">Fire dynamics modelling for understanding wildfire behaviour</div></div></div>
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Emmanuel Dadzie</div><div class="ty-title">Mesh sensitivity analysis for fire dynamic scenarios</div></div></div>
+      </div>
+    </div>
+
+    <div class="ty-group">
+      <div class="ty-year">2021 &ndash; 22</div>
+      <div class="ty-list">
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Yifan Chen</div><div class="ty-title">Mechanistically informed machine learning and AI in fire science</div></div></div>
+        <div class="ty-row"><span class="ty-deg">BEng</span><div class="ty-body"><div class="ty-who">Zirui Zhao</div><div class="ty-title">Mechanistically informed machine learning and AI in fire science</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Angsi Chen</div><div class="ty-title">Mechanistically informed ML and AI in fire science for fire suppression</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Siqi Ding</div><div class="ty-title">Fire detection based on YOLOv5</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Weny Dong</div><div class="ty-title">ML and AI in fire science for self-heating ignition</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Mao Fan</div><div class="ty-title">ML and AI in coal self-heating ignition</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Ming Gao</div><div class="ty-title">ML and AI in fire science for fire suppression</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Xuan Liang</div><div class="ty-title">Dynamic path analysis of subway fire emergency evacuation using ant colony and A* algorithms</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Yanbo Song</div><div class="ty-title">Dynamic evacuation path planning in fire based on fingerprint positioning and ant colony algorithm</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Yixin Tao</div><div class="ty-title">Mechanistically informed ML and AI in fire science</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Yixuan Wang</div><div class="ty-title">ML and AI in fire science for evacuation</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Huarui Yang</div><div class="ty-title">ML and AI in fire science for self-heating ignition</div></div></div>
+      </div>
+    </div>
+
+    <div class="ty-group">
+      <div class="ty-year">2020 &ndash; 21</div>
+      <div class="ty-list">
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Mac Geoffrey Ajaereh</div><div class="ty-title">Smart grids: planning and optimising distributed generation with renewable energy sources</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Noora Al-Kubaisi</div><div class="ty-title">Design of a renewable energy management system for home</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Hao Chen</div><div class="ty-title">Numerical simulation of underground tunnel fire and personnel escape using Pyrosim and Pathfinder</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Zizhen Feng</div><div class="ty-title">Impact of fire on evacuation under different environmental conditions</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Jiacheng Li</div><div class="ty-title">Forest wildfire spread model based on FDS</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Haoxiang Qu</div><div class="ty-title">Urban evacuation in wildfire conditions</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Youssef Sayed</div><div class="ty-title">Assessing the impact of varying fire exit width and agent capacity on evacuation time</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MSc</span><div class="ty-body"><div class="ty-who">Zi Ye</div><div class="ty-title">Simulation of human evacuating behaviours in a public library</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MEng</span><div class="ty-body"><div class="ty-who">Yifan Sun</div><div class="ty-title">Buoyant plume model of log combustion under different wind conditions</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MPhys</span><div class="ty-body"><div class="ty-who">Ceinwen Cheng</div><div class="ty-title">Developing a physics-based model for ignition and fire spread of Douglas fir trees using FDS</div></div></div>
+        <div class="ty-row"><span class="ty-deg">MPhys</span><div class="ty-body"><div class="ty-who">Carolina Del Felice</div><div class="ty-title">Developing a model for ignition and fire spread of pine trees for WUI fires using FDS</div></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Opportunities -->
+<section class="section section-alt" id="Opportunities">
+  <div class="wrap">
+    <div class="sh">
+      <p class="eye">Get Involved</p>
+      <h2>Join the Lab</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="opp-grid">
+      <div class="opp-card">
+        <h3>Where We Are</h3>
+        <p class="sub">Department of Engineering, King's College London</p>
+        <p>The Department of Engineering is a growing department at KCL, an internationally renowned university delivering exceptional education and world-leading research based in London, United Kingdom.</p>
+        <a href="https://www.kcl.ac.uk/engineering" target="_blank" class="btn-sc">Learn More</a>
+      </div>
+      <div class="opp-card">
+        <h3>Join Us</h3>
+        <p class="sub">Open Opportunities</p>
+        <p>We welcome highly-motivated students and postdoctoral researchers with an interest in thermal engineering or fire science to join our group.</p>
+        <a href="mailto:francesco.restuccia@kcl.ac.uk" class="btn-pr">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
 <footer class="footer">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-md-6 text-center">
                 <span class="copyright">
-                © Dr Francesco Restuccia,
-                <script>
-                  document.write(new Date().getFullYear())
-                </script>
+                &copy; Dr Francesco Restuccia,
+                <script>document.write(new Date().getFullYear())</script>
                 </span>
             </div>
-
             <div class="col-md-6 text-center">
-                  <span class="copyright">
-                      Built using
-                      <a class="thick" href="https://demos.creative-tim.com/paper-kit-2/index.html" target="_blank">Paper-Kit2 </a>
-                  </span>
+                <span class="copyright">
+                    Built using <a href="https://demos.creative-tim.com/paper-kit-2/index.html" target="_blank">Paper-Kit2</a>
+                </span>
             </div>
         </div>
     </div>
 </footer>
 
-  <!--   Core JS Files   -->
-  <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="./assets/js/plugins/bootstrap-switch.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="./assets/js/plugins/moment.min.js"></script>
-  <script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
-  <!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
-  <script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
-  <!--  Google Maps Plugin    -->
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Modals -->
+<div class="modal fade" id="aboutCarolina" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span>&times;</span></button></div>
+    <div class="modal-body">
+      <h5>Dr Carolina Cruz-Cardona</h5>
+      Carolina joined the group in October 2025 as a Postdoctoral Research Associate on the Faraday Institution SAFEBATT project. She is a computational scientist specialising in multiscale and multiphysics modelling of battery materials, integrating quantum, molecular, and continuum methods to link atomistic processes with macroscopic performance. Carolina completed her PhD in Chemical Sciences at the Polish Academy of Sciences as a Marie Skłodowska-Curie doctoral fellow and recently completed a postdoctoral position at Chalmers University of Technology (Sweden), where she worked on modelling and simulation of electrolytes for next-generation batteries.
+    </div>
+  </div></div>
+</div>
+
+<div class="modal fade" id="aboutHosein" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span>&times;</span></button></div>
+    <div class="modal-body">
+      <h5>Dr Hosein Sadeghi</h5>
+      Hosein is a visiting Research Associate in the group. He initially joined as a PhD student in June 2022 and completed his PhD in 2026, studying multiphysics simulations of lithium-ion battery fires. His background is in Mechanical Engineering and Thermofluids. Prior to joining KCL he was a research assistant at the fire safety engineering group of Aalto University, funded by the Academy of Finland and the Finnish Fire Protection Fund. He graduated from Aalto University with his Licentiate degree in 2022.
+    </div>
+  </div></div>
+</div>
+
+<div class="modal fade" id="aboutAlly" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span>&times;</span></button></div>
+    <div class="modal-body">
+      <h5>Ally Mamgain</h5>
+      Ally joined the group as a part-time PhD student in June 2023, studying the impacts of lithium-ion battery fires in a confined subterranean environment. She obtained her MSc in Chemical Process Engineering from UCL in 2017, where her thesis focused on multi-criteria optimisation of emergency isolation valves on transportation pipelines. She has since worked as a Fire Safety Engineer primarily in the rail sector. In her free time, Ally enjoys playing badminton in the District league.
+    </div>
+  </div></div>
+</div>
+
+<div class="modal fade" id="aboutAbdullah" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span>&times;</span></button></div>
+    <div class="modal-body">
+      <h5>Abdullah Rehman</h5>
+      Abdullah joined the group as a PhD student in October 2024, studying the impact of wildfires on wildland urban interfaces as part of the Leverhulme Centre for Wildfires, Environment and Society. He obtained an MEng in Biomedical Engineering from Imperial College London in 2022, specialising in computational methods and data analysis, and has since worked as a software engineer developing digital twins and surgical simulations. In his free time he enjoys hiking and running.
+    </div>
+  </div></div>
+</div>
+
+<div class="modal fade" id="aboutElena" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span>&times;</span></button></div>
+    <div class="modal-body">
+      <h5>Elena Funk</h5>
+      Elena joined the group as a PhD student in October 2024. Her research focuses on developing methodology for battery design fires. She holds a BEng in Mechanical Engineering from &Ouml;rebro University (Sweden) and an International Master of Fire Safety Engineering (IMFSE) from Ghent University and Lund University. Elena is undertaking a joint industrial PhD with the Danish Fire Safety and Security Technology Institute (DBI). She also holds a Master's in Psychology and worked in industry for 12 years before her recent studies. In her free time she enjoys calisthenics, cooking, foraging, and hiking.
+    </div>
+  </div></div>
+</div>
+
+<div class="modal fade" id="aboutMarissa" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span>&times;</span></button></div>
+    <div class="modal-body">
+      <h5>Marissa Dauner</h5>
+      Marissa is a PhD student who joined the lab in October 2025, studying wildfire spread for the development of a physics-based global-use model. She graduated from the University of Colorado, Boulder in 2025 with an MS in Mechanical Engineering and received her BS from Marquette University in 2022. Her previous research focused on VOC emissions monitoring of prescribed fires in the US. Her PhD is funded by the ERC FIREMOD project.
+    </div>
+  </div></div>
+</div>
+
+<div class="modal fade" id="aboutNatalie" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span>&times;</span></button></div>
+    <div class="modal-body">
+      <h5>Natalie Yeap</h5>
+      Natalie joined the group as a PhD student in October 2026. Her research focuses on quantification of the fire safety of new battery materials. She graduated from King's College London with a BEng in General Engineering in 2026. Her PhD is funded by the Faraday Institution and EPSRC DLA.
+    </div>
+  </div></div>
+</div>
+
+<div class="modal fade" id="aboutJiancheng" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span>&times;</span></button></div>
+    <div class="modal-body">
+      <h5>Jiancheng Lin</h5>
+      Jiancheng joined the group as a PhD student in October 2026, focusing on physics-based modelling and sensitivity analysis of wildfire spread. He holds a BSc in Physics from University College London and an MSc in Materials Science &amp; Engineering from Imperial College London. In his free time he enjoys playing badminton. His PhD is funded by the ERC FIREMOD project.
+    </div>
+  </div></div>
+</div>
+
+<!--   Core JS Files — unchanged from original   -->
+<script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/bootstrap-switch.js"></script>
+<script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/moment.min.js"></script>
+<script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
+
 </body>
-
 </html>
-
-<div class="modal fade" id="where_we_are" tabindex="-1" role="dialog" aria-labelledby="aboutKingsLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>King's College London</h5>
-
-                    King’s College London is an internationally renowned university delivering exceptional education and world-leading research. We are dedicated to driving positive and sustainable change in society and realising our vision of making the world a better place. 
-                    <br>
-                    <br>
-                    <div class="text-center">
-                        <a href="https://www.kcl.ac.uk/engineering" target="_blank" class="btn btn-sm btn-outline-primary btn-round card-link">
-                            Learn More about the Department of Engineering </a>
-                        <br>
-                        <br>
- 			<a href="https://www.kcl.ac.uk/about" target="_blank" class="btn btn-sm btn-outline-primary btn-round card-link">
-                            Learn more about KCL</a>
-                    </div>
-                </div>
-            </div>
-      </div>
-    </div></body></html>
-
-
-<div class="modal fade" id="aboutHosein" tabindex="-1" role="dialog" aria-labelledby="aboutHoseinLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Hosein Sadeghi</h5>
-		Hosein is a visiting Research Associate in the group. He initially joined the group as a PhD student in June 2022 and completed his PHD in 2026, studying multiphysics simulations of Lithium-ion battery fires. 
-		His background is in Mechanical Engineering, Thermofluids. Prior to joining KCL, he was a research assistant at the
-	 	fire safety engineering group of Aalto University funded by Academy of Finland and the Finnish Fire Protection Fund. 
-		His research focused on radiative properties of the fuel vapors in fires and he graduated from Aalto University with 
-		his Licentiate degree in 2022.
- </div>
-
-<div class="modal fade" id="aboutMarissa" tabindex="-1" role="dialog" aria-labelledby="aboutMarissaLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Marissa Dauner</h5>
-		Marissa is a PhD student who joined the lab in October 2025. She is studying wildfire spread for development of a physics-based global use model. 
-		Marissa graduated from the University of Colorado, Boulder in 2025 with her MS in Mechanical Engineering and received her BS from Marquette University in 2022. 
-		Her previous graduate research focused on VOC emissions monitoring of prescribed fires in the U.S. Her PhD is funded by the ERC FIREMOD project.
-
-</div>
-
-<div class="modal fade" id="aboutNatalie" tabindex="-1" role="dialog" aria-labelledby="aboutNatalieLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Natalie Yeap</h5>
-		Natalie joined the group as a PhD student in October 2026. Her research focuses on quantification of the fire safety of new battery materials. 
-		She graduated from King’s College London with a BEng in General Engineering in 2026. Her PhD is funded by the Faraday Institution and EPSRC DLA. 
-
-</div>
-
-
-<div class="modal fade" id="aboutAlly" tabindex="-1" role="dialog" aria-labelledby="aboutImmyLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Ally Mamgain</h5>
-		Ally joined the group as a part-time PhD student in June 2023, studying the impacts of lithium-ion battery fires in a confined subterranean environment. 
-		She obtained her MSc degree in Chemical Process Engineering from UCL in 2017, where her thesis focused on the multi-criteria optimisation of emergency 
-		isolation valves on transportation pipelines and modelled the consequences of pipeline rupture. She has since worked as a Fire Safety Engineer 
-		primarily involved in the rail sector, supporting the design of stations with respect to fire from a life safety aspect. 
-		In her free time, Ally enjoys playing badminton and currently plays in the District league.
-</div>
-<div class="modal fade" id="aboutAbdullah" tabindex="-1" role="dialog" aria-labelledby="aboutAbdullahLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Abdullah Rehman</h5>
-		Abdullah joined the group as a PhD student in October 2024, studying the impact of wildfires on wildland urban interfaces and urban infrastructure as part 
-			of the Leverhulme Centre for Wildfires, Environment and Society. He obtained an MEng in Biomedical Engineering from Imperial College London in 2022, 
-			where he specialised in computational methods and data analysis. He has since worked as a software engineer developing digital twins and surgical 
-			simulations. In his free time, Abdullah enjoys hiking and going for a run.
-</div>
-<div class="modal fade" id="aboutCarolina" tabindex="-1" role="dialog" aria-labelledby="aboutCarolinaLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Dr Carolina Cruz-Cardona</h5>
-		Carolina joined the group in October 2025 as a Postdoctoral Research Associate on the Faraday Institution SAFEBATT project. 
-		She is a computational scientist specialising in multiscale and multiphysics modelling of battery materials, 
-		integrating quantum, molecular, and continuum methods to link atomistic processes with macroscopic performance. 
-		Carolina completed her PhD in Chemical Sciences at the Polish Academy of Sciences as a Marie Skłodowska-Curie doctoral fellow 
-		and recently completed a postdoctoral position at Chalmers University of Technology (Sweden), where she worked on modelling 
-		and simulation of electrolytes for next-generation batteries.
-</div>
-					
-<div class="modal fade" id="aboutElena" tabindex="-1" role="dialog" aria-labelledby="aboutElenaLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Elena Funk</h5>
-		Elena joined the group as a PhD student in October 2024. Her research focuses on developing methodology for battery design fires. 
-			Elena's recent academic journey began with a Bachelor’s degree in Mechanical Engineering from Örebro University in Sweden. 
-			She then pursued an International Master of Fire Safety Engineering (IMFSE) from Ghent University and Lund University. 
-			Elena is undertaking a joint industrial PhD with the Danish Fire Safety and Security Technology Institute (DBI). 
-			Elena also has a Master’s degree in Psychology from Russia and has been working in industry for 12 years prior to her recent studies. 
-			In her free time, she enjoys calisthenics, cooking, foraging, and hiking.
-
-</div>
-
-<div class="modal fade" id="aboutJiancheng" tabindex="-1" role="dialog" aria-labelledby="aboutJianchengLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Jiancheng Lin</h5>
-		Jiancheng joins the group as a PhD student in October 2026, focusing on physics-based modelling and sensitivity analysis of wildfire spread. 
-					His background is in Physics and Materials Science: he obtained a BSc in Physics from University College London, and an MSc 
-					in Materials Science & Engineering from Imperial College London. In his free time, he enjoys playing badminton. 
-					His PhD is funded by the ERC FIREMOD project.
-
-</div>
-				
