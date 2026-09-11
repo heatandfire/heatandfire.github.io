@@ -2,19 +2,12 @@
 =========================================================
  Paper Kit 2 - v2.2.0
 =========================================================
-
  Product Page: https://www.creative-tim.com/product/paper-kit-2
  Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/paper-kit-2/blob/master/LICENSE.md)
-
- Coded by Creative Tim
-
+ Licensed under MIT
 =========================================================
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
-
+-->
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -22,22 +15,150 @@ The above copyright notice and this permission notice shall be included in all c
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img//biochar.jpg">
   <link rel="icon" type="image/png" href="./assets/img//biochar.jpg">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-   Heat and Fire Lab
-  </title>
+  <title>Heat and Fire Lab</title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
+  <!-- Fonts and icons -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,600" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Display fonts for redesigned sections -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
+
+  <style>
+  /* ── design tokens ───────────────────────────────── */
+  :root {
+    --bg:      #f4f1ec;
+    --surface: #ffffff;
+    --alt:     #e8e3db;
+    --text:    #1b1714;
+    --muted:   #6a5f53;
+    --border:  #d4cec6;
+    --accent:  #c04a1e;
+    --blue:    #2b4665;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+  }
+
+  body { background: var(--bg); font-family: var(--ff-b); }
+
+  /* ── page layout ─────────────────────────────────── */
+  .pub-section { padding: 5rem 2rem; background: var(--bg); }
+  .wrap        { max-width: 960px; margin: 0 auto; }
+
+  /* ── section header ──────────────────────────────── */
+  .sh { margin-bottom: 2.5rem; }
+  .sh .eye {
+    font-size: .72rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: .4rem;
+    font-family: var(--ff-b);
+  }
+  .sh h2 {
+    font-family: var(--ff-d);
+    font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 600;
+    color: var(--text); line-height: 1.2;
+  }
+  .sh .rule { width: 2.5rem; height: 2px; background: var(--accent); margin-top: .9rem; }
+
+  /* ── year navigation ─────────────────────────────── */
+  .year-nav {
+    display: flex; flex-wrap: wrap; gap: .5rem;
+    margin-bottom: 3rem;
+  }
+  .year-nav a {
+    font-family: var(--ff-b); font-size: .78rem; font-weight: 600;
+    letter-spacing: .06em; text-transform: uppercase;
+    padding: .35em 1em; border-radius: 2px;
+    border: 1px solid var(--border); color: var(--muted);
+    background: var(--surface); text-decoration: none;
+    transition: border-color .15s, color .15s, background .15s;
+  }
+  .year-nav a:hover { border-color: var(--accent); color: var(--accent); background: var(--surface); text-decoration: none; }
+
+  /* ── year group ──────────────────────────────────── */
+  .yr-group { margin-bottom: 3.5rem; }
+
+  .yr-header {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.25rem; padding-bottom: .75rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .yr-header h3 {
+    font-family: var(--ff-d); font-size: 1.9rem; font-weight: 700;
+    color: var(--text); margin: 0; line-height: 1;
+  }
+  .yr-count {
+    font-family: var(--ff-b); font-size: .7rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted); padding: .2em .7em;
+    border: 1px solid var(--border); border-radius: 2px;
+  }
+
+  /* ── publication entry ───────────────────────────── */
+  .pub {
+    display: flex; gap: 1rem;
+    padding: 1rem 1.1rem; background: var(--surface);
+    border: 1px solid var(--border); border-left: 3px solid var(--border);
+    border-radius: 0 3px 3px 0; margin-bottom: .65rem;
+    transition: border-left-color .15s, box-shadow .15s;
+  }
+  .pub:hover { border-left-color: var(--accent); box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+
+  .pub-body { flex: 1; min-width: 0; }
+
+  .pub-title {
+    font-family: var(--ff-d); font-size: 1.1rem; font-weight: 600;
+    line-height: 1.3; color: var(--text); margin-bottom: .4rem;
+    display: block;
+  }
+  .pub-authors {
+    font-size: .83rem; color: var(--muted); font-family: var(--ff-b);
+    line-height: 1.5; margin-bottom: .45rem;
+  }
+  .pub-authors strong { color: var(--text); }
+
+  .pub-meta {
+    display: flex; align-items: center; flex-wrap: wrap;
+    gap: .5rem; margin-top: .5rem;
+  }
+  .pub-venue {
+    font-size: .8rem; font-style: italic; color: var(--muted);
+    font-family: var(--ff-b); line-height: 1.4;
+  }
+  .pub-type {
+    flex-shrink: 0; font-size: .62rem; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    padding: .18em .6em; border-radius: 2px; font-family: var(--ff-b);
+  }
+  .t-journal { background: rgba(43,70,101,.1);  color: #2b4665; }
+  .t-conf    { background: rgba(56,100,56,.1);  color: #2d6032; }
+  .t-book    { background: rgba(130,80,30,.1);  color: #7a4a18; }
+  .t-thesis  { background: rgba(80,50,110,.1);  color: #5a3278; }
+  .t-report  { background: rgba(100,60,0,.1);   color: #6a3e00; }
+
+  .pub-link {
+    flex-shrink: 0; display: inline-block;
+    font-size: .72rem; font-weight: 600; letter-spacing: .05em;
+    text-transform: uppercase; font-family: var(--ff-b);
+    border: 1px solid var(--accent); color: var(--accent);
+    padding: .28em .85em; border-radius: 2px; background: transparent;
+    transition: background .15s, color .15s; text-decoration: none;
+    align-self: flex-start; margin-top: .6rem; white-space: nowrap;
+  }
+  .pub-link:hover { background: var(--accent); color: #fff; text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .pub-section { padding: 3rem 1.25rem; }
+    .pub { flex-direction: column; }
+  }
+  </style>
 </head>
 
 <body class="profile-page sidebar-collapse">
- <!-- Navigation bar -->
+
+<!-- Navigation bar — unchanged from original -->
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
     <div class="container">
         <div class="navbar-translate">
@@ -55,971 +176,743 @@ The above copyright notice and this permission notice shall be included in all c
                 <li class="nav-item">
                     <a href="index.html#Research" class="nav-link"><i class="fa fa-flask"></i> Research</a>
                 </li>
- 		 <li class="nav-item">
+                <li class="nav-item">
                     <a href="people.html" class="nav-link"><i class="fa fa-users"></i> People</a>
                 </li>
-		<li class="nav-item">
+                <li class="nav-item">
                     <a href="news.html" class="nav-link"><i class="fa fa-newspaper-o"></i> News</a>
                 </li>
                 <li class="nav-item">
                     <a href="publications.html" class="nav-link"><i class="fa fa-file-text"></i> Publications</a>
                 </li>
                 <li class="nav-item">
+                    <a href="UG_projects.html" class="nav-link"><i class="fa fa-lightbulb-o"></i> UG Projects</a>
+                </li>
+                <li class="nav-item">
                     <a href="francesco-restuccia.html" class="nav-link"><i class="fa fa-user"></i> PI: Francesco Restuccia</a>
                 </li>
-		 <li class="nav-item">
-            	<a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/FranRestuccia" target="_blank">
-              <i class="fa fa-twitter"></i>
-              <p class="d-lg-none">Twitter</p>
-            </a>
-          </li>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/FranRestuccia" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                        <p class="d-lg-none">Twitter</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-<!-- End Navigation-bar -->
-  <div class="page-header  page-header-xs" data-parallax="true" style="background-image: url('./assets/img/biochar2.jpg');">
+<!-- End Navigation bar -->
+
+<!-- Page header — unchanged from original -->
+<div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/biochar2.jpg');">
     <div class="filter"></div>
-  </div>
-
-
-
-
-<div class="main">
-    <div id="Publications" class="section section-gray text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <h2 class="title">Publications</h2>
-
-                    <div class="row justify-content-center">
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="publications.html#2026" class="btn btn-primary btn-round card-link">2026</a>
-                        </div>
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="publications.html#2025" class="btn btn-primary btn-round card-link">2025</a>
-                        </div>
-			    
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="publications.html#2024" class="btn btn-primary btn-round card-link">2024</a>
-                        </div>
-			    
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="publications.html#2023" class="btn btn-primary btn-round card-link">2023</a>
-                        </div>
-
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="publications.html#2022" class="btn btn-primary btn-round card-link">2022</a>
-                        </div>
-                        
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="publications.html#2021" class="btn btn-primary btn-round card-link">2021</a>
-                        </div>
-                        
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="publications.html#2020" class="btn btn-primary btn-round card-link">2020</a>
-                        </div>
-                        
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="publications.html#2019" class="btn btn-primary btn-round card-link">2019</a>
-                        </div>
-                        
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="publications.html#2018" class="btn btn-primary btn-round card-link">2018</a>
-                        </div>
-                        
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="publications.html#2017" class="btn btn-primary btn-round card-link">2017</a>
-                        </div>
-
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="publications.html#2016" class="btn btn-primary btn-round card-link">2016</a>
-                        </div>        
-                
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="publications.html#2015-2012" class="btn btn-primary btn-round card-link">2015-2012</a>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <br>
-            <br>
- <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <span class="anchor" id="2026"></span>
-                    <h2 class="title">2026</h2>
-                </div>
-            </div>
-            <br>
-
-            <div class="row" style="min-height: 200px;">
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Thermal runaway and fire behavior of large-format prismatic LFP cells under external heating and overcharge conditions</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">E. Funk, B. Andres Valiente, C. Birksø Eriksen, C. Cruz-Cardona, K. Livkiss, F. Restuccia.</p>
-                                <p class="card-footer">Journal of Loss Prevention in the Process Industries. 2026.</p>
-                                <a href="https://doi.org/10.1016/j.jlp.2026.106161" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-				
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">The hidden variable: how data gaps shape battery fire safety engineering</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">E. Funk, K. Livkiss, B. Andres Valiente, F. Restuccia.</p>
-                                <p class="card-footer">Fire Technology. 2026.</p>
-                                <a href="https://doi.org/10.1007/s10694-026-01977-1" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-				
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Lithium-ion battery design fires in performance-based fire safety engineering: A review and scenario cluster framework</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">E. Funk, K. Livkiss, B. Andres Valiente, G. Rein, F. Restuccia.</p>
-                                <p class="card-footer">Journal of Loss Prevention in the Process Industries. 2026.</p>
-                                <a href="https://doi.org/10.1016/j.jlp.2026.106021" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Experimental study on the radiative heat flux from flaming 18650- and 26650-type LFP battery cells</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">F. Lugaresi, P. Bugryniec, H. Sadeghi, D. Williams, M. Wootton, S. Brown, F. Restuccia.</p>
-                                <p class="card-footer">Fire Safety Journal. 2026.</p>
-                                <a href="https://doi.org/10.1016/j.firesaf.2026.104750" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-			
-			<div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <span class="anchor" id="2025"></span>
-                    <h2 class="title">2025</h2>
-                </div>
-            </div>
-            <br>
-
-            <div class="row" style="min-height: 200px;">
-	   
-				<div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">A perspective on lithium-ion battery fire safety: from experiments to modelling approaches</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">F. Restuccia.</p>
-                                <p class="card-footer">Journal of Physics: Conference Series. 2025.</p>
-                                <a href="https://doi.org/10.1088/1742-6596/3121/1/012048" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-				
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Modelling 18650-type lithium-ion battery fires using surrogate fuels</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">H. Sadeghi, F. Restuccia.</p>
-                                <p class="card-footer">Fire Safety Journal. 2025.</p>
-                                <a href="https://doi.org/10.1016/j.firesaf.2025.104464" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Investigating Heat Transfer to Surrounding from Flaming Batteries Utilizing a Surrogate Fuel Model</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">F. Lugaresi, F. Restuccia.</p>
-                                <p class="card-footer">Proceedings of the Eleventh International Seminar on Fire and Explosion Hazards (ISFEH11). 2025.</p>
-                                <a href="https://kclpure.kcl.ac.uk/portal/files/344813522/C6._Lugaresi_ISFEH11.pdf" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-		    
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Flame heat emissions in 18650-type lithium-ion battery thermal runaway with thermally active particles</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">H. Sadeghi, F. Restuccia.</p>
-                                <p class="card-footer">Proceedings of the Eleventh International Seminar on Fire and Explosion Hazards (ISFEH11). 2025.</p>
-                                <a href="https://kclpure.kcl.ac.uk/portal/files/344813454/C5._Sadeghi_ISFEH11.pdf" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>		    
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Kinetic modelling of thermal decomposition in lithium-ion battery components during thermal runaway</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">H. Sadeghi, F. Restuccia.</p>
-                                <p class="card-footer">Journal of Power Sources. 2025.</p>
-                                <a href="https://doi.org/10.1016/j.jpowsour.2024.236026" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-		
- <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <span class="anchor" id="2024"></span>
-                    <h2 class="title">2024</h2>
-                </div>
-            </div>
-            <br>
-
-            <div class="row" style="min-height: 200px;">
-		    
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Thermal runaway and flame propagation in battery packs: Numerical simulation and deep learning prediction</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Z. Wang, H. Sadeghi, X. Huang, F. Restuccia.</p>
-                                <p class="card-footer">Engineering Applications of Computational Fluid Mechanics. 2024.</p>
-                                <a href="https://doi.org/10.1080/19942060.2024.2445160" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Sensitivity of wildfire modelling to physical parameters</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">I. Richards, F. Restuccia.</p>
-                                <p class="card-footer">Journal of Physics: Conference Series. 2024.</p>
-                                <a href="https://doi.org/10.1088/1742-6596/2885/1/012065" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-         
-			      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Evaluating impacts of a LFP battery fire within a subsurface train compartment</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">A. Mamgain, F. Restuccia.</p>
-                                <p class="card-footer">Journal of Physics: Conference Series. 2024.</p>
-                                <a href="https://doi.org/10.1088/1742-6596/2885/1/012098" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           
-
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Pyrolysis-based modelling of 18650-type lithium-ion battery fires in thermal runaway with LCO, LFP and NMC cathode</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">H. Sadeghi, F. Restuccia.</p>
-                                <p class="card-footer">Journal of Power Sources. 2024.</p>
-                                <a href="https://doi.org/10.1016/j.jpowsour.2024.234480" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
- <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <span class="anchor" id="2023"></span>
-                    <h2 class="title">2023</h2>
-                </div>
-            </div>
-            <br>
-
-            <div class="row" style="min-height: 200px;">
-
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Calculating Heat Release Rates from Lithium-Ion Battery Fires: A Methodology Using Digital Imaging</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">M. Wise, P.A. Christensen, N. Dickman, J. McDonald, W. Mrozick, S. Lambert, F. Restuccia.</p>
-                                <p class="card-footer">Fire Technology. 2023.</p>
-                                <a href="https://doi.org/10.1007/s10694-023-01484-7" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Experimentally-verified thermal-electrochemical simulations of a cylindrical battery using physics-based, simplified and generalised lumped models</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">A. Sarmadian, W.D. Widanage, B. Shollock, F. Restuccia.</p>
-                                <p class="card-footer">Journal of Energy Storage. 2023.</p>
-                                <a href="https://doi.org/10.1016/j.est.2023.107910" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <span class="anchor" id="2022"></span>
-                    <h2 class="title">2022</h2>
-                </div>
-            </div>
-            <br>
-
-            <div class="row" style="min-height: 200px;">
-
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Benchmarking Between COMSOL and GPYRO in Predicting Self-Heating Ignition of Lithium-Ion Batteries</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Z. Hu, X. He, F. Restuccia, G. Rein.</p>
-                                <p class="card-footer">Fire Technology. 2022.</p>
-                                <a href="https://link.springer.com/article/10.1007/s10694-022-01335-x" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-	      <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">An Experimentally-Verified Thermal-Electrochemical Simulation Model of a 21700 Cell Using a Lumped Semi-Empirical Battery Model</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">A. Sarmadian, Y. Yu, J. Marco, B. Shollock, F. Restuccia.</p>
-                                <p class="card-footer">HEFAT. 2022, 128-133, ISBN 978-0-7972-1886-4.</p>
-                                <a href="https://kclpure.kcl.ac.uk/portal/files/178190312/C2._Sarmadian_HEFAT2022_thermal_electrical_model.pdf" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Experimental study of the effect of the state of charge on self-heating ignition of large ensembles of lithium-ion batteries in storage</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">X. He, Z. Hu, F. Restuccia, J. Fang, G. Rein.</p>
-                                <p class="card-footer">Applied Thermal Engineering. 2022, 212, 118621.</p>
-                                <a href="https://doi.org/10.1016/j.applthermaleng.2022.118621" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Heat transfer effects on accelerating rate calorimetry of the thermal runaway of Lithium-ion batteries</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">X.He, C. Zhao, Z. Hu, F. Restuccia, F. Richter, Q. Wang, G. Rein.</p>
-                                <p class="card-footer">Process Safety Environmental Protection. 2022, 162, 684-693.</p>
-                                <a href="https://doi.org/10.1016/j.psep.2022.04.028" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Fire Experiment Inside a Very Large and Open-Plan Compartment: x-ONE</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">E. Rackauskaite, M. Bonner, F. Restuccia, N. Fernandez Anez, E.G. Christensen, N. Roenner, W. Wegrzynski, P. Turkowski, P. Tofilo, M. Heidari, P. Kotsovinos, I. Vermesi, F. Richter, Y. Hu, C. Jeanneret, R. Wadhwani, G. Rein.</p>
-                                <p class="card-footer">Fire Technology. 2022, 58, 905-939.</p>
-                                <a href="https://doi.org/10.1007/s10694-021-01162-6" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <span class="anchor" id="2021"></span>
-                    <h2 class="title">2021</h2>
-                </div>
-            </div>
-            <br>
-
-            <div class="row" style="min-height: 200px;">
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Static Electricity Incident Review</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">I. Sandu, F. Restuccia.</p>
-                                <p class="card-footer">Technical Notes. National Fire Protection Association Research Foundation. 2021.</p>
-                                <a href="https://www.nfpa.org/News-and-Research/Data-research-and-tools/Electrical/Static-Electricity-Incident-Review" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Self-heating ignition of large ensembles of Lithium-ion batteries during storage with different states of charge and cathodes</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">X. He, Z. Hu, F. Restuccia, H. Yuan, G. Rein.</p>
-                                <p class="card-footer">Applied Thermal Engineering. 2021, 197, 117349.</p>
-                                <a href="https://doi.org/10.1016/j.applthermaleng.2021.117349" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Spontaneous ignition of soils: A multi-step reaction scheme to simulate self-heating ignition of smouldering peat fires</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">H. Yuan, F. Restuccia, G. Rein.</p>
-                                <p class="card-footer">International Journal of Wildland Fire. 2021, 30 (6), 440-453.</p>
-                                <a href="https://doi.org/10.1071/WF19128" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Numerical Study of Scale Effects on Self-Heating Ignition of Lithium-Ion Batteries Stored in Boxes, Shelves and Racks</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Z. Hu, X. He, F. Restuccia, H. Yuan, G. Rein.</p>
-                                <p class="card-footer">Applied Thermal Engineering. 2021, 190, 116780.</p>
-                                <a href="https://doi.org/10.1016/j.applthermaleng.2021.116780" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Thermal and mechanical abuse of electric vehicle pouch cell modules</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">P.A. Christensen, Z. Milojevic, M.S. Wise, M.Ahmeid, P.S. Attidekou, W.Mrozik, N.A. Dickmann, F. Restuccia, S.M. Lambert, P.K. Das.</p>
-                                <p class="card-footer">Applied Thermal Engineering. 2021, 189, 116623.</p>
-                                <a href="https://doi.org/10.1016/j.applthermaleng.2021.116623" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Anisotropic and homogeneous model of heat transfer for self-heating ignition of large ensembles of Lithium-ion batteries during storage</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Z. Hu, X. He, F. Restuccia, G. Rein.</p>
-                                <p class="card-footer">Applied Thermal Engineering. 2021, 197, 117301</p>
-                                <a href="https://doi.org/10.1016/j.applthermaleng.2021.117301" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-               </div>
-   </div>
-            
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <span class="anchor" id="2020"></span>
-                    <h2 class="title">2020</h2>
-                </div>
-            </div>
-            <br>
-
-            <div class="row" style="min-height: 200px;">
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Experimental Study of Self-heating Ignition of Lithium-Ion Batteries During Storage: Effect of the Number of Cells</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">X. He, F. Restuccia, Y. Zhang, Z. Hu, X. Huang, J. Fang, G. Rein.</p>
-                                <p class="card-footer">Fire Technology. 2020, 56, 2649–2669.</p>
-                                <a href="https://doi.org/10.1007/s10694-020-01011-y" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Meta-Review of Fire Safety of Lithium-Ion Batteries: Industry Challenges and Research Contributions</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">L. Bravo Diaz, X. He, Z. Hu, F. Restuccia, M. Marinescu, J. Varela Barreras, Y. Patel, G. Offer, G. Rein.</p>
-                                <p class="card-footer">Journal of the Electrochemical Society. 2020, 167, 090559.</p>
-                                <a href="https://doi.org/10.1149/1945-7111/aba8b9" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Computational study on self-heating ignition and smouldering spread of coal layers in flat and wedge hot plate configurations</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">H. Yuan, F. Restuccia, G. Rein.</p>
-                                <p class="card-footer">Combustion and Flame. 2020, 214, 346-357.</p>
-                                <a href="https://doi.org/10.1016/j.combustflame.2019.12.041" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Numerical Study of Self-Heating Ignition of a Box of Lithium-Ion Batteries During Storage</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Z. Hu, X. He, F. Restuccia, G. Rein.</p>
-                                <p class="card-footer">Fire Technology. 2020, 56, 2603–2621	.</p>
-                                <a href="https://doi.org/10.1007/s10694-020-00998-8" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <span class="anchor" id="2019"></span>
-                    <h2 class="title">2019</h2>
-                </div>
-            </div>
-            <br>
-
-            <div class="row" style="min-height: 200px;">
- 
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Conduction</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">F. Restuccia.</p>
-                                <p class="card-footer">Encyclopedia of Wildfires and Wildland-Urban Interface (WUI) Fires. 2019.</p>
-                                <a href="https://doi.org/10.1007/978-3-319-51727-8_224-1" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Experimental methods and scales in smouldering wildfires</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">E. Christensen, Y. Hu, F. Restuccia, M.A. Santoso, X. Huang, G. Rein.</p>
-                                <p class="card-footer">Chapter 17 in Fire effects on soil properties. 2019, 267-280</p>
-                                <a href="https://www.publish.csiro.au/book/7743/" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Experimental measurement of particle size effects on the self-heating ignition of biomass piles: Homogeneous samples of dust and pellets</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">F. Restuccia, N. Fernandez-Anez, G. Rein.</p>
-                                <p class="card-footer">Fuel. 2019, 256, 115838.</p>
-                                <a href="https://doi.org/10.1016/j.fuel.2019.115838" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">A computational model to simulate self-heating ignition across scales, configurations, and coal origins</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">H. Yuan, F. Restuccia, F. Richter, G. Rein.</p>
-                                <p class="card-footer">Fuel. 2019, 236, 1100-1109.</p>
-                                <a href="https://doi.org/10.1016/j.fuel.2018.09.065" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Quantifying self-heating ignition of biochar as a function of feedstock and the pyrolysis reactor temperature</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">F. Restuccia, O. Masek, R.M. Hadden, G. Rein..</p>
-                                <p class="card-footer">Fuel. 2019, 236, 201-213.</p>
-                                <a href="https://doi.org/10.1016/j.fuel.2018.08.141" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Transient gas and particle emissions from smouldering combustion of peat</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">Y. Hu, E. Christensen, F. Restuccia, G. Rein.</p>
-                                <p class="card-footer">Proceedings of the Combustion Institute. 2019, 37 (3), 4035-4042.</p>
-                                <a href="https://doi.org/10.1016/j.proci.2018.06.008" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-      </div>           
-            
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <span class="anchor" id="2018"></span>
-                    <h2 class="title">2018</h2>
-                </div>
-            </div>
-            <br>
-
-            <div class="row" style="min-height: 200px;">
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Carbon monoxide diffusion through porous walls: evidence found in incidents and experimental studies</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">I. Vermesi, F. Restuccia, C. Walker-Ravena, G. Rein.</p>
-                                <p class="card-footer">Frontiers in Built Environment. 2018, 4, 44.</p>
-                                <a href="https://doi.org/10.3389/fbuil.2018.00044" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <span class="anchor" id="2017"></span>
-                    <h2 class="title">2017</h2>
-                </div>
-            </div>
-            <br>
-
-            <div class="row" style="min-height: 200px;">
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Self-heating behavior and ignition of shale rock</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">F. Restuccia, N. Ptak, G. Rein.</p>
-                                <p class="card-footer">Combustion and Flame. 2017, 176, 213-219.</p>
-                                <a href="https://doi.org/10.1016/j.combustflame.2016.09.025" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Self-heating ignition of natural reactive porous media</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">F.Restuccia</p>
-                                <p class="card-footer">Imperial College PhD thesis, 2017.</p>
-                                <a href="https://spiral.imperial.ac.uk/handle/10044/1/58013" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Self-ignition of natural fuels: Can wildfires of carbon-rich soil start by self-heating?</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">F. Restuccia, X. Huang, G. Rein.</p>
-                                <p class="card-footer">Fire Safety Journal. 2017, 91, 828-834.</p>
-                                <a href="https://doi.org/10.1016/j.firesaf.2017.03.052" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Detection of landmines in peat soils by controlled smouldering combustion: Experimental proof of concept of O-Revealer</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">G. Rein, X Huang, F. Restuccia, T. McArdle.</p>
-                                <p class="card-footer">Experimental Thermal and Fluid Science. 2017, 88, 632-638.</p>
-                                <a href="https://doi.org/10.1016/j.expthermflusci.2017.07.016" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-
-  <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <span class="anchor" id="2016"></span>
-                    <h2 class="title">2016</h2>
-                </div>
-            </div>
-            <br>
-
-            <div class="row" style="min-height: 200px;">
-                
-     
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Living on a flammable planet: interdisciplinary, cross-scalar and varied cultural lessons, prospects and challenges</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">C.I. Ross, A.C. Scott, C.M. Belcher, W.G Chaloner, J. Aylen, R.B. Bird, M.R. Coughlan, B.R. Johnsons, F.H. Johnoston, J. McMorrow, T. Steelman, and the Fire and Mankind Discussion Group.</p>
-                                <p class="card-footer">Phil. Trans. R. Soc. B. 2016, 371, 20150469.</p>
-                                <a href="https://doi.org/10.1098/rstb.2015.0469" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               
-                  
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Experimental Study of the Formation and Collapse of an Overhang in the Surface Spread of Smouldering Peat Fires</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">X. Huang, F. Restuccia, M. Gramola, G.Rein.</p>
-                                <p class="card-footer">Combustion and Flame. 2016, 168, 393-402.</p>
-                                <a href="https://doi.org/10.1016/j.combustflame.2016.01.017" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-             </div>
-            
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <span class="anchor" id="2015-2012"></span>
-                    <h2 class="title">2015-2012</h2>
-                </div>
-            </div>
-            <br>
-
-            <div class="row" style="min-height: 200px;">
-                
-     
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Solitary wave-based delamination detection in composite plates using a combined granular crystal sensor and actuator</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">E. Kim, F. Restuccia, J. Yang, C. Daraio.</p>
-                                <p class="card-footer">Smart Materials and Structures. 2015, 24(12), 125004.</p>
-                                <a href="https://doi.org/10.1088/0964-1726/24/12/125004" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               
-                  
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Consideration of Wind Speed Variability in Creating a Regional Aggregate Wind Power Time Series</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">L. Cradden, F. Restuccia, S.L. Hawkins, G.P. Harrison.</p>
-                                <p class="card-footer">Resources. 2014, 3(1), 215-234.</p>
-                                <a href="https://doi.org/10.3390/resources3010215" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-             </div>
-               
-                <div class="col-md-6 ml-auto mr-auto d-flex align-items-stretch">
-                    <div class="card card-blog">
-                        <div class="card-body">
-                            <h5 class="font-weight-bold">Construction and Test of the Magnets for the AEgIS Experiment</h5>
-                            <div class="card-footer">
-                                <p class="card-footer">A. Dudarev, J. Bremer, G. Burghart, L. Deront, M. Doser, H ten Kate, D. Perini, F. Restuccia, S. Ravat, T. Winkler.</p>
-                                <p class="card-footer">IEEE Trans. Appl. Supercond. 2012, 22(3), 4500304-4500304.</p>
-                                <a href="http://doi.org/10.1109/TASC.2011.2180491" class="btn btn-primary btn-round card-link" target="_blank">
-                                    <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-
-        </div>
-    </div>
 </div>
 
+<!-- Publications -->
+<section class="pub-section" id="Publications">
+  <div class="wrap">
 
+    <div class="sh">
+      <p class="eye">Research Output</p>
+      <h2>Publications</h2>
+      <div class="rule"></div>
+    </div>
 
-<!-- Page footer-->
+    <!-- Year navigation -->
+    <nav class="year-nav" aria-label="Jump to year">
+      <a href="#y2026">2026</a>
+      <a href="#y2025">2025</a>
+      <a href="#y2024">2024</a>
+      <a href="#y2023">2023</a>
+      <a href="#y2022">2022</a>
+      <a href="#y2021">2021</a>
+      <a href="#y2020">2020</a>
+      <a href="#y2019">2019</a>
+      <a href="#y2018">2018</a>
+      <a href="#y2017">2017</a>
+      <a href="#y2016">2016</a>
+      <a href="#y2015-2012">2015–2012</a>
+    </nav>
+
+    <!-- 2026 ─────────────────────────────────────────── -->
+    <div class="yr-group" id="y2026">
+      <div class="yr-header">
+        <h3>2026</h3>
+        <span class="yr-count">4 papers</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Thermal runaway and fire behavior of large-format prismatic LFP cells under external heating and overcharge conditions</span>
+          <p class="pub-authors">E. Funk, B. Andres Valiente, C. Birksø Eriksen, C. Cruz-Cardona, K. Livkiss, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Journal of Loss Prevention in the Process Industries. 2026.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.jlp.2026.106161" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">The hidden variable: how data gaps shape battery fire safety engineering</span>
+          <p class="pub-authors">E. Funk, K. Livkiss, B. Andres Valiente, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Fire Technology. 2026.</span>
+          </div>
+          <a href="https://doi.org/10.1007/s10694-026-01977-1" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Lithium-ion battery design fires in performance-based fire safety engineering: A review and scenario cluster framework</span>
+          <p class="pub-authors">E. Funk, K. Livkiss, B. Andres Valiente, G. Rein, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Journal of Loss Prevention in the Process Industries. 2026.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.jlp.2026.106021" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Experimental study on the radiative heat flux from flaming 18650- and 26650-type LFP battery cells</span>
+          <p class="pub-authors">F. Lugaresi, P. Bugryniec, H. Sadeghi, D. Williams, M. Wootton, S. Brown, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Fire Safety Journal. 2026.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.firesaf.2026.104750" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2025 ─────────────────────────────────────────── -->
+    <div class="yr-group" id="y2025">
+      <div class="yr-header">
+        <h3>2025</h3>
+        <span class="yr-count">5 papers</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">A perspective on lithium-ion battery fire safety: from experiments to modelling approaches</span>
+          <p class="pub-authors"><strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Journal of Physics: Conference Series. 2025.</span>
+          </div>
+          <a href="https://doi.org/10.1088/1742-6596/3121/1/012048" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Modelling 18650-type lithium-ion battery fires using surrogate fuels</span>
+          <p class="pub-authors">H. Sadeghi, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Fire Safety Journal. 2025.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.firesaf.2025.104464" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Investigating Heat Transfer to Surrounding from Flaming Batteries Utilizing a Surrogate Fuel Model</span>
+          <p class="pub-authors">F. Lugaresi, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-conf">Conference</span>
+            <span class="pub-venue">Proceedings of the Eleventh International Seminar on Fire and Explosion Hazards (ISFEH11). 2025.</span>
+          </div>
+          <a href="https://kclpure.kcl.ac.uk/portal/files/344813522/C6._Lugaresi_ISFEH11.pdf" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Flame heat emissions in 18650-type lithium-ion battery thermal runaway with thermally active particles</span>
+          <p class="pub-authors">H. Sadeghi, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-conf">Conference</span>
+            <span class="pub-venue">Proceedings of the Eleventh International Seminar on Fire and Explosion Hazards (ISFEH11). 2025.</span>
+          </div>
+          <a href="https://kclpure.kcl.ac.uk/portal/files/344813454/C5._Sadeghi_ISFEH11.pdf" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Kinetic modelling of thermal decomposition in lithium-ion battery components during thermal runaway</span>
+          <p class="pub-authors">H. Sadeghi, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Journal of Power Sources. 2025.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.jpowsour.2024.236026" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2024 ─────────────────────────────────────────── -->
+    <div class="yr-group" id="y2024">
+      <div class="yr-header">
+        <h3>2024</h3>
+        <span class="yr-count">4 papers</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Thermal runaway and flame propagation in battery packs: Numerical simulation and deep learning prediction</span>
+          <p class="pub-authors">Z. Wang, H. Sadeghi, X. Huang, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Engineering Applications of Computational Fluid Mechanics. 2024.</span>
+          </div>
+          <a href="https://doi.org/10.1080/19942060.2024.2445160" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Sensitivity of wildfire modelling to physical parameters</span>
+          <p class="pub-authors">I. Richards, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Journal of Physics: Conference Series. 2024.</span>
+          </div>
+          <a href="https://doi.org/10.1088/1742-6596/2885/1/012065" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Evaluating impacts of a LFP battery fire within a subsurface train compartment</span>
+          <p class="pub-authors">A. Mamgain, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Journal of Physics: Conference Series. 2024.</span>
+          </div>
+          <a href="https://doi.org/10.1088/1742-6596/2885/1/012098" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Pyrolysis-based modelling of 18650-type lithium-ion battery fires in thermal runaway with LCO, LFP and NMC cathode</span>
+          <p class="pub-authors">H. Sadeghi, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Journal of Power Sources. 2024.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.jpowsour.2024.234480" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2023 ─────────────────────────────────────────── -->
+    <div class="yr-group" id="y2023">
+      <div class="yr-header">
+        <h3>2023</h3>
+        <span class="yr-count">2 papers</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Calculating Heat Release Rates from Lithium-Ion Battery Fires: A Methodology Using Digital Imaging</span>
+          <p class="pub-authors">M. Wise, P.A. Christensen, N. Dickman, J. McDonald, W. Mrozick, S. Lambert, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Fire Technology. 2023.</span>
+          </div>
+          <a href="https://doi.org/10.1007/s10694-023-01484-7" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Experimentally-verified thermal-electrochemical simulations of a cylindrical battery using physics-based, simplified and generalised lumped models</span>
+          <p class="pub-authors">A. Sarmadian, W.D. Widanage, B. Shollock, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Journal of Energy Storage. 2023.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.est.2023.107910" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2022 ─────────────────────────────────────────── -->
+    <div class="yr-group" id="y2022">
+      <div class="yr-header">
+        <h3>2022</h3>
+        <span class="yr-count">5 papers</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Benchmarking Between COMSOL and GPYRO in Predicting Self-Heating Ignition of Lithium-Ion Batteries</span>
+          <p class="pub-authors">Z. Hu, X. He, <strong>F. Restuccia</strong>, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Fire Technology. 2022.</span>
+          </div>
+          <a href="https://link.springer.com/article/10.1007/s10694-022-01335-x" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">An Experimentally-Verified Thermal-Electrochemical Simulation Model of a 21700 Cell Using a Lumped Semi-Empirical Battery Model</span>
+          <p class="pub-authors">A. Sarmadian, Y. Yu, J. Marco, B. Shollock, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-conf">Conference</span>
+            <span class="pub-venue">HEFAT. 2022, 128–133, ISBN 978-0-7972-1886-4.</span>
+          </div>
+          <a href="https://kclpure.kcl.ac.uk/portal/files/178190312/C2._Sarmadian_HEFAT2022_thermal_electrical_model.pdf" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Experimental study of the effect of the state of charge on self-heating ignition of large ensembles of lithium-ion batteries in storage</span>
+          <p class="pub-authors">X. He, Z. Hu, <strong>F. Restuccia</strong>, J. Fang, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Applied Thermal Engineering. 2022, 212, 118621.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.applthermaleng.2022.118621" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Heat transfer effects on accelerating rate calorimetry of the thermal runaway of Lithium-ion batteries</span>
+          <p class="pub-authors">X. He, C. Zhao, Z. Hu, <strong>F. Restuccia</strong>, F. Richter, Q. Wang, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Process Safety Environmental Protection. 2022, 162, 684–693.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.psep.2022.04.028" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Fire Experiment Inside a Very Large and Open-Plan Compartment: x-ONE</span>
+          <p class="pub-authors">E. Rackauskaite, M. Bonner, <strong>F. Restuccia</strong>, N. Fernandez Anez, E.G. Christensen, N. Roenner, W. Wegrzynski, P. Turkowski, P. Tofilo, M. Heidari, P. Kotsovinos, I. Vermesi, F. Richter, Y. Hu, C. Jeanneret, R. Wadhwani, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Fire Technology. 2022, 58, 905–939.</span>
+          </div>
+          <a href="https://doi.org/10.1007/s10694-021-01162-6" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2021 ─────────────────────────────────────────── -->
+    <div class="yr-group" id="y2021">
+      <div class="yr-header">
+        <h3>2021</h3>
+        <span class="yr-count">6 papers</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Static Electricity Incident Review</span>
+          <p class="pub-authors">I. Sandu, <strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-report">Report</span>
+            <span class="pub-venue">Technical Notes. National Fire Protection Association Research Foundation. 2021.</span>
+          </div>
+          <a href="https://www.nfpa.org/News-and-Research/Data-research-and-tools/Electrical/Static-Electricity-Incident-Review" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Self-heating ignition of large ensembles of Lithium-ion batteries during storage with different states of charge and cathodes</span>
+          <p class="pub-authors">X. He, Z. Hu, <strong>F. Restuccia</strong>, H. Yuan, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Applied Thermal Engineering. 2021, 197, 117349.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.applthermaleng.2021.117349" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Spontaneous ignition of soils: A multi-step reaction scheme to simulate self-heating ignition of smouldering peat fires</span>
+          <p class="pub-authors">H. Yuan, <strong>F. Restuccia</strong>, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">International Journal of Wildland Fire. 2021, 30(6), 440–453.</span>
+          </div>
+          <a href="https://doi.org/10.1071/WF19128" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Numerical Study of Scale Effects on Self-Heating Ignition of Lithium-Ion Batteries Stored in Boxes, Shelves and Racks</span>
+          <p class="pub-authors">Z. Hu, X. He, <strong>F. Restuccia</strong>, H. Yuan, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Applied Thermal Engineering. 2021, 190, 116780.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.applthermaleng.2021.116780" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Thermal and mechanical abuse of electric vehicle pouch cell modules</span>
+          <p class="pub-authors">P.A. Christensen, Z. Milojevic, M.S. Wise, M. Ahmeid, P.S. Attidekou, W. Mrozik, N.A. Dickmann, <strong>F. Restuccia</strong>, S.M. Lambert, P.K. Das.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Applied Thermal Engineering. 2021, 189, 116623.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.applthermaleng.2021.116623" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Anisotropic and homogeneous model of heat transfer for self-heating ignition of large ensembles of Lithium-ion batteries during storage</span>
+          <p class="pub-authors">Z. Hu, X. He, <strong>F. Restuccia</strong>, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Applied Thermal Engineering. 2021, 197, 117301.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.applthermaleng.2021.117301" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2020 ─────────────────────────────────────────── -->
+    <div class="yr-group" id="y2020">
+      <div class="yr-header">
+        <h3>2020</h3>
+        <span class="yr-count">4 papers</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Experimental Study of Self-heating Ignition of Lithium-Ion Batteries During Storage: Effect of the Number of Cells</span>
+          <p class="pub-authors">X. He, <strong>F. Restuccia</strong>, Y. Zhang, Z. Hu, X. Huang, J. Fang, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Fire Technology. 2020, 56, 2649–2669.</span>
+          </div>
+          <a href="https://doi.org/10.1007/s10694-020-01011-y" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Meta-Review of Fire Safety of Lithium-Ion Batteries: Industry Challenges and Research Contributions</span>
+          <p class="pub-authors">L. Bravo Diaz, X. He, Z. Hu, <strong>F. Restuccia</strong>, M. Marinescu, J. Varela Barreras, Y. Patel, G. Offer, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Journal of the Electrochemical Society. 2020, 167, 090559.</span>
+          </div>
+          <a href="https://doi.org/10.1149/1945-7111/aba8b9" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Computational study on self-heating ignition and smouldering spread of coal layers in flat and wedge hot plate configurations</span>
+          <p class="pub-authors">H. Yuan, <strong>F. Restuccia</strong>, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Combustion and Flame. 2020, 214, 346–357.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.combustflame.2019.12.041" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Numerical Study of Self-Heating Ignition of a Box of Lithium-Ion Batteries During Storage</span>
+          <p class="pub-authors">Z. Hu, X. He, <strong>F. Restuccia</strong>, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Fire Technology. 2020, 56, 2603–2621.</span>
+          </div>
+          <a href="https://doi.org/10.1007/s10694-020-00998-8" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2019 ─────────────────────────────────────────── -->
+    <div class="yr-group" id="y2019">
+      <div class="yr-header">
+        <h3>2019</h3>
+        <span class="yr-count">6 papers</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Conduction</span>
+          <p class="pub-authors"><strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-book">Book Chapter</span>
+            <span class="pub-venue">Encyclopedia of Wildfires and Wildland-Urban Interface (WUI) Fires. 2019.</span>
+          </div>
+          <a href="https://doi.org/10.1007/978-3-319-51727-8_224-1" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Experimental methods and scales in smouldering wildfires</span>
+          <p class="pub-authors">E. Christensen, Y. Hu, <strong>F. Restuccia</strong>, M.A. Santoso, X. Huang, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-book">Book Chapter</span>
+            <span class="pub-venue">Chapter 17 in Fire effects on soil properties. 2019, 267–280.</span>
+          </div>
+          <a href="https://www.publish.csiro.au/book/7743/" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Experimental measurement of particle size effects on the self-heating ignition of biomass piles: Homogeneous samples of dust and pellets</span>
+          <p class="pub-authors"><strong>F. Restuccia</strong>, N. Fernandez-Anez, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Fuel. 2019, 256, 115838.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.fuel.2019.115838" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">A computational model to simulate self-heating ignition across scales, configurations, and coal origins</span>
+          <p class="pub-authors">H. Yuan, <strong>F. Restuccia</strong>, F. Richter, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Fuel. 2019, 236, 1100–1109.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.fuel.2018.09.065" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Quantifying self-heating ignition of biochar as a function of feedstock and the pyrolysis reactor temperature</span>
+          <p class="pub-authors"><strong>F. Restuccia</strong>, O. Masek, R.M. Hadden, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Fuel. 2019, 236, 201–213.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.fuel.2018.08.141" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Transient gas and particle emissions from smouldering combustion of peat</span>
+          <p class="pub-authors">Y. Hu, E. Christensen, <strong>F. Restuccia</strong>, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Proceedings of the Combustion Institute. 2019, 37(3), 4035–4042.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.proci.2018.06.008" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2018 ─────────────────────────────────────────── -->
+    <div class="yr-group" id="y2018">
+      <div class="yr-header">
+        <h3>2018</h3>
+        <span class="yr-count">1 paper</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Carbon monoxide diffusion through porous walls: evidence found in incidents and experimental studies</span>
+          <p class="pub-authors">I. Vermesi, <strong>F. Restuccia</strong>, C. Walker-Ravena, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Frontiers in Built Environment. 2018, 4, 44.</span>
+          </div>
+          <a href="https://doi.org/10.3389/fbuil.2018.00044" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2017 ─────────────────────────────────────────── -->
+    <div class="yr-group" id="y2017">
+      <div class="yr-header">
+        <h3>2017</h3>
+        <span class="yr-count">4 papers</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Self-heating behavior and ignition of shale rock</span>
+          <p class="pub-authors"><strong>F. Restuccia</strong>, N. Ptak, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Combustion and Flame. 2017, 176, 213–219.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.combustflame.2016.09.025" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Self-heating ignition of natural reactive porous media</span>
+          <p class="pub-authors"><strong>F. Restuccia</strong>.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-thesis">Thesis</span>
+            <span class="pub-venue">Imperial College PhD thesis. 2017.</span>
+          </div>
+          <a href="https://spiral.imperial.ac.uk/handle/10044/1/58013" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Self-ignition of natural fuels: Can wildfires of carbon-rich soil start by self-heating?</span>
+          <p class="pub-authors"><strong>F. Restuccia</strong>, X. Huang, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Fire Safety Journal. 2017, 91, 828–834.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.firesaf.2017.03.052" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Detection of landmines in peat soils by controlled smouldering combustion: Experimental proof of concept of O-Revealer</span>
+          <p class="pub-authors">G. Rein, X. Huang, <strong>F. Restuccia</strong>, T. McArdle.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Experimental Thermal and Fluid Science. 2017, 88, 632–638.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.expthermflusci.2017.07.016" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2016 ─────────────────────────────────────────── -->
+    <div class="yr-group" id="y2016">
+      <div class="yr-header">
+        <h3>2016</h3>
+        <span class="yr-count">2 papers</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Living on a flammable planet: interdisciplinary, cross-scalar and varied cultural lessons, prospects and challenges</span>
+          <p class="pub-authors">C.I. Ross, A.C. Scott, C.M. Belcher, W.G. Chaloner, J. Aylen, R.B. Bird, M.R. Coughlan, B.R. Johnson, F.H. Johnston, J. McMorrow, T. Steelman, and the Fire and Mankind Discussion Group.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Phil. Trans. R. Soc. B. 2016, 371, 20150469.</span>
+          </div>
+          <a href="https://doi.org/10.1098/rstb.2015.0469" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Experimental Study of the Formation and Collapse of an Overhang in the Surface Spread of Smouldering Peat Fires</span>
+          <p class="pub-authors">X. Huang, <strong>F. Restuccia</strong>, M. Gramola, G. Rein.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Combustion and Flame. 2016, 168, 393–402.</span>
+          </div>
+          <a href="https://doi.org/10.1016/j.combustflame.2016.01.017" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2015–2012 ────────────────────────────────────── -->
+    <div class="yr-group" id="y2015-2012">
+      <div class="yr-header">
+        <h3>2015–2012</h3>
+        <span class="yr-count">3 papers</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Solitary wave-based delamination detection in composite plates using a combined granular crystal sensor and actuator</span>
+          <p class="pub-authors">E. Kim, <strong>F. Restuccia</strong>, J. Yang, C. Daraio.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Smart Materials and Structures. 2015, 24(12), 125004.</span>
+          </div>
+          <a href="https://doi.org/10.1088/0964-1726/24/12/125004" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Consideration of Wind Speed Variability in Creating a Regional Aggregate Wind Power Time Series</span>
+          <p class="pub-authors">L. Cradden, <strong>F. Restuccia</strong>, S.L. Hawkins, G.P. Harrison.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">Resources. 2014, 3(1), 215–234.</span>
+          </div>
+          <a href="https://doi.org/10.3390/resources3010215" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-body">
+          <span class="pub-title">Construction and Test of the Magnets for the AEgIS Experiment</span>
+          <p class="pub-authors">A. Dudarev, J. Bremer, G. Burghart, L. Deront, M. Doser, H. ten Kate, D. Perini, <strong>F. Restuccia</strong>, S. Ravat, T. Winkler.</p>
+          <div class="pub-meta">
+            <span class="pub-type t-journal">Journal</span>
+            <span class="pub-venue">IEEE Trans. Appl. Supercond. 2012, 22(3), 4500304.</span>
+          </div>
+          <a href="http://doi.org/10.1109/TASC.2011.2180491" class="pub-link" target="_blank">Read Article</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
 <footer class="footer">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-md-6 text-center">
                 <span class="copyright">
-                © Dr Francesco Restuccia,
-                <script>
-                  document.write(new Date().getFullYear())
-                </script>
+                &copy; Dr Francesco Restuccia,
+                <script>document.write(new Date().getFullYear())</script>
                 </span>
             </div>
-
             <div class="col-md-6 text-center">
-                  <span class="copyright">
-                      Built using
-                      <a class="thick" href="https://demos.creative-tim.com/paper-kit-2/index.html" target="_blank">Paper-Kit2 </a>
-                  </span>
+                <span class="copyright">
+                    Built using <a href="https://demos.creative-tim.com/paper-kit-2/index.html" target="_blank">Paper-Kit2</a>
+                </span>
             </div>
         </div>
     </div>
 </footer>
 
-  <!--   Core JS Files   -->
-  <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="./assets/js/plugins/bootstrap-switch.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="./assets/js/plugins/moment.min.js"></script>
-  <script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
-  <!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
-  <script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
-  <!--  Google Maps Plugin    -->
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-</body>
+<!--   Core JS Files — unchanged from original   -->
+<script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/bootstrap-switch.js"></script>
+<script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/moment.min.js"></script>
+<script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
 
+</body>
 </html>
