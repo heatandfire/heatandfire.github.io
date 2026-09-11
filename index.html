@@ -1,4 +1,3 @@
-
 <!--
 =========================================================
  Paper Kit 2 - v2.2.0
@@ -30,36 +29,60 @@ The above copyright notice and this permission notice shall be included in all c
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,600" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Matching fonts from rest of site -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
 	<style>
-  /* Improve readability of the Research section description */
+  /* Background and font colours to match rest of site */
+  body { background-color: #f4f1ec; font-family: 'Jost', system-ui, sans-serif; }
+  .section-gray { background-color: #e8e3db !important; }
+
+  /* Headings use display serif */
+  h2.title, h4.card-title, h5.font-weight-bold {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  /* Research section description */
   #Research .description {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: 'Jost', system-ui, sans-serif;
     font-size: 1rem;
     line-height: 1.7;
-    color: #444;
+    color: #6a5f53;
     max-width: 680px;
     margin-left: auto;
     margin-right: auto;
   }
 
-  /* Improve readability of publication card body text */
+  /* Publication card body text */
   .card-text {
-    font-size: 0.95rem;
+    font-family: 'Jost', system-ui, sans-serif;
+    font-size: 0.9rem;
     line-height: 1.6;
-    color: #555;
+    color: #6a5f53;
   }
 
-  /* Slightly increase card title size and spacing */
+  /* Publication card title */
   .card-body .font-weight-bold {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 0.75rem;
-    color: #333;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 0.6rem;
+    color: #1b1714;
+  }
+
+  /* People section card titles and categories */
+  .section-dark .card-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+  }
+  .section-dark .card-category,
+  .section-dark .card-description {
+    font-family: 'Jost', system-ui, sans-serif;
   }
 </style>
 </head>
@@ -131,10 +154,10 @@ The above copyright notice and this permission notice shall be included in all c
     <li>Understanding the fundamentals of ignition and fire spread to prevent damage to people, property, and the environment from unwanted fires — including wildfires and fires from electrification</li>
 </ul>
 <p class="description">Current projects focus on <strong>wildfire dynamics</strong>, <strong>battery fires</strong>, <strong>thermal management of lithium-ion batteries</strong>, and <strong>ignition research</strong>.</p>
-			  
+
             <br>
             <a href="people.html" class="btn btn-danger btn-round">See People</a>
-            
+
 	    <h2 class="title">Our Research Funders: </h2>
 
 <div class="row">
@@ -143,8 +166,8 @@ The above copyright notice and this permission notice shall be included in all c
                         <div class="row justify-content-md-center align-items-center">
                             <div class="col-md-10">
                                 <div class="card-image">
-  				  <img class="img" src="./assets/img/funders.jpg" alt="Logos of research funders supporting the Heat and Fire Lab">
-    				<p class="text-center" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Our research is generously supported by these funders.</p>
+  			  <img class="img" src="./assets/img/funders.jpg" alt="Logos of research funders supporting the Heat and Fire Lab">
+    			<p class="text-center" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Our research is generously supported by these funders.</p>
 						</div>
                             </div>
                         </div>
@@ -175,7 +198,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <h5 class="font-weight-bold">Thermal runaway and fire behavior of large-format prismatic LFP cells under external heating and overcharge conditions</h5>
                                         <p class="card-text">E. Funk, B. Andres Valiente, C. Birksø Eriksen, C. Cruz-Cardona, K. Livkiss, F. Restuccia.</p>
                                         <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Journal of Loss Prevention in the Process Industries" style="text-decoration: underline dotted; cursor: help;">JLPPI</span> 2026, 106161.</p>
-                                    <div class="card-footer">                        
+                                    <div class="card-footer">
 									<a href="https://doi.org/10.1016/j.jlp.2026.106161" class="btn btn-primary btn-round card-link" target="_blank">
                                             <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
                                         </a>
@@ -187,8 +210,8 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                 </div>
 
-            </div>		 
-		  
+            </div>
+
 <div class="row">
                 <div class="col-md-10 ml-auto mr-auto">
                     <div class="card card-blog">
@@ -203,7 +226,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <h5 class="font-weight-bold">Experimental study on the radiative heat flux from flaming 18650- and 26650-type LFP battery cells</h5>
                                         <p class="card-text">F. Lugaresi, P. Bugryniec, H. Sadeghi, D. Williams, M. Wootton, S. Brown, F. Restuccia.</p>
                                         <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Fire Safety Journal" style="text-decoration: underline dotted; cursor: help;">FSJ</span> 2026, 162, 104750.</p>
-                                    <div class="card-footer">                                        
+                                    <div class="card-footer">
 									<a href="https://doi.org/10.1016/j.firesaf.2026.104750" class="btn btn-primary btn-round card-link" target="_blank">
                                             <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
                                         </a>
@@ -215,7 +238,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                 </div>
 
-            </div>		  
+            </div>
 
 <div class="row">
                 <div class="col-md-10 ml-auto mr-auto">
@@ -245,7 +268,7 @@ The above copyright notice and this permission notice shall be included in all c
 
             </div>
 
-		  
+
 <div class="row">
                 <div class="col-md-10 ml-auto mr-auto">
                     <div class="card card-blog">
@@ -260,7 +283,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <h5 class="font-weight-bold">Pyrolysis-based modelling of 18650-type lithium-ion battery fires in thermal runaway with LCO, LFP and NMC cathodes</h5>
                                         <p class="card-text">H. Sadeghi, F. Restuccia.</p>
                                         <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Journal of Power Sources" style="text-decoration: underline dotted; cursor: help;">JPS</span> 2024, 603, 234480.</p>
-                                       <div class="card-footer">                                   
+                                       <div class="card-footer">
 									<a href="https://doi.org/10.1016/j.jpowsour.2024.234480" class="btn btn-primary btn-round card-link" target="_blank">
                                             <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
                                         </a>
@@ -273,7 +296,7 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
 
             </div>
-	      
+
 <div class="row">
                 <div class="col-md-10 ml-auto mr-auto">
                     <div class="card card-blog">
@@ -316,7 +339,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <h5 class="font-weight-bold">Experimental study of the effect of the state of charge on self-heating ignition of large ensembles of lithium-ion batteries in storage</h5>
                                         <p class="card-text">X. He, Z. Hu, F. Restuccia, J. Fang, G. Rein.</p>
                                         <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Applied Thermal Engineering" style="text-decoration: underline dotted; cursor: help;">ATE</span> 2022, 212, 118621.</p>
-                                     <div class="card-footer">                                       
+                                     <div class="card-footer">
 									<a href="https://doi.org/10.1016/j.applthermaleng.2022.118621" class="btn btn-primary btn-round card-link" target="_blank">
                                             <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
                                         </a>
@@ -344,7 +367,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <h5 class="font-weight-bold">Thermal and mechanical abuse of electric vehicle pouch cell modules</h5>
                                        <p class="card-text">P.A. Christensen, Z. Milojevic, M.S. Wise, M.Ahmeid, P.S. Attidekou, W.Mrozik, N.A. Dickmann, F. Restuccia, S.M. Lambert, P.K. Das.</p>
                                         <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Applied Thermal Engineering" style="text-decoration: underline dotted; cursor: help;">ATE</span> 2021, 189, 116623.</p>
-                                     <div class="card-footer">                                  
+                                     <div class="card-footer">
 									<a href="https://doi.org/10.1016/j.applthermaleng.2021.116623" class="btn btn-primary btn-round card-link" target="_blank">
                                             <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
                                         </a>
@@ -372,7 +395,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <h5 class="font-weight-bold">Meta-Review of Fire Safety of Lithium-Ion Batteries: Industry Challenges and Research Contributions</h5>
                                         <p class="card-text">L. Bravo Diaz, X. He, Z. Hu, F. Restuccia, M. Marinescu, J. Varela Barreras, Y. Patel, G. Offer, G. Rein.</p>
                                         <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Journal of the Electrochemical Society" style="text-decoration: underline dotted; cursor: help;">JES</span> 2020, 167, 090559.</p>
-                                    <div class="card-footer">                                       
+                                    <div class="card-footer">
 									<a href="https://doi.org/10.1149/1945-7111/aba8b9" class="btn btn-primary btn-round card-link" target="_blank">
                                             <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
                                         </a>
@@ -401,7 +424,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <h5 class="font-weight-bold">Quantifying self-heating ignition of biochar as a function of feedstock and the pyrolysis reactor temperature</h5>
                                         <p class="card-text">F. Restuccia, O. Masek, R.M. Hadden, G. Rein.</p>
                                         <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Fuel" style="text-decoration: underline dotted; cursor: help;">FUEL</span> 2019, 236, 201-213.</p>
-                                    <div class="card-footer">                                        
+                                    <div class="card-footer">
 									<a href="https://doi.org/10.1016/j.fuel.2018.08.141" class="btn btn-primary btn-round card-link" target="_blank">
                                             <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
                                         </a>
@@ -429,7 +452,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <h5 class="font-weight-bold">Self-heating ignition of natural reactive porous media</h5>
                                         <p class="card-text">F. Restuccia.</p>
                                        <p class="card-text" style="font-style: italic;">PhD Thesis, Imperial College, 2018.</p>
-                                     <div class="card-footer">                                     
+                                     <div class="card-footer">
 											<a href="https://spiral.imperial.ac.uk/entities/publication/e6f01d8c-41be-412c-bda6-1e655ef73554" class="btn btn-primary btn-round card-link" target="_blank">
                                             <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Thesis
                                         </a>
@@ -442,7 +465,7 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
 
             </div>
-		  
+
 <div class="row">
                 <div class="col-md-10 ml-auto mr-auto">
                     <div class="card card-blog">
@@ -457,7 +480,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <h5 class="font-weight-bold">Self-ignition of natural fuels: Can wildfires of carbon-rich soil start by self-heating?</h5>
                                         <p class="card-text">F. Restuccia, X. Huang, G. Rein.</p>
                                        <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Fire Safety Journal" style="text-decoration: underline dotted; cursor: help;">FSJ</span> 2017, 91, 828-834.</p>
-                                    <div class="card-footer">    
+                                    <div class="card-footer">
 									<a href="https://doi.org/10.1016/j.firesaf.2017.03.052" class="btn btn-primary btn-round card-link" target="_blank">
                                             <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
                                         </a>
@@ -471,9 +494,9 @@ The above copyright notice and this permission notice shall be included in all c
 
             </div>
 
- 
 
-  
+
+
         </div>
 
 <div class="row">
@@ -489,7 +512,7 @@ The above copyright notice and this permission notice shall be included in all c
     <!--  Lab members and contact section  -->
      <div id="People" class="section section-dark text-center-tight">
       <div class="container">
-  
+
         <div class="row">
           <div class="col-md-4  d-flex align-items-stretch">
             <div class="card card-profile card-plain">
@@ -523,7 +546,7 @@ The above copyright notice and this permission notice shall be included in all c
 
                 </div>
                 <div class="col-md-4 d-flex align-items-stretch">
-                    
+
 <div class="card card-profile card-plain">
     <div class="card-avatar">
         <img src="./assets/img/KCL_logo.jpg" alt="...">
@@ -548,7 +571,7 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
 </div>
                 <div class="col-md-4 d-flex align-items-stretch">
-                    
+
 <div class="card card-profile card-plain">
     <div class="card-avatar">
         <img src="./assets/img/experiment.jpg" alt="...">
@@ -572,7 +595,7 @@ The above copyright notice and this permission notice shall be included in all c
 </div>
 
     <!-- Modal -->
-    
+
 </div>
 
                 </div>
@@ -617,9 +640,6 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
   <!--  Google Maps Plugin    -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-</body>
-
-</html>
 
 <div class="modal fade" id="where_we_are" tabindex="-1" role="dialog" aria-labelledby="aboutRyanLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -632,7 +652,7 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="modal-body">
                     <h5>King's College London</h5>
 
-                    King’s College London is an internationally renowned university delivering exceptional education and world-leading research. We are dedicated to driving positive and sustainable change in society and realising our vision of making the world a better place. 
+                    King's College London is an internationally renowned university delivering exceptional education and world-leading research. We are dedicated to driving positive and sustainable change in society and realising our vision of making the world a better place.
                     <br>
                     <br>
                     <div class="text-center">
@@ -646,4 +666,8 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
       </div>
-    </div></body></html>
+    </div>
+
+</body>
+
+</html>
