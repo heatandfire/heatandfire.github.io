@@ -1,21 +1,13 @@
-
 <!--
 =========================================================
  Paper Kit 2 - v2.2.0
 =========================================================
-
  Product Page: https://www.creative-tim.com/product/paper-kit-2
  Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/paper-kit-2/blob/master/LICENSE.md)
-
- Coded by Creative Tim
-
+ Licensed under MIT
 =========================================================
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
-
+-->
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -23,49 +15,193 @@ The above copyright notice and this permission notice shall be included in all c
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img//biochar.jpg">
   <link rel="icon" type="image/png" href="./assets/img//biochar.jpg">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-   Heat and Fire Lab
-  </title>
+  <title>Heat and Fire Lab</title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
+  <!-- Fonts and icons -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,600" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Display fonts for redesigned sections -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
-	<style>
-  /* Improve readability of the Research section description */
-  #Research .description {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #444;
-    max-width: 680px;
-    margin-left: auto;
-    margin-right: auto;
+
+  <style>
+  /* ── design tokens ───────────────────────────────── */
+  :root {
+    --bg:      #f4f1ec;
+    --surface: #ffffff;
+    --alt:     #e8e3db;
+    --text:    #1b1714;
+    --muted:   #6a5f53;
+    --border:  #d4cec6;
+    --accent:  #c04a1e;
+    --blue:    #2b4665;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
   }
 
-  /* Improve readability of publication card body text */
-  .card-text {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #555;
+  body { background: var(--bg); font-family: var(--ff-b); }
+
+  /* ── shared section layout ───────────────────────── */
+  .hf-section { padding: 5rem 2rem; background: var(--bg); }
+  .hf-section.alt { background: var(--alt); }
+  .wrap { max-width: 960px; margin: 0 auto; }
+
+  .sh { margin-bottom: 2.5rem; }
+  .sh .eye {
+    font-size: .72rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: .4rem;
+    font-family: var(--ff-b);
+  }
+  .sh h2 {
+    font-family: var(--ff-d);
+    font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 600;
+    color: var(--text); line-height: 1.2;
+  }
+  .sh .rule { width: 2.5rem; height: 2px; background: var(--accent); margin-top: .9rem; }
+
+  /* ── hero buttons ────────────────────────────────── */
+  .hero-btn {
+    display: inline-block; font-family: var(--ff-b); font-size: .82rem;
+    font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    border: 1.5px solid rgba(255,255,255,.8); color: #fff;
+    padding: .6em 1.4em; border-radius: 2px; background: transparent;
+    margin: .4rem .3rem; transition: background .2s, color .2s; text-decoration: none;
+  }
+  .hero-btn:hover { background: rgba(255,255,255,.15); color: #fff; text-decoration: none; }
+  .hero-btn i { margin-right: .4em; }
+
+  /* ── research text ───────────────────────────────── */
+  .research-body {
+    font-family: var(--ff-b); font-size: 1rem; line-height: 1.75;
+    color: var(--muted); max-width: 700px;
+  }
+  .research-body p { margin-bottom: 1rem; }
+  .research-body ul {
+    padding-left: 1.4rem; margin-bottom: 1rem;
+  }
+  .research-body ul li { margin-bottom: .4rem; }
+  .research-body strong { color: var(--text); font-weight: 600; }
+
+  /* ── funders card ────────────────────────────────── */
+  .funders-wrap {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 3px; padding: 1.5rem; margin: 2rem 0;
+    text-align: center;
+  }
+  .funders-wrap img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+  .funders-caption {
+    font-size: .8rem; color: var(--muted); font-family: var(--ff-b);
+    margin-top: .75rem;
   }
 
-  /* Slightly increase card title size and spacing */
-  .card-body .font-weight-bold {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 0.75rem;
-    color: #333;
+  /* ── CTA button ──────────────────────────────────── */
+  .btn-hf {
+    display: inline-block; font-family: var(--ff-b); font-size: .78rem;
+    font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    padding: .5em 1.4em; border-radius: 2px; text-decoration: none;
+    transition: background .15s, color .15s;
   }
-</style>
+  .btn-hf-accent { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+  .btn-hf-accent:hover { background: #a33d18; color: #fff; text-decoration: none; }
+  .btn-hf-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .btn-hf-outline:hover { background: var(--accent); color: #fff; text-decoration: none; }
+
+  /* ── selected publications ───────────────────────── */
+  .pub-hf {
+    display: flex; gap: 1.25rem; align-items: flex-start;
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 3px solid var(--border); border-radius: 0 3px 3px 0;
+    padding: 1rem; margin-bottom: .85rem;
+    transition: border-left-color .15s, box-shadow .15s;
+  }
+  .pub-hf:hover { border-left-color: var(--accent); box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+
+  .pub-hf-img {
+    flex-shrink: 0; width: 120px; height: 90px; overflow: hidden;
+    border-radius: 2px; background: var(--alt);
+  }
+  .pub-hf-img img {
+    width: 100% !important; height: 100% !important;
+    object-fit: cover; display: block; max-width: none;
+  }
+  .pub-hf-body { flex: 1; min-width: 0; }
+  .pub-hf-title {
+    font-family: var(--ff-d); font-size: 1.05rem; font-weight: 600;
+    color: var(--text); line-height: 1.3; margin-bottom: .35rem; display: block;
+  }
+  .pub-hf-authors { font-size: .82rem; color: var(--muted); margin-bottom: .3rem; line-height: 1.4; }
+  .pub-hf-venue { font-size: .8rem; font-style: italic; color: var(--muted); margin-bottom: .55rem; }
+  .pub-link {
+    display: inline-block; font-size: .72rem; font-weight: 600;
+    letter-spacing: .05em; text-transform: uppercase; font-family: var(--ff-b);
+    border: 1px solid var(--accent); color: var(--accent); padding: .25em .8em;
+    border-radius: 2px; background: transparent; text-decoration: none;
+    transition: background .15s, color .15s;
+  }
+  .pub-link:hover { background: var(--accent); color: #fff; text-decoration: none; }
+
+  @media (max-width: 540px) {
+    .pub-hf { flex-direction: column; }
+    .pub-hf-img { width: 100%; height: 160px; }
+  }
+
+  /* ── people cards ────────────────────────────────── */
+  .people-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  @media (max-width: 768px) { .people-grid { grid-template-columns: 1fr; } }
+
+  .pc-home {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 3px; display: flex; flex-direction: column;
+    text-align: center; overflow: hidden;
+  }
+  .pc-home-img {
+    width: 100%; background: var(--alt);
+    position: relative; padding-top: 75%; overflow: hidden;
+  }
+  .pc-home-img img {
+    position: absolute; top: 0; left: 0;
+    width: 100% !important; height: 100% !important;
+    object-fit: cover; max-width: none;
+  }
+  .pc-home-body { padding: 1.25rem 1.25rem .75rem; flex: 1; }
+  .pc-home-name {
+    font-family: var(--ff-d); font-size: 1.15rem; font-weight: 700;
+    color: var(--text); margin-bottom: .2rem;
+  }
+  .pc-home-role {
+    font-size: .72rem; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent); font-family: var(--ff-b);
+    margin-bottom: .75rem; display: block;
+  }
+  .pc-home-desc {
+    font-size: .85rem; color: var(--muted); line-height: 1.6;
+    font-family: var(--ff-b);
+  }
+  .pc-home-foot {
+    padding: .75rem 1.25rem 1.25rem;
+    display: flex; justify-content: center; gap: .5rem; flex-wrap: wrap;
+  }
+  .pc-home-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2rem; height: 2rem; border-radius: 50%;
+    border: 1px solid var(--border); color: var(--muted); font-size: .85rem;
+    transition: border-color .15s, color .15s; text-decoration: none;
+  }
+  .pc-home-icon:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+  /* ── responsive ──────────────────────────────────── */
+  @media (max-width: 768px) { .hf-section { padding: 3.5rem 1.25rem; } }
+  </style>
 </head>
 
 <body class="landing-page sidebar-collapse">
-  <!-- Navigation bar -->
+
+<!-- Navigation bar — unchanged from original -->
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
     <div class="container">
         <div class="navbar-translate">
@@ -83,10 +219,10 @@ The above copyright notice and this permission notice shall be included in all c
                 <li class="nav-item">
                     <a href="index.html#Research" class="nav-link"><i class="fa fa-flask"></i> Research</a>
                 </li>
- 		 <li class="nav-item">
+                <li class="nav-item">
                     <a href="people.html" class="nav-link"><i class="fa fa-users"></i> People</a>
                 </li>
-		<li class="nav-item">
+                <li class="nav-item">
                     <a href="news.html" class="nav-link"><i class="fa fa-newspaper-o"></i> News</a>
                 </li>
                 <li class="nav-item">
@@ -95,555 +231,309 @@ The above copyright notice and this permission notice shall be included in all c
                 <li class="nav-item">
                     <a href="francesco-restuccia.html" class="nav-link"><i class="fa fa-user"></i> PI: Francesco Restuccia</a>
                 </li>
-		 <li class="nav-item">
-            	<a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/FranRestuccia" target="_blank">
-              <i class="fa fa-twitter"></i>
-              <p class="d-lg-none">Twitter</p>
-            </a>
-          </li>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/FranRestuccia" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                        <p class="d-lg-none">Twitter</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-<!-- End Navigation-bar -->
-  <div class="page-header" data-parallax="true" style="background-image: url('./assets/img/biochar.jpg');">
-    <div class="filter"></div>
-    <div class="container">
-      <div class="motto text-center">
-        <img src="./assets/img/GroupLogo.png" alt="Heat and Fire Lab" class="brand-logo" style="max-width: 500px; width: 90%; height: auto;" />
-        <h3>Research @KCL in thermal sciences covering heat transfer, combustion, fire science and bioenergy</h3>
-        <br />
-        <a href="https://www.youtube.com/watch?v=L6zhnSwpfZQ" class="btn btn-outline-neutral btn-round" target="_blank"><i class="fa fa-play"></i>Watch spotlight video on battery research</a>
-        <a href="https://www.youtube.com/watch?v=eysUjYW4uBI" class="btn btn-outline-neutral btn-round" target="_blank"><i class="fa fa-play"></i>Watch spotlight video on wildfire research</a>
+<!-- End Navigation bar -->
+
+<!-- Hero — parallax header, unchanged structure -->
+<div class="page-header" data-parallax="true" style="background-image: url('./assets/img/biochar.jpg');">
+  <div class="filter"></div>
+  <div class="container">
+    <div class="motto text-center">
+      <img src="./assets/img/GroupLogo.png" alt="Heat and Fire Lab" style="max-width: 500px; width: 90%; height: auto;" />
+      <h3 style="font-family: 'Jost', sans-serif; font-weight: 400; font-size: 1.1rem; letter-spacing: .03em; color: rgba(255,255,255,.88); margin: 1.25rem auto .5rem; max-width: 600px; line-height: 1.6;">
+        Research @KCL in thermal sciences covering heat transfer, combustion, fire science and bioenergy
+      </h3>
+      <br />
+      <a href="https://www.youtube.com/watch?v=L6zhnSwpfZQ" class="hero-btn" target="_blank"><i class="fa fa-play"></i>Battery research</a>
+      <a href="https://www.youtube.com/watch?v=eysUjYW4uBI" class="hero-btn" target="_blank"><i class="fa fa-play"></i>Wildfire research</a>
+    </div>
+  </div>
+</div>
+
+<!-- Research section -->
+<section class="hf-section" id="Research">
+  <div class="wrap">
+    <div class="sh">
+      <p class="eye">What we do</p>
+      <h2>Research</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="research-body">
+      <p>Our group carries out experimental and computational research in the thermal sciences, covering heat transfer, fire science, combustion, and bioenergy.</p>
+      <p>Our interests span two broad themes:</p>
+      <ul>
+        <li>Developing more efficient, safe, and durable energy storage systems</li>
+        <li>Understanding the fundamentals of ignition and fire spread to prevent damage to people, property, and the environment from unwanted fires — including wildfires and fires from electrification</li>
+      </ul>
+      <p>Current projects focus on <strong>wildfire dynamics</strong>, <strong>battery fires</strong>, <strong>thermal management of lithium-ion batteries</strong>, and <strong>ignition research</strong>.</p>
+    </div>
+
+    <div style="margin-top: 1.75rem;">
+      <a href="people.html" class="btn-hf btn-hf-accent">See People</a>
+    </div>
+
+    <!-- Funders -->
+    <div style="margin-top: 3rem;">
+      <h3 style="font-family: var(--ff-d); font-size: 1.4rem; font-weight: 600; color: var(--text); margin-bottom: 1rem;">Research Funders</h3>
+      <div class="funders-wrap">
+        <img src="./assets/img/funders.jpg" alt="Logos of research funders supporting the Heat and Fire Lab">
+        <p class="funders-caption">Our research is generously supported by these funders.</p>
       </div>
     </div>
   </div>
-  <div class="main">
-<div id="Research" class="section section-gray text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 ml-auto mr-auto">
-            <h2 class="title">Research</h2>
-<p class="description">Our group carries out experimental and computational research in the thermal sciences, covering heat transfer, fire science, combustion, and bioenergy.</p>
-<p class="description">Our interests span two broad themes:</p>
-<ul class="description" style="text-align: left; display: inline-block; margin-bottom: 1rem;">
-    <li>Developing more efficient, safe, and durable energy storage systems</li>
-    <li>Understanding the fundamentals of ignition and fire spread to prevent damage to people, property, and the environment from unwanted fires — including wildfires and fires from electrification</li>
-</ul>
-<p class="description">Current projects focus on <strong>wildfire dynamics</strong>, <strong>battery fires</strong>, <strong>thermal management of lithium-ion batteries</strong>, and <strong>ignition research</strong>.</p>
-			  
-            <br>
-            <a href="people.html" class="btn btn-danger btn-round">See People</a>
-            
-	    <h2 class="title">Our Research Funders: </h2>
+</section>
 
-<div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <div class="card card-blog">
-                        <div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-10">
-                                <div class="card-image">
-  				  <img class="img" src="./assets/img/funders.jpg" alt="Logos of research funders supporting the Heat and Fire Lab">
-    				<p class="text-center" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Our research is generously supported by these funders.</p>
-						</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-</div>
-
-
-                    <div class="row">
-    <div class="col-md-10 ml-auto mr-auto text-center" style="margin-top: 2rem; margin-bottom: 1rem;">
-        <h2 class="title">Selected Publications</h2>
-        <hr style="border-top: 2px solid #ddd; width: 60%; margin: 0 auto;">
+<!-- Selected Publications -->
+<section class="hf-section alt" id="SelectedPublications">
+  <div class="wrap">
+    <div class="sh">
+      <p class="eye">Highlights</p>
+      <h2>Selected Publications</h2>
+      <div class="rule"></div>
     </div>
-</div>
-                </div>
-            </div>
-<div class="row">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <div class="card card-blog">
-                        <div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-4">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/2026Funk.jpg">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="font-weight-bold">Thermal runaway and fire behavior of large-format prismatic LFP cells under external heating and overcharge conditions</h5>
-                                        <p class="card-text">E. Funk, B. Andres Valiente, C. Birksø Eriksen, C. Cruz-Cardona, K. Livkiss, F. Restuccia.</p>
-                                        <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Journal of Loss Prevention in the Process Industries" style="text-decoration: underline dotted; cursor: help;">JLPPI</span> 2026, 106161.</p>
-                                    <div class="card-footer">                        
-									<a href="https://doi.org/10.1016/j.jlp.2026.106161" class="btn btn-primary btn-round card-link" target="_blank">
-                                            <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
 
-                        </div>
-                    </div>
-                </div>
+    <div class="pub-hf">
+      <div class="pub-hf-img"><img src="./assets/img/2026Funk.jpg" alt=""></div>
+      <div class="pub-hf-body">
+        <span class="pub-hf-title">Thermal runaway and fire behavior of large-format prismatic LFP cells under external heating and overcharge conditions</span>
+        <p class="pub-hf-authors">E. Funk, B. Andres Valiente, C. Birksø Eriksen, C. Cruz-Cardona, K. Livkiss, F. Restuccia.</p>
+        <p class="pub-hf-venue">Journal of Loss Prevention in the Process Industries. 2026, 106161.</p>
+        <a href="https://doi.org/10.1016/j.jlp.2026.106161" class="pub-link" target="_blank">Read Article</a>
+      </div>
+    </div>
 
-            </div>		 
-		  
-<div class="row">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <div class="card card-blog">
-                        <div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-4">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/experimental_battery_setup.jpg">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="font-weight-bold">Experimental study on the radiative heat flux from flaming 18650- and 26650-type LFP battery cells</h5>
-                                        <p class="card-text">F. Lugaresi, P. Bugryniec, H. Sadeghi, D. Williams, M. Wootton, S. Brown, F. Restuccia.</p>
-                                        <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Fire Safety Journal" style="text-decoration: underline dotted; cursor: help;">FSJ</span> 2026, 162, 104750.</p>
-                                    <div class="card-footer">                                        
-									<a href="https://doi.org/10.1016/j.firesaf.2026.104750" class="btn btn-primary btn-round card-link" target="_blank">
-                                            <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="pub-hf">
+      <div class="pub-hf-img"><img src="./assets/img/experimental_battery_setup.jpg" alt=""></div>
+      <div class="pub-hf-body">
+        <span class="pub-hf-title">Experimental study on the radiative heat flux from flaming 18650- and 26650-type LFP battery cells</span>
+        <p class="pub-hf-authors">F. Lugaresi, P. Bugryniec, H. Sadeghi, D. Williams, M. Wootton, S. Brown, F. Restuccia.</p>
+        <p class="pub-hf-venue">Fire Safety Journal. 2026, 162, 104750.</p>
+        <a href="https://doi.org/10.1016/j.firesaf.2026.104750" class="pub-link" target="_blank">Read Article</a>
+      </div>
+    </div>
 
-                        </div>
-                    </div>
-                </div>
+    <div class="pub-hf">
+      <div class="pub-hf-img"><img src="./assets/img/materials.jpg" alt=""></div>
+      <div class="pub-hf-body">
+        <span class="pub-hf-title">Kinetic modelling of thermal decomposition in lithium-ion battery components during thermal runaway</span>
+        <p class="pub-hf-authors">H. Sadeghi, F. Restuccia.</p>
+        <p class="pub-hf-venue">Journal of Power Sources. 2025, 629, 236026.</p>
+        <a href="https://doi.org/10.1016/j.jpowsour.2024.236026" class="pub-link" target="_blank">Read Article</a>
+      </div>
+    </div>
 
-            </div>		  
+    <div class="pub-hf">
+      <div class="pub-hf-img"><img src="./assets/img/Sadeghi_2024_JPS.jpg" alt=""></div>
+      <div class="pub-hf-body">
+        <span class="pub-hf-title">Pyrolysis-based modelling of 18650-type lithium-ion battery fires in thermal runaway with LCO, LFP and NMC cathodes</span>
+        <p class="pub-hf-authors">H. Sadeghi, F. Restuccia.</p>
+        <p class="pub-hf-venue">Journal of Power Sources. 2024, 603, 234480.</p>
+        <a href="https://doi.org/10.1016/j.jpowsour.2024.234480" class="pub-link" target="_blank">Read Article</a>
+      </div>
+    </div>
 
-<div class="row">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <div class="card card-blog">
-                        <div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-4">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/materials.jpg">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="font-weight-bold">Kinetic modelling of thermal decomposition in lithium-ion battery components during thermal runaway</h5>
-                                        <p class="card-text">H. Sadeghi, F. Restuccia.</p>
-                                        <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Journal of Power Sources" style="text-decoration: underline dotted; cursor: help;">JPS</span> 2025, 629, 236026.</p>
-                                    <div class="card-footer">
-									<a href="https://doi.org/10.1016/j.jpowsour.2024.236026" class="btn btn-primary btn-round card-link" target="_blank">
-                                            <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="pub-hf">
+      <div class="pub-hf-img"><img src="./assets/img/Sarmadian_2022_ATE.jpg" alt=""></div>
+      <div class="pub-hf-body">
+        <span class="pub-hf-title">Experimentally-verified thermal-electrochemical simulations of a cylindrical battery using physics-based, simplified and generalised lumped models</span>
+        <p class="pub-hf-authors">A. Sarmadian, W. Widanage, B.A. Shollock, F. Restuccia.</p>
+        <p class="pub-hf-venue">Journal of Energy Storage. 2023, 70, 107910.</p>
+        <a href="https://doi.org/10.1016/j.est.2023.107910" class="pub-link" target="_blank">Read Article</a>
+      </div>
+    </div>
 
-                        </div>
-                    </div>
-                </div>
+    <div class="pub-hf">
+      <div class="pub-hf-img"><img src="./assets/img/He_2022_ATE.jpg" alt=""></div>
+      <div class="pub-hf-body">
+        <span class="pub-hf-title">Experimental study of the effect of the state of charge on self-heating ignition of large ensembles of lithium-ion batteries in storage</span>
+        <p class="pub-hf-authors">X. He, Z. Hu, F. Restuccia, J. Fang, G. Rein.</p>
+        <p class="pub-hf-venue">Applied Thermal Engineering. 2022, 212, 118621.</p>
+        <a href="https://doi.org/10.1016/j.applthermaleng.2022.118621" class="pub-link" target="_blank">Read Article</a>
+      </div>
+    </div>
 
-            </div>
+    <div class="pub-hf">
+      <div class="pub-hf-img"><img src="./assets/img/Christensen_2021_ATE.jpg" alt=""></div>
+      <div class="pub-hf-body">
+        <span class="pub-hf-title">Thermal and mechanical abuse of electric vehicle pouch cell modules</span>
+        <p class="pub-hf-authors">P.A. Christensen, Z. Milojevic, M.S. Wise, M. Ahmeid, P.S. Attidekou, W. Mrozik, N.A. Dickmann, F. Restuccia, S.M. Lambert, P.K. Das.</p>
+        <p class="pub-hf-venue">Applied Thermal Engineering. 2021, 189, 116623.</p>
+        <a href="https://doi.org/10.1016/j.applthermaleng.2021.116623" class="pub-link" target="_blank">Read Article</a>
+      </div>
+    </div>
 
-		  
-<div class="row">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <div class="card card-blog">
-                        <div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-4">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/Sadeghi_2024_JPS.jpg">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="font-weight-bold">Pyrolysis-based modelling of 18650-type lithium-ion battery fires in thermal runaway with LCO, LFP and NMC cathodes</h5>
-                                        <p class="card-text">H. Sadeghi, F. Restuccia.</p>
-                                        <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Journal of Power Sources" style="text-decoration: underline dotted; cursor: help;">JPS</span> 2024, 603, 234480.</p>
-                                       <div class="card-footer">                                   
-									<a href="https://doi.org/10.1016/j.jpowsour.2024.234480" class="btn btn-primary btn-round card-link" target="_blank">
-                                            <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="pub-hf">
+      <div class="pub-hf-img"><img src="./assets/img/Bravo_2020_JES.jpg" alt=""></div>
+      <div class="pub-hf-body">
+        <span class="pub-hf-title">Meta-Review of Fire Safety of Lithium-Ion Batteries: Industry Challenges and Research Contributions</span>
+        <p class="pub-hf-authors">L. Bravo Diaz, X. He, Z. Hu, F. Restuccia, M. Marinescu, J. Varela Barreras, Y. Patel, G. Offer, G. Rein.</p>
+        <p class="pub-hf-venue">Journal of the Electrochemical Society. 2020, 167, 090559.</p>
+        <a href="https://doi.org/10.1149/1945-7111/aba8b9" class="pub-link" target="_blank">Read Article</a>
+      </div>
+    </div>
 
-                        </div>
-                    </div>
-                </div>
+    <div class="pub-hf">
+      <div class="pub-hf-img"><img src="./assets/img/Restuccia_2019_FUEL.jpg" alt=""></div>
+      <div class="pub-hf-body">
+        <span class="pub-hf-title">Quantifying self-heating ignition of biochar as a function of feedstock and the pyrolysis reactor temperature</span>
+        <p class="pub-hf-authors">F. Restuccia, O. Masek, R.M. Hadden, G. Rein.</p>
+        <p class="pub-hf-venue">Fuel. 2019, 236, 201–213.</p>
+        <a href="https://doi.org/10.1016/j.fuel.2018.08.141" class="pub-link" target="_blank">Read Article</a>
+      </div>
+    </div>
 
-            </div>
-	      
-<div class="row">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <div class="card card-blog">
-                        <div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-4">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/Sarmadian_2022_ATE.jpg">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="font-weight-bold">Experimentally-verified thermal-electrochemical simulations of a cylindrical battery using physics-based, simplified and generalised lumped models</h5>
-                                        <p class="card-text">A. Sarmadian, W. Widanage, B.A. Shollock, F. Restuccia.</p>
-                                        <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Journal of Energy Storage" style="text-decoration: underline dotted; cursor: help;">J. Energy Storage</span> 2023, 70, 107910.</p>
-                                     <div class="card-footer">
-									<a href="https://doi.org/10.1016/j.est.2023.107910" class="btn btn-primary btn-round card-link" target="_blank">
-                                            <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="pub-hf">
+      <div class="pub-hf-img"><img src="./assets/img/Restuccia_thesis.jpg" alt=""></div>
+      <div class="pub-hf-body">
+        <span class="pub-hf-title">Self-heating ignition of natural reactive porous media</span>
+        <p class="pub-hf-authors">F. Restuccia.</p>
+        <p class="pub-hf-venue">PhD Thesis, Imperial College. 2018.</p>
+        <a href="https://spiral.imperial.ac.uk/entities/publication/e6f01d8c-41be-412c-bda6-1e655ef73554" class="pub-link" target="_blank">Read Thesis</a>
+      </div>
+    </div>
 
-                        </div>
-                    </div>
-                </div>
+    <div class="pub-hf">
+      <div class="pub-hf-img"><img src="./assets/img/Restuccia_2017_FSJ.jpg" alt=""></div>
+      <div class="pub-hf-body">
+        <span class="pub-hf-title">Self-ignition of natural fuels: Can wildfires of carbon-rich soil start by self-heating?</span>
+        <p class="pub-hf-authors">F. Restuccia, X. Huang, G. Rein.</p>
+        <p class="pub-hf-venue">Fire Safety Journal. 2017, 91, 828–834.</p>
+        <a href="https://doi.org/10.1016/j.firesaf.2017.03.052" class="pub-link" target="_blank">Read Article</a>
+      </div>
+    </div>
 
-            </div>
+    <div style="margin-top: 2rem;">
+      <a href="publications.html" class="btn-hf btn-hf-outline"><i class="fa fa-file-text" style="margin-right:.4em;"></i>See All Publications</a>
+    </div>
 
-            <div class="row">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <div class="card card-blog">
-                        <div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-4">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/He_2022_ATE.jpg">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="font-weight-bold">Experimental study of the effect of the state of charge on self-heating ignition of large ensembles of lithium-ion batteries in storage</h5>
-                                        <p class="card-text">X. He, Z. Hu, F. Restuccia, J. Fang, G. Rein.</p>
-                                        <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Applied Thermal Engineering" style="text-decoration: underline dotted; cursor: help;">ATE</span> 2022, 212, 118621.</p>
-                                     <div class="card-footer">                                       
-									<a href="https://doi.org/10.1016/j.applthermaleng.2022.118621" class="btn btn-primary btn-round card-link" target="_blank">
-                                            <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+  </div>
+</section>
 
-                        </div>
-                    </div>
-                </div>
+<!-- People & Contact section -->
+<section class="hf-section" id="People">
+  <div class="wrap">
+    <div class="sh">
+      <p class="eye">The Lab</p>
+      <h2>People &amp; Contact</h2>
+      <div class="rule"></div>
+    </div>
 
-            </div>
+    <div class="people-grid">
 
-  <div class="row">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <div class="card card-blog">
-                        <div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-4">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/Christensen_2021_ATE.jpg">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="font-weight-bold">Thermal and mechanical abuse of electric vehicle pouch cell modules</h5>
-                                       <p class="card-text">P.A. Christensen, Z. Milojevic, M.S. Wise, M.Ahmeid, P.S. Attidekou, W.Mrozik, N.A. Dickmann, F. Restuccia, S.M. Lambert, P.K. Das.</p>
-                                        <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Applied Thermal Engineering" style="text-decoration: underline dotted; cursor: help;">ATE</span> 2021, 189, 116623.</p>
-                                     <div class="card-footer">                                  
-									<a href="https://doi.org/10.1016/j.applthermaleng.2021.116623" class="btn btn-primary btn-round card-link" target="_blank">
-                                            <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-  <div class="row">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <div class="card card-blog">
-                        <div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-4">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/Bravo_2020_JES.jpg">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="font-weight-bold">Meta-Review of Fire Safety of Lithium-Ion Batteries: Industry Challenges and Research Contributions</h5>
-                                        <p class="card-text">L. Bravo Diaz, X. He, Z. Hu, F. Restuccia, M. Marinescu, J. Varela Barreras, Y. Patel, G. Offer, G. Rein.</p>
-                                        <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Journal of the Electrochemical Society" style="text-decoration: underline dotted; cursor: help;">JES</span> 2020, 167, 090559.</p>
-                                    <div class="card-footer">                                       
-									<a href="https://doi.org/10.1149/1945-7111/aba8b9" class="btn btn-primary btn-round card-link" target="_blank">
-                                            <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-
-<div class="row">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <div class="card card-blog">
-                        <div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-4">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/Restuccia_2019_FUEL.jpg">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="font-weight-bold">Quantifying self-heating ignition of biochar as a function of feedstock and the pyrolysis reactor temperature</h5>
-                                        <p class="card-text">F. Restuccia, O. Masek, R.M. Hadden, G. Rein.</p>
-                                        <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Fuel" style="text-decoration: underline dotted; cursor: help;">FUEL</span> 2019, 236, 201-213.</p>
-                                    <div class="card-footer">                                        
-									<a href="https://doi.org/10.1016/j.fuel.2018.08.141" class="btn btn-primary btn-round card-link" target="_blank">
-                                            <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-<div class="row">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <div class="card card-blog">
-                        <div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-4">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/Restuccia_thesis.jpg">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="font-weight-bold">Self-heating ignition of natural reactive porous media</h5>
-                                        <p class="card-text">F. Restuccia.</p>
-                                       <p class="card-text" style="font-style: italic;">PhD Thesis, Imperial College, 2018.</p>
-                                     <div class="card-footer">                                     
-											<a href="https://spiral.imperial.ac.uk/entities/publication/e6f01d8c-41be-412c-bda6-1e655ef73554" class="btn btn-primary btn-round card-link" target="_blank">
-                                            <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Thesis
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-		  
-<div class="row">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <div class="card card-blog">
-                        <div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-4">
-                                <div class="card-image">
-                                    <img class="img" src="./assets/img/Restuccia_2017_FSJ.jpg">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="font-weight-bold">Self-ignition of natural fuels: Can wildfires of carbon-rich soil start by self-heating?</h5>
-                                        <p class="card-text">F. Restuccia, X. Huang, G. Rein.</p>
-                                       <p class="card-text" style="font-style: italic;"><span data-toggle="tooltip" data-placement="top" title="Fire Safety Journal" style="text-decoration: underline dotted; cursor: help;">FSJ</span> 2017, 91, 828-834.</p>
-                                    <div class="card-footer">    
-									<a href="https://doi.org/10.1016/j.firesaf.2017.03.052" class="btn btn-primary btn-round card-link" target="_blank">
-                                            <i class="nc-icon nc-paper" aria-hidden="true"></i> Read Article
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
- 
-
-  
+      <!-- PI -->
+      <div class="pc-home">
+        <div class="pc-home-img">
+          <img src="./assets/img/francesco_profile.jpg" alt="Dr Francesco Restuccia">
         </div>
-
-<div class="row">
-    <div class="col-md-10 ml-auto mr-auto text-center" style="margin-top: 1.5rem; margin-bottom: 1rem;">
-        <a href="publications.html" class="btn btn-danger btn-round">
-            <i class="fa fa-file-text"></i> See All Publications
-        </a>
-    </div>
-</div>
-	</div>
-   <!-- End of the Research and Publications section    -->
-
-    <!--  Lab members and contact section  -->
-     <div id="People" class="section section-dark text-center-tight">
-      <div class="container">
-  
-        <div class="row">
-          <div class="col-md-4  d-flex align-items-stretch">
-            <div class="card card-profile card-plain">
-              <div class="card-avatar">
-                  <img src="./assets/img/francesco_profile.jpg" alt="...">
-                </a>
-              </div>
-              <div class="card-body">
-                <a href="francesco-restuccia.html">
-                  <div class="author">
-                    <h4 class="card-title">Dr Francesco Restuccia</h4>
-                    <h6 class="card-category">Group Leader</h6>
-                  </div>
-                </a>
-                <p class="card-description text-center">
-                  Reader (UK Associate Professor), Department of Engineering, King's College London.<br>
-                </p>
-              </div>
-              <div class="card-footer text-center">
-                <a href="https://twitter.com/FranRestuccia" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
-                <a href="https://scholar.google.com/citations?user=-nE7xMYAAAAJ&hl=en" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-google"></i></a>
-                <a href="https://www.linkedin.com/in/francesco-restuccia-8b482972/" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-linkedin"></i></a>
-		<a href="mailto:francesco.restuccia@kcl.ac.uk" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-envelope"></i></a>
-              </div>
-  	 <div class="card-footer text-center">
-        <a href="francesco-restuccia.html" class="btn btn-outline-primary btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-   	 </div>
-          </div>
-
-                </div>
-                <div class="col-md-4 d-flex align-items-stretch">
-                    
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/KCL_logo.jpg" alt="...">
-    </div>
-    <div class="card-body">
-
-        <div class="author">
-            <h4 class="card-title">Where we are </h4>
-            <h6 class="card-category"> Department of Engineering, King's College London</h6>
+        <div class="pc-home-body">
+          <div class="pc-home-name">Dr Francesco Restuccia</div>
+          <span class="pc-home-role">Group Leader</span>
+          <p class="pc-home-desc">Reader (UK Associate Professor), Department of Engineering, King's College London.</p>
         </div>
-
-        <p class="card-description text-center">
-            The Department of Engineering is a growing department at KCL, an internationally renowned university delivering exceptional education and world-leading research based in London, United Kingdom.
-        </p>
-    </div>
-    <div class="card-footer text-center">
-        <!-- Button trigger modal -->
-        <a href="index.html" data-toggle="modal" data-target="#where_we_are" class="btn btn-outline-primary btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-    </div>
+        <div class="pc-home-foot">
+          <a href="https://twitter.com/FranRestuccia" class="pc-home-icon" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+          <a href="https://scholar.google.com/citations?user=-nE7xMYAAAAJ&hl=en" class="pc-home-icon" target="_blank" title="Google Scholar"><i class="fa fa-google"></i></a>
+          <a href="https://www.linkedin.com/in/francesco-restuccia-8b482972/" class="pc-home-icon" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+          <a href="mailto:francesco.restuccia@kcl.ac.uk" class="pc-home-icon" title="Email"><i class="fa fa-envelope"></i></a>
         </div>
-</div>
-                <div class="col-md-4 d-flex align-items-stretch">
-                    
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/experiment.jpg" alt="...">
-    </div>
-    <div class="card-body">
-
-        <div class="author">
-            <h4 class="card-title">Join us! </h4>
-            <h6 class="card-category"> Opportunities </h6>
+        <div style="padding: 0 1.25rem 1.25rem; text-align: center;">
+          <a href="francesco-restuccia.html" class="btn-hf btn-hf-outline">See profile</a>
         </div>
-
-        <p class="card-description text-center">
-            We welcome highly-motivated students and
-            postdoctoral researchers with an interest in thermal engineering or fire science to join our group.
-        </p>
-    </div>
-    <div class="card-footer text-center">
-        <a href="mailto:francesco.restuccia@kcl.ac.uk" class="btn btn-outline-primary btn-round card-link"> <i aria-hidden="true"></i> Email
-        </a>
-    </div>
-</div>
-
-    <!-- Modal -->
-    
-</div>
-
-                </div>
-            </div>
       </div>
 
-<!-- Page footer-->
+      <!-- Where we are -->
+      <div class="pc-home">
+        <div class="pc-home-img">
+          <img src="./assets/img/KCL_logo.jpg" alt="King's College London">
+        </div>
+        <div class="pc-home-body">
+          <div class="pc-home-name">Where we are</div>
+          <span class="pc-home-role">Department of Engineering, KCL</span>
+          <p class="pc-home-desc">The Department of Engineering is a growing department at KCL, an internationally renowned university delivering exceptional education and world-leading research based in London, United Kingdom.</p>
+        </div>
+        <div style="padding: 0 1.25rem 1.25rem; text-align: center;">
+          <a href="#" data-toggle="modal" data-target="#where_we_are" class="btn-hf btn-hf-outline">See more</a>
+        </div>
+      </div>
+
+      <!-- Join us -->
+      <div class="pc-home">
+        <div class="pc-home-img">
+          <img src="./assets/img/experiment.jpg" alt="Lab experiments">
+        </div>
+        <div class="pc-home-body">
+          <div class="pc-home-name">Join us!</div>
+          <span class="pc-home-role">Opportunities</span>
+          <p class="pc-home-desc">We welcome highly-motivated students and postdoctoral researchers with an interest in thermal engineering or fire science to join our group.</p>
+        </div>
+        <div style="padding: 0 1.25rem 1.25rem; text-align: center;">
+          <a href="mailto:francesco.restuccia@kcl.ac.uk" class="btn-hf btn-hf-accent">Email us</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
 <footer class="footer">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-md-6 text-center">
                 <span class="copyright">
-                © Dr Francesco Restuccia,
-                <script>
-                  document.write(new Date().getFullYear())
-                </script>
+                &copy; Dr Francesco Restuccia,
+                <script>document.write(new Date().getFullYear())</script>
                 </span>
             </div>
-
             <div class="col-md-6 text-center">
-                  <span class="copyright">
-                      Built using
-                      <a class="thick" href="https://demos.creative-tim.com/paper-kit-2/index.html" target="_blank">Paper-Kit2 </a>
-                  </span>
+                <span class="copyright">
+                    Built using <a href="https://demos.creative-tim.com/paper-kit-2/index.html" target="_blank">Paper-Kit2</a>
+                </span>
             </div>
         </div>
     </div>
 </footer>
 
-  <!--   Core JS Files   -->
-  <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="./assets/js/plugins/bootstrap-switch.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="./assets/js/plugins/moment.min.js"></script>
-  <script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
-  <!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
-  <script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
-  <!--  Google Maps Plugin    -->
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-</body>
-
-</html>
-
-<div class="modal fade" id="where_we_are" tabindex="-1" role="dialog" aria-labelledby="aboutRyanLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>King's College London</h5>
-
-                    King’s College London is an internationally renowned university delivering exceptional education and world-leading research. We are dedicated to driving positive and sustainable change in society and realising our vision of making the world a better place. 
-                    <br>
-                    <br>
-                    <div class="text-center">
-                        <a href="https://www.kcl.ac.uk/engineering" target="_blank" class="btn btn-sm btn-outline-primary btn-round card-link">
-                            Learn More about the Department of Engineering </a>
-                        <br>
-                        <br>
- 			<a href="https://www.kcl.ac.uk/about" target="_blank" class="btn btn-sm btn-outline-primary btn-round card-link">
-                            Learn more about KCL</a>
-                    </div>
+<!-- "Where we are" modal — moved inside body -->
+<div class="modal fade" id="where_we_are" tabindex="-1" role="dialog" aria-labelledby="whereWeAreLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>King's College London</h5>
+                <p>King's College London is an internationally renowned university delivering exceptional education and world-leading research. We are dedicated to driving positive and sustainable change in society and realising our vision of making the world a better place.</p>
+                <div class="text-center" style="margin-top: 1rem;">
+                    <a href="https://www.kcl.ac.uk/engineering" target="_blank" class="btn-hf btn-hf-outline" style="margin:.3rem;">Department of Engineering</a>
+                    <a href="https://www.kcl.ac.uk/about" target="_blank" class="btn-hf btn-hf-outline" style="margin:.3rem;">About KCL</a>
                 </div>
             </div>
-      </div>
-    </div></body></html>
+        </div>
+    </div>
+</div>
+
+<!--   Core JS Files — unchanged from original   -->
+<script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/bootstrap-switch.js"></script>
+<script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/moment.min.js"></script>
+<script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
+
+</body>
+</html>
