@@ -107,9 +107,12 @@
 
   /* ── section nav ─────────────────────────────────── */
   .sec-nav {
-    display: flex; flex-wrap: wrap; gap: .5rem;
     background: var(--alt); padding: 1.25rem 2rem; border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
+  }
+  .sec-nav-inner {
+    display: flex; flex-wrap: wrap; gap: .5rem;
+    max-width: 960px; margin: 0 auto;
   }
   .sec-nav a {
     font-family: var(--ff-b); font-size: .78rem; font-weight: 600;
@@ -259,10 +262,12 @@
 
 <!-- Section navigation -->
 <nav class="sec-nav" aria-label="Jump to section">
-  <a href="#Positions">Positions</a>
-  <a href="#Education">Education</a>
-  <a href="#Awards">Awards</a>
-  <a href="#Teaching">Teaching</a>
+  <div class="sec-nav-inner">
+    <a href="#Positions">Positions</a>
+    <a href="#Education">Education</a>
+    <a href="#Awards">Awards</a>
+    <a href="#Teaching">Teaching</a>
+  </div>
 </nav>
 
 <!-- CV content -->
