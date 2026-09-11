@@ -1,21 +1,13 @@
-
 <!--
 =========================================================
  Paper Kit 2 - v2.2.0
 =========================================================
-
  Product Page: https://www.creative-tim.com/product/paper-kit-2
  Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/paper-kit-2/blob/master/LICENSE.md)
-
- Coded by Creative Tim
-
+ Licensed under MIT
 =========================================================
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
-
+-->
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -23,22 +15,183 @@ The above copyright notice and this permission notice shall be included in all c
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img//biochar.jpg">
   <link rel="icon" type="image/png" href="./assets/img//biochar.jpg">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-   Heat and Fire Lab
-  </title>
+  <title>Heat and Fire Lab</title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
+  <!-- Fonts and icons -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,600" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Display fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
+
+  <style>
+  /* ── design tokens ───────────────────────────────── */
+  :root {
+    --bg:      #f4f1ec;
+    --surface: #ffffff;
+    --alt:     #e8e3db;
+    --text:    #1b1714;
+    --muted:   #6a5f53;
+    --border:  #d4cec6;
+    --accent:  #c04a1e;
+    --blue:    #2b4665;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+  }
+
+  body { background: var(--bg); font-family: var(--ff-b); }
+
+  /* ── layout ──────────────────────────────────────── */
+  .pi-section { padding: 5rem 2rem; background: var(--bg); }
+  .wrap       { max-width: 960px; margin: 0 auto; }
+
+  /* ── section header ──────────────────────────────── */
+  .sh { margin-bottom: 2rem; }
+  .sh .eye {
+    font-size: .72rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: .4rem;
+    font-family: var(--ff-b);
+  }
+  .sh h2 {
+    font-family: var(--ff-d);
+    font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 600;
+    color: var(--text); line-height: 1.2;
+  }
+  .sh .rule { width: 2.5rem; height: 2px; background: var(--accent); margin-top: .9rem; }
+
+  /* ── profile header ──────────────────────────────── */
+  .profile-header {
+    display: flex; gap: 2.5rem; align-items: flex-start;
+    padding: 5rem 2rem 3rem;
+  }
+  .profile-photo {
+    flex-shrink: 0; width: 200px; height: 200px; border-radius: 50%;
+    overflow: hidden; border: 3px solid var(--border);
+  }
+  .profile-photo img {
+    width: 100% !important; height: 100% !important;
+    object-fit: cover; max-width: none; display: block;
+  }
+  .profile-meta { flex: 1; min-width: 0; padding-top: .5rem; }
+  .profile-name {
+    font-family: var(--ff-d); font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700; color: var(--text); line-height: 1.1; margin-bottom: .3rem;
+  }
+  .profile-title {
+    font-family: var(--ff-b); font-size: .82rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: .9rem;
+  }
+  .profile-bio {
+    font-family: var(--ff-b); font-size: .95rem; line-height: 1.75;
+    color: var(--muted); margin-bottom: 1.25rem; max-width: 600px;
+  }
+  .social-icons { display: flex; gap: .5rem; flex-wrap: wrap; }
+  .soc-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2.1rem; height: 2.1rem; border-radius: 50%;
+    border: 1px solid var(--border); color: var(--muted); font-size: .9rem;
+    transition: border-color .15s, color .15s; text-decoration: none;
+  }
+  .soc-icon:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .profile-header { flex-direction: column; align-items: center; text-align: center; padding: 4rem 1.25rem 2rem; }
+    .social-icons { justify-content: center; }
+    .profile-bio { max-width: 100%; }
+  }
+
+  /* ── section nav ─────────────────────────────────── */
+  .sec-nav {
+    display: flex; flex-wrap: wrap; gap: .5rem;
+    background: var(--alt); padding: 1.25rem 2rem; border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .sec-nav a {
+    font-family: var(--ff-b); font-size: .78rem; font-weight: 600;
+    letter-spacing: .06em; text-transform: uppercase;
+    padding: .35em 1em; border-radius: 2px;
+    border: 1px solid var(--border); color: var(--muted);
+    background: var(--surface); text-decoration: none;
+    transition: border-color .15s, color .15s;
+  }
+  .sec-nav a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+  /* ── CV section ──────────────────────────────────── */
+  .cv-section { margin-bottom: 3rem; }
+  .cv-section h3 {
+    font-family: var(--ff-d); font-size: 1.5rem; font-weight: 600;
+    color: var(--text); margin-bottom: 1rem; padding-bottom: .6rem;
+    border-bottom: 2px solid var(--border);
+  }
+
+  /* ── ledger row (positions, education) ───────────── */
+  .cv-row {
+    display: flex; gap: 1rem; align-items: baseline;
+    padding: .8rem 1rem; background: var(--surface);
+    border: 1px solid var(--border); border-left: 3px solid var(--border);
+    border-radius: 0 3px 3px 0; margin-bottom: .55rem;
+    transition: border-left-color .15s;
+  }
+  .cv-row:hover { border-left-color: var(--accent); }
+  .cv-date {
+    flex-shrink: 0; font-size: .75rem; font-weight: 600;
+    color: var(--muted); font-family: var(--ff-b);
+    font-variant-numeric: tabular-nums; min-width: 6.5rem;
+  }
+  .cv-body { flex: 1; font-size: .9rem; color: var(--muted); line-height: 1.5; font-family: var(--ff-b); }
+  .cv-body strong { color: var(--text); font-weight: 600; }
+  .cv-body em { font-style: normal; color: var(--muted); }
+
+  /* ── award row ───────────────────────────────────── */
+  .aw-row {
+    display: flex; gap: 1rem; align-items: baseline;
+    padding: .8rem 1rem; background: var(--surface);
+    border: 1px solid var(--border); border-left: 3px solid var(--border);
+    border-radius: 0 3px 3px 0; margin-bottom: .55rem;
+    transition: border-left-color .15s;
+  }
+  .aw-row:hover { border-left-color: var(--accent); }
+  .aw-year {
+    flex-shrink: 0; font-size: .7rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; font-family: var(--ff-b);
+    background: rgba(192,74,30,.1); color: var(--accent);
+    padding: .2em .6em; border-radius: 2px; min-width: 3rem; text-align: center;
+  }
+  .aw-body { flex: 1; font-size: .9rem; color: var(--muted); line-height: 1.5; font-family: var(--ff-b); }
+  .aw-body strong { color: var(--text); font-weight: 600; }
+
+  /* ── teaching module button ──────────────────────── */
+  .module-btn {
+    display: flex; align-items: baseline; gap: .85rem;
+    padding: .8rem 1rem; background: var(--surface);
+    border: 1px solid var(--border); border-left: 3px solid var(--border);
+    border-radius: 0 3px 3px 0; margin-bottom: .55rem;
+    transition: border-left-color .15s, box-shadow .15s;
+    cursor: pointer; text-decoration: none; color: inherit;
+  }
+  .module-btn:hover { border-left-color: var(--blue); box-shadow: 0 2px 8px rgba(0,0,0,.07); text-decoration: none; color: inherit; }
+  .module-code {
+    flex-shrink: 0; font-size: .65rem; font-weight: 700; letter-spacing: .09em;
+    text-transform: uppercase; font-family: var(--ff-b);
+    background: rgba(43,70,101,.1); color: var(--blue);
+    padding: .2em .6em; border-radius: 2px;
+  }
+  .module-info { flex: 1; }
+  .module-name { font-family: var(--ff-b); font-size: .92rem; font-weight: 600; color: var(--text); }
+  .module-detail { font-size: .8rem; color: var(--muted); margin-top: .15rem; }
+  .module-chevron { flex-shrink: 0; color: var(--muted); font-size: .8rem; }
+
+  @media (max-width: 640px) { .pi-section { padding: 3.5rem 1.25rem; } }
+  </style>
 </head>
 
 <body class="profile-page sidebar-collapse">
- <!-- Navigation bar -->
+
+<!-- Navigation bar — unchanged from original -->
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
     <div class="container">
         <div class="navbar-translate">
@@ -56,10 +209,10 @@ The above copyright notice and this permission notice shall be included in all c
                 <li class="nav-item">
                     <a href="index.html#Research" class="nav-link"><i class="fa fa-flask"></i> Research</a>
                 </li>
- 		 <li class="nav-item">
+                <li class="nav-item">
                     <a href="people.html" class="nav-link"><i class="fa fa-users"></i> People</a>
                 </li>
-		<li class="nav-item">
+                <li class="nav-item">
                     <a href="news.html" class="nav-link"><i class="fa fa-newspaper-o"></i> News</a>
                 </li>
                 <li class="nav-item">
@@ -68,279 +221,300 @@ The above copyright notice and this permission notice shall be included in all c
                 <li class="nav-item">
                     <a href="francesco-restuccia.html" class="nav-link"><i class="fa fa-user"></i> PI: Francesco Restuccia</a>
                 </li>
-		 <li class="nav-item">
-            	<a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/FranRestuccia" target="_blank">
-              <i class="fa fa-twitter"></i>
-              <p class="d-lg-none">Twitter</p>
-            </a>
-          </li>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/FranRestuccia" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                        <p class="d-lg-none">Twitter</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-<!-- End Navigation-bar -->
-  <div class="page-header  page-header-xs" data-parallax="true" style="background-image: url('./assets/img/biochar2.jpg');">
-    <div class="filter"></div>
+<!-- End Navigation bar -->
+
+<!-- Page header — unchanged from original -->
+<div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/biochar2.jpg');">
+  <div class="filter"></div>
+</div>
+
+<!-- Profile header -->
+<div class="profile-header">
+  <div class="profile-photo">
+    <img src="./assets/img/francesco_profile.jpg" alt="Dr Francesco Restuccia">
   </div>
+  <div class="profile-meta">
+    <div class="profile-name">Dr Francesco Restuccia</div>
+    <div class="profile-title">Reader (Associate Professor) · King's College London</div>
+    <p class="profile-bio">Reader in the Department of Engineering at King's College London, where he leads research at the intersection of thermal sciences, energy, and fire safety. His research focuses on transient heat transfer in electrochemical energy storage, vehicle waste-heat recovery, wildfire dynamics, and safety challenges in low-carbon energy systems — particularly ignition mechanisms and fire spread. His work is supported by major funders, including the European Research Council (ERC Starting Grant, FIREMOD) and the Faraday Institution (SAFEBATT project). Beyond teaching and research, he serves as Deputy Head of Department of Engineering (Enterprise and Engagement Lead).</p>
+    <div class="social-icons">
+      <a href="https://twitter.com/FranRestuccia" class="soc-icon" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+      <a href="https://scholar.google.com/citations?user=-nE7xMYAAAAJ&hl=en" class="soc-icon" target="_blank" title="Google Scholar"><i class="fa fa-google"></i></a>
+      <a href="https://www.linkedin.com/in/francesco-restuccia-8b482972/" class="soc-icon" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+      <a href="mailto:francesco.restuccia@kcl.ac.uk" class="soc-icon" title="Email"><i class="fa fa-envelope"></i></a>
+    </div>
+  </div>
+</div>
 
-<div class="section profile-content text-center ">
-    <div class="container">
-        <h2 class="title">Dr Francesco Restuccia</h2>
-                    <div class="row justify-content-center">
-			    
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="francesco-restuccia.html#Positions" class="btn btn-secondary btn-round card-link">Positions</a>
-                        </div>
-			    
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="francesco-restuccia.html#Education" class="btn btn-secondary btn-round card-link">Education</a>
-                        </div>
+<!-- Section navigation -->
+<nav class="sec-nav" aria-label="Jump to section">
+  <a href="#Positions">Positions</a>
+  <a href="#Education">Education</a>
+  <a href="#Awards">Awards</a>
+  <a href="#Teaching">Teaching</a>
+</nav>
 
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="francesco-restuccia.html#Awards" class="btn btn-secondary btn-round card-link">Awards</a>
-                        </div>
-                        
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="francesco-restuccia.html#Teaching" class="btn btn-secondary btn-round card-link">Teaching</a>
-                        </div>
-                        
-                        <div class="col-xs-2" style="margin-bottom: 5px; margin-left: 2px; margin-right: 2px">
-                            <a href="francesco-restuccia.html#Bio" class="btn btn-secondary btn-round card-link">Bio</a>
-                        </div>
-                    </div>
- <div class="card-footer text-center">
-                <a href="https://twitter.com/FranRestuccia" class="btn btn-link btn-just-icon btn-black"><i class="fa fa-twitter"></i></a>
-                <a href="https://scholar.google.com/citations?user=-nE7xMYAAAAJ&hl=en" class="btn btn-link btn-just-icon btn-black"><i class="fa fa-google"></i></a>
-                <a href="https://www.linkedin.com/in/francesco-restuccia-8b482972/" class="btn btn-link btn-just-icon btn-black"><i class="fa fa-linkedin"></i></a>
- 	        <a href="mailto:francesco.restuccia@kcl.ac.uk" class="btn btn-link btn-just-icon btn-black"><i class="fa fa-envelope"></i></a>
-              </div>
-       
-	<div class="row">
-	<span class="anchor" id="Bio"></span>
-            <div class="card-body text-left">
-                <p> Dr Francesco Restuccia is a Reader (Associate Professor) in the Department of Engineering at King’s College London, where he leads research at the intersection of thermal sciences, energy, and fire safety. 
-					His research focuses on transient heat transfer in electrochemical energy storage, vehicle waste-heat recovery, wildfire dynamics, and safety challenges in low-carbon energy systems—particularly ignition mechanisms and fire spread. 
-					His work is supported by major funders, including the European Research Council (ERC Starting Grant, FIREMOD) and the Faraday Institution (SAFEBATT project). 
-					Beyond teaching and research, he serves as Deputy Head of Department of Engineering (Enterprise and Engagement Lead). </p>
-            </div>
-        </div>
+<!-- CV content -->
+<section class="pi-section">
+  <div class="wrap">
 
-	    
-     <div class="row">
-              <div class=>
-          <img src="./assets/img/francesco_profile.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive" style="width: 75%">
+    <!-- Positions -->
+    <div class="cv-section" id="Positions">
+      <h3>Positions</h3>
+
+      <div class="cv-row">
+        <span class="cv-date">2025 – Present</span>
+        <span class="cv-body"><strong>Reader (Associate Professor)</strong>, Department of Engineering, King's College London, UK.</span>
       </div>
-<div class="col-md-6 text-left">	   
-                <h3 class="card-title">Positions</h3>
-                <span class="anchor" id="Positions"></span>
-                <p class="card-text text-left">
-                    2025 – Present: <strong>Reader (Associate Professor)</strong>, Department of Engineering, King's College London, UK.
-                    <br>			
-                    2023 – 2025: <strong>Senior Lecturer (Associate Professor)</strong>, Department of Engineering, King's College London, UK.
-                    <br>
-		    2019 – 2023: <strong>Lecturer (Assistant Professor)</strong>, Department of Engineering, King's College London, UK.
-                    <br>
-		    2020 – Present: <strong>Honorary Lecturer</strong>, Department of Mechanical Engineering, Imperial College London, UK.
-                    <br>
-                    2017-2019: <strong>Research Associate</strong>, Department of Mechanical Engineering, Imperial College London, UK. 
-                </p>
-		
-		<h3 class="card-title ">Education</h3>
-	         <span class="anchor" id="Education"></span>
-                <p class="card-text">
-                    2014 – 2018: PhD in Mechanical Engineering. Imperial College London, UK.
-                    <br>
-		    2012 – 2014: MS in Mechanical Engineering. California Institute of Technology, USA.
-                    <br>
-                    2007 – 2012: MEng in Electrical and Mechanical Engineering. University of Edinburgh, UK.
-                </p>
-
-          <h3 class="card-title">Awards &amp; Recognitions</h3>
-		<span class="anchor" id="Awards"></span>
-                <p class="card-text text-left">
-		    2025: Winner of the <strong>King's Education Award - Innovation in Teaching</strong>. King's College London. <br>	
-                    2025: Winner of the <strong>NMES Faculty Education Award - Innovation in Education</strong>. King's College London. <br>	
-                    2023: Editors' Choice for <strong>Best Papers 2023</strong>. Fire Technology. <br>	
-                    2021: Shortlisted for <strong>KCL King’s Education Rising Star Award</strong> (Finalist). King's College London. <br>
-                    2020: COVID-19 response ICL Department of Mechanical Engineering Silver Award. Imperial College London. <br>
-                    2020: <strong>Jack Watts Award</strong> for Outstanding Reviewer. Fire Technology.  <br>
- 		    2019: Imperial College Union </strong>Student Academic Choice Awards (SACA) for Student Wellbeing Champion. Imperial College London.  <br>
-                    2019: <strong>Best Thesis Award</strong> "Excellence in Research", Honorable mention.  International Association for Fire Safety Science.<br>
-		    2016: <strong>Sugden Award</strong> for the most significant UK contribution to combustion research.  Combustion Institute, British Section.</p>
-                </p>
-
-          <h3 class="card-title">Teaching at KCL</h3>
-	        <span class="anchor" id="Teaching"></span>
-                <p class="card-text text-left">
-			<a href="francesco-restuccia.html#" data-toggle="modal" data-target="#aboutMEC" class="btn btn-secondary btn-round card-link">4CCE1MEC Mechanics for Engineers</a> <br>
-			<!--  <h5>4CCE1MEC Mechanics for Engineers</h5> --> 
-			<i>2020-Present.</i>  <br>
-			Module lead, sole instructor (100&percnt; of module). <br>
-			 <br>
-<!-- The aim of this module is to provide students with a fundamental knowledge of classical mechanics, including elements from both dynamics and statics. 
-			Topics will include: applications of Newton’s Laws, single particle & rigid body dynamics, impact, static equilibrium, vibration, shear and stress. 
-			Students will learn how to solve problems in mechanics, for example through drawing force diagrams and resolving forces, and applying Newton’s Laws. <br>
-			<br> --> 
-	
-			<a href="francesco-restuccia.html#" data-toggle="modal" data-target="#aboutPRJ" class="btn btn-secondary btn-round card-link">6CCE3EEP & 7CCE4EEP & 7CCEMPRJ  BEng/MEng/MSc Individual Project</a> <br>
-<!--  <h5>6CCE3EEP & 7CCE4EEP & 7CCEMPRJ  BEng/MEng/MSc Individual Project</h5> -->
-			<i>2020-Present</i> <br> 
-			Thesis supervisor & marker for final year projects and Master theses in the Engineering Department. <br>
-<br>	
-			<a href="francesco-restuccia.html#" data-toggle="modal" data-target="#aboutHMT" class="btn btn-secondary btn-round card-link">6CCE3HMT Heat and Mass Transfer</a> <br>
-			<!--  <h5>6CCE3HMT Heat and Mass Transfer</h5> --> 
-			<i>2023-2024.</i>  <br> 
-			Module instructor and developer, (50&percnt; of module and labs). <br>	
-<!-- This module builds up on the fundamental knowledge gained in 1st year Energy and 2nd year Thermofluids modules together with materials and develops an understanding of 
-			applied thermal sciences by exploring heat and mass transfer which is essential to improve energy efficiency of engineering solutions including 
-			thermal management of electronic systems and electronic doping. <br> --> 
-<br>
-		    <!--  <h5>4CCE1KEP Keys to Engineering</h5> --> 
-			<a href="francesco-restuccia.html#" data-toggle="modal" data-target="#aboutKEP" class="btn btn-secondary btn-round card-link">4CCE1KEP Keys to Engineering</a> <br>
-
-			<i>2020-2023.</i> <br> 
-			Academic lead of the open ended design project (75&percnt; of module), supervisor and marker (year dependent). <br>
-<!--  In this module students will take on projects designed to introduce both the practicalities of engineering and the project-based learning approach to study. 
-			Innovation in engineering is built on design. This module will guide students through the design thinking process, from understanding the user 
-			to defining the problem. Recognising that design is not just a technical, but also a creative, process, not just a skill, but also a discipline, 
-			in this module, students will both study design tools and explore their own creativity and learn how to work in a team. <br> -->
-<br>
-
-		<a href="francesco-restuccia.html#" data-toggle="modal" data-target="#aboutPRJ" class="btn btn-secondary btn-round card-link">7CCP4000 Project in Physics</a> <br>
- <!--  <h5>7CCP4000 Project in Physics</h5> -->
-			<i>2020-2021.</i> <br> 
-			Thesis supervisor & marker for 2 Master theses in Physics. <br>
-<br>			
-	<a href="francesco-restuccia.html#" data-toggle="modal" data-target="#aboutCM2" class="btn btn-secondary btn-round card-link">4CCS1CM2 Computational and Mathematical Thinking for Engineers II</a> <br>
-
-		<!-- <h5>4CCS1CM2  Computational and Mathematical Thinking for Engineers II</h5> -->
-			<i>2019-2020.</i> <br> 
-			Academic tutor. <br>
-<!--  The Computational and Mathematical Thinking in Engineering module will provide students with core background and fundamental knowledge of mathematical and computational tools 
-			that will be used for the rest of the BEng. It will take a teaching approach in which new mathematical concepts are introduced and then demonstrated 
-			through exercises that motivate learning new programming concepts. The emphasis is very much on hands-on learning. <br> -->
-
-            </div>
-        </div>
+      <div class="cv-row">
+        <span class="cv-date">2023 – 2025</span>
+        <span class="cv-body"><strong>Senior Lecturer (Associate Professor)</strong>, Department of Engineering, King's College London, UK.</span>
+      </div>
+      <div class="cv-row">
+        <span class="cv-date">2019 – 2023</span>
+        <span class="cv-body"><strong>Lecturer (Assistant Professor)</strong>, Department of Engineering, King's College London, UK.</span>
+      </div>
+      <div class="cv-row">
+        <span class="cv-date">2020 – Present</span>
+        <span class="cv-body"><strong>Honorary Lecturer</strong>, Department of Mechanical Engineering, Imperial College London, UK.</span>
+      </div>
+      <div class="cv-row">
+        <span class="cv-date">2017 – 2019</span>
+        <span class="cv-body"><strong>Research Associate</strong>, Department of Mechanical Engineering, Imperial College London, UK.</span>
+      </div>
     </div>
 
+    <!-- Education -->
+    <div class="cv-section" id="Education">
+      <h3>Education</h3>
 
-<!-- Page footer-->
+      <div class="cv-row">
+        <span class="cv-date">2014 – 2018</span>
+        <span class="cv-body"><strong>PhD in Mechanical Engineering</strong> · Imperial College London, UK.</span>
+      </div>
+      <div class="cv-row">
+        <span class="cv-date">2012 – 2014</span>
+        <span class="cv-body"><strong>MS in Mechanical Engineering</strong> · California Institute of Technology, USA.</span>
+      </div>
+      <div class="cv-row">
+        <span class="cv-date">2007 – 2012</span>
+        <span class="cv-body"><strong>MEng in Electrical and Mechanical Engineering</strong> · University of Edinburgh, UK.</span>
+      </div>
+    </div>
+
+    <!-- Awards -->
+    <div class="cv-section" id="Awards">
+      <h3>Awards &amp; Recognitions</h3>
+
+      <div class="aw-row">
+        <span class="aw-year">2025</span>
+        <span class="aw-body">Winner of the <strong>King's Education Award — Innovation in Teaching</strong>. King's College London.</span>
+      </div>
+      <div class="aw-row">
+        <span class="aw-year">2025</span>
+        <span class="aw-body">Winner of the <strong>NMES Faculty Education Award — Innovation in Education</strong>. King's College London.</span>
+      </div>
+      <div class="aw-row">
+        <span class="aw-year">2023</span>
+        <span class="aw-body">Editors' Choice for <strong>Best Papers 2023</strong>. Fire Technology.</span>
+      </div>
+      <div class="aw-row">
+        <span class="aw-year">2021</span>
+        <span class="aw-body">Shortlisted for <strong>KCL King's Education Rising Star Award</strong> (Finalist). King's College London.</span>
+      </div>
+      <div class="aw-row">
+        <span class="aw-year">2020</span>
+        <span class="aw-body">COVID-19 Response ICL Department of Mechanical Engineering Silver Award. Imperial College London.</span>
+      </div>
+      <div class="aw-row">
+        <span class="aw-year">2020</span>
+        <span class="aw-body"><strong>Jack Watts Award</strong> for Outstanding Reviewer. Fire Technology.</span>
+      </div>
+      <div class="aw-row">
+        <span class="aw-year">2019</span>
+        <span class="aw-body">Imperial College Union <strong>Student Academic Choice Awards (SACA)</strong> for Student Wellbeing Champion. Imperial College London.</span>
+      </div>
+      <div class="aw-row">
+        <span class="aw-year">2019</span>
+        <span class="aw-body"><strong>Best Thesis Award</strong> "Excellence in Research", Honourable mention. International Association for Fire Safety Science.</span>
+      </div>
+      <div class="aw-row">
+        <span class="aw-year">2016</span>
+        <span class="aw-body"><strong>Sugden Award</strong> for the most significant UK contribution to combustion research. Combustion Institute, British Section.</span>
+      </div>
+    </div>
+
+    <!-- Teaching -->
+    <div class="cv-section" id="Teaching">
+      <h3>Teaching at KCL</h3>
+
+      <a href="#" class="module-btn" data-toggle="modal" data-target="#aboutMEC">
+        <span class="module-code">4CCE1MEC</span>
+        <span class="module-info">
+          <div class="module-name">Mechanics for Engineers</div>
+          <div class="module-detail">2020 – Present &nbsp;·&nbsp; Module lead, sole instructor (100% of module)</div>
+        </span>
+        <i class="fa fa-chevron-right module-chevron"></i>
+      </a>
+
+      <a href="#" class="module-btn" data-toggle="modal" data-target="#aboutPRJ">
+        <span class="module-code">6CCE3EEP / 7CCE4EEP / 7CCEMPRJ</span>
+        <span class="module-info">
+          <div class="module-name">BEng / MEng / MSc Individual Project</div>
+          <div class="module-detail">2020 – Present &nbsp;·&nbsp; Thesis supervisor &amp; marker</div>
+        </span>
+        <i class="fa fa-chevron-right module-chevron"></i>
+      </a>
+
+      <a href="#" class="module-btn" data-toggle="modal" data-target="#aboutHMT">
+        <span class="module-code">6CCE3HMT</span>
+        <span class="module-info">
+          <div class="module-name">Heat and Mass Transfer</div>
+          <div class="module-detail">2023 – 2024 &nbsp;·&nbsp; Module instructor and developer (50% of module and labs)</div>
+        </span>
+        <i class="fa fa-chevron-right module-chevron"></i>
+      </a>
+
+      <a href="#" class="module-btn" data-toggle="modal" data-target="#aboutKEP">
+        <span class="module-code">4CCE1KEP</span>
+        <span class="module-info">
+          <div class="module-name">Keys to Engineering</div>
+          <div class="module-detail">2020 – 2023 &nbsp;·&nbsp; Academic lead of the open-ended design project (75% of module)</div>
+        </span>
+        <i class="fa fa-chevron-right module-chevron"></i>
+      </a>
+
+      <a href="#" class="module-btn" data-toggle="modal" data-target="#aboutPRJ">
+        <span class="module-code">7CCP4000</span>
+        <span class="module-info">
+          <div class="module-name">Project in Physics</div>
+          <div class="module-detail">2020 – 2021 &nbsp;·&nbsp; Thesis supervisor &amp; marker for 2 Master theses in Physics</div>
+        </span>
+        <i class="fa fa-chevron-right module-chevron"></i>
+      </a>
+
+      <a href="#" class="module-btn" data-toggle="modal" data-target="#aboutCM2">
+        <span class="module-code">4CCS1CM2</span>
+        <span class="module-info">
+          <div class="module-name">Computational and Mathematical Thinking for Engineers II</div>
+          <div class="module-detail">2019 – 2020 &nbsp;·&nbsp; Academic tutor</div>
+        </span>
+        <i class="fa fa-chevron-right module-chevron"></i>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
 <footer class="footer">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-md-6 text-center">
                 <span class="copyright">
-                © Dr Francesco Restuccia,
-                <script>
-                  document.write(new Date().getFullYear())
-                </script>
+                &copy; Dr Francesco Restuccia,
+                <script>document.write(new Date().getFullYear())</script>
                 </span>
             </div>
-
             <div class="col-md-6 text-center">
-                  <span class="copyright">
-                      Built using
-                      <a class="thick" href="https://demos.creative-tim.com/paper-kit-2/index.html" target="_blank">Paper-Kit2 </a>
-                  </span>
+                <span class="copyright">
+                    Built using <a href="https://demos.creative-tim.com/paper-kit-2/index.html" target="_blank">Paper-Kit2</a>
+                </span>
             </div>
         </div>
     </div>
 </footer>
 
-  <!--   Core JS Files   -->
-  <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="./assets/js/plugins/bootstrap-switch.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="./assets/js/plugins/moment.min.js"></script>
-  <script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
-  <!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
-  <script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
-  <!--  Google Maps Plugin    -->
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-</body>
-
-</html>
-
+<!-- Modals — moved inside body and properly closed -->
 <div class="modal fade" id="aboutMEC" tabindex="-1" role="dialog" aria-labelledby="aboutMECLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Mechanics for Engineers</h5>
-		The aim of this module is to provide students with a fundamental knowledge of classical mechanics, including elements from both dynamics and statics. 
-			Topics will include: applications of Newton’s Laws, single particle & rigid body dynamics, impact, static equilibrium, vibration, shear and stress. 
-			Students will learn how to solve problems in mechanics, for example through drawing force diagrams and resolving forces, and applying Newton’s Laws. 
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h5>Mechanics for Engineers</h5>
+        <p>The aim of this module is to provide students with a fundamental knowledge of classical mechanics, including elements from both dynamics and statics. Topics will include: applications of Newton's Laws, single particle &amp; rigid body dynamics, impact, static equilibrium, vibration, shear and stress. Students will learn how to solve problems in mechanics, for example through drawing force diagrams and resolving forces, and applying Newton's Laws.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
- <div class="modal fade" id="aboutHMT" tabindex="-1" role="dialog" aria-labelledby="aboutHMTLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Heat and Mass Transfer</h5>
-		This module builds up on the fundamental knowledge gained in 1st year Energy and 2nd year Thermofluids modules together with materials and develops an understanding of 
-			applied thermal sciences by exploring heat and mass transfer which is essential to improve energy efficiency of engineering solutions including 
-			thermal management of electronic systems and electronic doping.
+<div class="modal fade" id="aboutHMT" tabindex="-1" role="dialog" aria-labelledby="aboutHMTLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h5>Heat and Mass Transfer</h5>
+        <p>This module builds up on the fundamental knowledge gained in 1st year Energy and 2nd year Thermofluids modules together with materials and develops an understanding of applied thermal sciences by exploring heat and mass transfer which is essential to improve energy efficiency of engineering solutions including thermal management of electronic systems and electronic doping.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="modal fade" id="aboutKEP" tabindex="-1" role="dialog" aria-labelledby="aboutKEPLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Keys to Engineering</h5>
-		In this module students will take on projects designed to introduce both the practicalities of engineering and the project-based learning approach to study. 
-			Innovation in engineering is built on design. This module will guide students through the design thinking process, from understanding the user 
-			to defining the problem. Recognising that design is not just a technical, but also a creative, process, not just a skill, but also a discipline, 
-			in this module, students will both study design tools and explore their own creativity and learn how to work in a team.
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h5>Keys to Engineering</h5>
+        <p>In this module students will take on projects designed to introduce both the practicalities of engineering and the project-based learning approach to study. Innovation in engineering is built on design. This module will guide students through the design thinking process, from understanding the user to defining the problem. Recognising that design is not just a technical, but also a creative, process, not just a skill, but also a discipline, in this module, students will both study design tools and explore their own creativity and learn how to work in a team.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
-		    
 <div class="modal fade" id="aboutCM2" tabindex="-1" role="dialog" aria-labelledby="aboutCM2Label" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Computational and Mathematical Thinking for Engineers</h5>
-		The Computational and Mathematical Thinking in Engineering module will provide students with core background and fundamental knowledge of mathematical and computational tools 
-			that will be used for the rest of the BEng. It will take a teaching approach in which new mathematical concepts are introduced and then demonstrated 
-			through exercises that motivate learning new programming concepts. The emphasis is very much on hands-on learning.
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h5>Computational and Mathematical Thinking for Engineers</h5>
+        <p>The Computational and Mathematical Thinking in Engineering module will provide students with core background and fundamental knowledge of mathematical and computational tools that will be used for the rest of the BEng. It will take a teaching approach in which new mathematical concepts are introduced and then demonstrated through exercises that motivate learning new programming concepts. The emphasis is very much on hands-on learning.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
-		    <div class="modal fade" id="aboutPRJ" tabindex="-1" role="dialog" aria-labelledby="aboutPRJLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Individual Projects</h5>
-		The individual project is a chance for students to bring together many of the concepts that they've learnt throughout the course and to carry out their own research into a topic. 
-			The projects will vary in nature and might incorporate design, modelling, computation or experimentation. 
-			All projects though should give the student the opportunity to achieve the learning outcomes whilst engaging with some of the world class research being done at King's. Some of my recently offered final year projects can be found 
-			<a class="thick" href="https://heatandfire.github.io/UG_projects.html" target="_blank">here </a>.
+<div class="modal fade" id="aboutPRJ" tabindex="-1" role="dialog" aria-labelledby="aboutPRJLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h5>Individual Projects</h5>
+        <p>The individual project is a chance for students to bring together many of the concepts that they've learnt throughout the course and to carry out their own research into a topic. The projects will vary in nature and might incorporate design, modelling, computation or experimentation. All projects though should give the student the opportunity to achieve the learning outcomes whilst engaging with some of the world class research being done at King's. Some recently offered final year projects can be found <a href="https://heatandfire.github.io/UG_projects.html" target="_blank">here</a>.</p>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!--   Core JS Files   -->
+<script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/bootstrap-switch.js"></script>
+<script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/moment.min.js"></script>
+<script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
+
+</body>
+</html>
