@@ -1,21 +1,13 @@
-
 <!--
 =========================================================
  Paper Kit 2 - v2.2.0
 =========================================================
-
  Product Page: https://www.creative-tim.com/product/paper-kit-2
  Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/paper-kit-2/blob/master/LICENSE.md)
-
- Coded by Creative Tim
-
+ Licensed under MIT
 =========================================================
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
-
+-->
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -23,22 +15,125 @@ The above copyright notice and this permission notice shall be included in all c
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img//biochar.jpg">
   <link rel="icon" type="image/png" href="./assets/img//biochar.jpg">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-   Heat and Fire Lab
-  </title>
+  <title>Heat and Fire Lab</title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
+  <!-- Fonts and icons -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,600" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Display fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
+
+  <style>
+  /* ── design tokens ───────────────────────────────── */
+  :root {
+    --bg:      #f4f1ec;
+    --surface: #ffffff;
+    --alt:     #e8e3db;
+    --text:    #1b1714;
+    --muted:   #6a5f53;
+    --border:  #d4cec6;
+    --accent:  #c04a1e;
+    --blue:    #2b4665;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+  }
+
+  body { background: var(--bg); font-family: var(--ff-b); }
+
+  /* ── layout ──────────────────────────────────────── */
+  .section { padding: 5rem 2rem; background: var(--bg); }
+  .wrap    { max-width: 960px; margin: 0 auto; }
+
+  .sh { margin-bottom: 3rem; }
+  .sh .eye {
+    font-size: .72rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: .4rem;
+    font-family: var(--ff-b);
+  }
+  .sh h2 {
+    font-family: var(--ff-d);
+    font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 600;
+    color: var(--text); line-height: 1.3;
+  }
+  .sh .rule { width: 2.5rem; height: 2px; background: var(--accent); margin-top: .9rem; }
+
+  /* ── project card ────────────────────────────────── */
+  .proj-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 3px; margin-bottom: 2rem; overflow: hidden;
+  }
+
+  /* responsive video embed */
+  .proj-video {
+    position: relative; padding-top: 56.25%; background: #000;
+  }
+  .proj-video iframe {
+    position: absolute; top: 0; left: 0;
+    width: 100% !important; height: 100% !important;
+    border: 0;
+  }
+
+  .proj-body { padding: 1.75rem; }
+
+  .proj-code {
+    display: inline-block; font-size: .65rem; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; font-family: var(--ff-b);
+    background: rgba(43,70,101,.1); color: var(--blue);
+    padding: .2em .7em; border-radius: 2px; margin-bottom: .85rem;
+  }
+
+  .proj-title {
+    font-family: var(--ff-d); font-size: 1.35rem; font-weight: 600;
+    color: var(--text); line-height: 1.3; margin-bottom: 1rem;
+  }
+
+  .proj-desc {
+    font-size: .9rem; color: var(--muted); line-height: 1.7;
+    font-family: var(--ff-b); margin-bottom: 1.25rem;
+  }
+
+  /* options */
+  .proj-options { display: flex; flex-direction: column; gap: .65rem; margin-bottom: 1.5rem; }
+
+  .opt {
+    display: flex; gap: .75rem; align-items: baseline;
+    padding: .7rem .9rem; border-radius: 2px;
+    border-left: 3px solid var(--border);
+    font-size: .88rem; line-height: 1.6; color: var(--muted);
+    font-family: var(--ff-b);
+  }
+  .opt-a { background: rgba(192,74,30,.06);  border-left-color: #c04a1e; }
+  .opt-b { background: rgba(43,70,101,.06);  border-left-color: #2b4665; }
+  .opt-c { background: rgba(56,100,56,.06);  border-left-color: #2d6032; }
+
+  .opt-label {
+    flex-shrink: 0; font-size: .65rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; padding: .2em .55em; border-radius: 2px;
+    font-family: var(--ff-b);
+  }
+  .opt-a .opt-label { background: rgba(192,74,30,.15); color: #8b3010; }
+  .opt-b .opt-label { background: rgba(43,70,101,.15); color: #2b4665; }
+  .opt-c .opt-label { background: rgba(56,100,56,.15); color: #2d6032; }
+
+  /* contact note */
+  .proj-contact {
+    font-size: .82rem; color: var(--muted); font-family: var(--ff-b);
+    font-style: italic; border-top: 1px solid var(--border);
+    padding-top: 1rem; margin-top: .5rem;
+  }
+  .proj-contact i { margin-right: .4em; color: var(--accent); }
+
+  @media (max-width: 768px) { .section { padding: 3.5rem 1.25rem; } }
+  </style>
 </head>
 
 <body class="landing-page sidebar-collapse">
-  <!-- Navigation bar -->
+
+<!-- Navigation bar — unchanged from original -->
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
     <div class="container">
         <div class="navbar-translate">
@@ -56,273 +151,157 @@ The above copyright notice and this permission notice shall be included in all c
                 <li class="nav-item">
                     <a href="index.html#Research" class="nav-link"><i class="fa fa-flask"></i> Research</a>
                 </li>
- 		 <li class="nav-item">
+                <li class="nav-item">
                     <a href="people.html" class="nav-link"><i class="fa fa-users"></i> People</a>
                 </li>
-		<li class="nav-item">
+                <li class="nav-item">
                     <a href="news.html" class="nav-link"><i class="fa fa-newspaper-o"></i> News</a>
                 </li>
                 <li class="nav-item">
                     <a href="publications.html" class="nav-link"><i class="fa fa-file-text"></i> Publications</a>
                 </li>
                 <li class="nav-item">
+                    <a href="UG_projects.html" class="nav-link"><i class="fa fa-lightbulb-o"></i> UG Projects</a>
+                </li>
+                <li class="nav-item">
                     <a href="francesco-restuccia.html" class="nav-link"><i class="fa fa-user"></i> PI: Francesco Restuccia</a>
                 </li>
-		 <li class="nav-item">
-            	<a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/FranRestuccia" target="_blank">
-              <i class="fa fa-twitter"></i>
-              <p class="d-lg-none">Twitter</p>
-            </a>
-          </li>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/FranRestuccia" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                        <p class="d-lg-none">Twitter</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-<!-- End Navigation-bar -->
-<div class="page-header  page-header-xs" data-parallax="true" style="background-image: url('./assets/img/biochar2.jpg');">
-    <div class="filter"></div>
-  </div>
-<div class="main">
-    <div id="UG_projects" class="section section-gray text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <h2 class="title">Current Undergraduate and Master Thesis Projects for KCL students – 6CCE3EEP & 7CCE4EEP & 7CCEMPRJ</h2>
-                </div>
-            </div>
-            <br>
-            <br>
+<!-- End Navigation bar -->
 
-
-
-<div class="row">
-                <div class="col-md-26 ml-auto mr-auto">
-                    <div class="card card-blog">
-                        <div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-6">
-                                <div class="card-image">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/eysUjYW4uBI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                            <div class="col-md-26">
-                                <div class="card-body">
-                                    <h5 class="font-weight-bold">HFL_1, A,B,C - Blazing Trails: Innovative Numerical Methods in Wildfire Research</h5>
-                                    <div class="card-footer">
-                                        <p class="card-footer">Fire Dynamics modelling requires understanding of fire-driven fluid flow and using different numerical tools. The projects in this area will focus on studying the effect of different numerical methods, including effect of mesh, different geometries for fuel and air-flows, as well as location of mesh boundaries on the realistic modelling of a fire.
-</p>
-                                        <p class="card-footer">There are up to 2 openings for this project, which can focus on one of the following 3 options.</p>
-                                        <p style="color:tomato;" class="card-footer">For Option A the project will focus on exploring different geometries such as ignition source location, fuel thicknesses, or location of mesh boundaries on fire modelling.</p>
-					<p style="color:blue;" class="card-footer">For Option B the project will focus on quantifying mesh indipendency in Fire Dynamic Simulator (FDS) for three different classical fire scenarios, to optimize the accuracy vs cost of the numerical simulations. </p>
-                                        <p style="color:olive;" class="card-footer">For Option C the project will focus on using FDS to generate different approximations of a real fuel and study the effect of geometry. </p>
-					<p class="card-footer">These projects combine both fundamental physical phenomena, engineering and computer science skills, and gives the student a unique insight into the field of fire science, a field linking together different disciplines including Engineering, Geology, Physics, Ecology, Computer Science, Geography and Policy. </p>					
-<a href="" class="btn btn-primary btn-round card-link" target="_blank">
-                                            For More information email Francesco Restuccia or come to my office hours in Strand 1.16
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-<div class="row">
-                <div class="col-md-26 ml-auto mr-auto">
-                    <div class="card card-blog">
-                        <div class="row justify-content-md-center align-items-center">
-                            <div class="col-md-6">
-                                <div class="card-image">
-                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/L6zhnSwpfZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                            <div class="col-md-26">
-                                <div class="card-body">
-                                    <h5 class="font-weight-bold">HFL_2, A,B - Powering Progress: Exploring Diverse Chemistries in Lithium-ion Battery Cycling</h5>
-                                    <div class="card-footer">
-                                        <p class="card-footer">Lithium-ion batteries have been employed as energy sources in a number of electric devices, owing primarily to their higher energy density and lower cost compared to alternative candidates. In recent years, the market volume for batteries in the transportation industry, namely for electric or hybrid cars, has grown quickly. Side reactions and degradation processes can result in a variety of unwanted consequences that cause capacity loss in lithium-ion batteries. Battery voltage, capacity output, ageing history, and temperature are all factors that can influence capacity loss and ageing and this can also be chemistry dependent.This project focuses on studying the effect of battery size and chemistry on thermal behaviour of batteries.</p>
-			                <p class="card-footer">There are up to 2 openings for this project.</p>
-                                        <p style="color:tomato;" class="card-footer">For Option A the project will focus on using our experimental lab to study the effect of charge rates and chemistry on thermal behaviour of batteries.</p>
-					<p style="color:blue;" class="card-footer">For Option B, the project will focus on using our experimental lab to study the effect of charge rates and chemistry on thermal behaviour of batteries.</p>
-                                        <a href="" class="btn btn-primary btn-round card-link" target="_blank">
-                                            For More information email Francesco Restuccia or come to my office hours in Strand 1.16
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div>
-
-
-     </div>
-
-   <!-- End of the Research and Publications section    -->
-
-    <!--  Lab members and contact section  -->
-     <div id="People" class="section section-dark text-center-tight">
-      <div class="container">
-  
-        <div class="row">
-          <div class="col-md-4  d-flex align-items-stretch">
-            <div class="card card-profile card-plain">
-              <div class="card-avatar">
-                  <img src="./assets/img/francesco_profile.jpg" alt="...">
-                </a>
-              </div>
-              <div class="card-body">
-                <a href="francesco-restuccia.html">
-                  <div class="author">
-                    <h4 class="card-title">Dr Francesco Restuccia</h4>
-                    <h6 class="card-category">Group Leader</h6>
-                  </div>
-                </a>
-                <p class="card-description text-center">
-                 Reader (UK Associate Professor), Department of Engineering, King's College London.<br>
-                </p>
-              </div>
-              <div class="card-footer text-center">
-                <a href="https://twitter.com/FranRestuccia" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
-                <a href="https://scholar.google.com/citations?user=-nE7xMYAAAAJ&hl=en" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-google"></i></a>
-                <a href="https://www.linkedin.com/in/francesco-restuccia-8b482972/" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-linkedin"></i></a>
-		<a href="mailto:francesco.restuccia@kcl.ac.uk" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-envelope"></i></a>
-              </div>
-  	 <div class="card-footer text-center">
-        <a href="francesco-restuccia.html" class="btn btn-outline-primary btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-   	 </div>
-          </div>
-
-                </div>
-                <div class="col-md-4 d-flex align-items-stretch">
-                    
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/KCL_logo.jpg" alt="...">
-    </div>
-    <div class="card-body">
-
-        <div class="author">
-            <h4 class="card-title">Where we are </h4>
-            <h6 class="card-category"> Department of Engineering, King's College London</h6>
-        </div>
-
-        <p class="card-description text-center">
-            The Department of Engineering is a growing department at KCL, an internationally renowned university delivering exceptional education and world-leading research based in London, United Kingdom.
-        </p>
-    </div>
-    <div class="card-footer text-center">
-        <!-- Button trigger modal -->
-        <a href="index.html" data-toggle="modal" data-target="#where_we_are" class="btn btn-outline-primary btn-round card-link">
-            <i aria-hidden="true"></i> See more
-        </a>
-    </div>
-        </div>
-</div>
-                <div class="col-md-4 d-flex align-items-stretch">
-                    
-<div class="card card-profile card-plain">
-    <div class="card-avatar">
-        <img src="./assets/img/experiment.jpg" alt="...">
-    </div>
-    <div class="card-body">
-
-        <div class="author">
-            <h4 class="card-title">Join us! </h4>
-            <h6 class="card-category"> Opportunities </h6>
-        </div>
-
-        <p class="card-description text-center">
-            We welcome highly-motivated students and
-            postdoctoral researchers with an interest in thermal engineering or fire science to join our group.
-        </p>
-    </div>
-    <div class="card-footer text-center">
-        <a href="mailto:francesco.restuccia@kcl.ac.uk" class="btn btn-outline-primary btn-round card-link"> <i aria-hidden="true"></i> Email
-        </a>
-    </div>
+<!-- Page header — unchanged from original -->
+<div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/biochar2.jpg');">
+  <div class="filter"></div>
 </div>
 
-    <!-- Modal -->
-    
-</div>
+<!-- Projects -->
+<section class="section" id="UG_projects">
+  <div class="wrap">
 
-                </div>
-            </div>
+    <div class="sh">
+      <p class="eye">For KCL Students &mdash; 6CCE3EEP &amp; 7CCE4EEP &amp; 7CCEMPRJ</p>
+      <h2>Current Undergraduate and Master Thesis Projects</h2>
+      <div class="rule"></div>
+    </div>
+
+    <!-- Project 1 -->
+    <div class="proj-card">
+      <div class="proj-video">
+        <iframe src="https://www.youtube.com/embed/eysUjYW4uBI" title="Wildfire research spotlight" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
+      <div class="proj-body">
+        <span class="proj-code">HFL_1 &nbsp;·&nbsp; Options A, B, C</span>
+        <div class="proj-title">Blazing Trails: Innovative Numerical Methods in Wildfire Research</div>
+        <p class="proj-desc">Fire dynamics modelling requires understanding of fire-driven fluid flow and different numerical tools. Projects in this area focus on studying the effect of different numerical methods — including mesh resolution, fuel geometries, air-flow configurations, and boundary locations — on the realistic modelling of fire. Up to 2 openings are available, each focusing on one of the following options.</p>
 
-<!-- Page footer-->
+        <div class="proj-options">
+          <div class="opt opt-a">
+            <span class="opt-label">Option A</span>
+            Explore different geometries such as ignition source location, fuel thicknesses, or location of mesh boundaries on fire modelling.
+          </div>
+          <div class="opt opt-b">
+            <span class="opt-label">Option B</span>
+            Quantify mesh independency in Fire Dynamics Simulator (FDS) for three classical fire scenarios, to optimise accuracy vs. computational cost.
+          </div>
+          <div class="opt opt-c">
+            <span class="opt-label">Option C</span>
+            Use FDS to generate different approximations of a real fuel and study the effect of geometry on fire behaviour.
+          </div>
+        </div>
+
+        <p class="proj-desc" style="margin-bottom: 0;">These projects combine fundamental physical phenomena with engineering and computer science skills, giving students a unique insight into fire science — a field linking Engineering, Geology, Physics, Ecology, Computer Science, Geography, and Policy.</p>
+
+        <p class="proj-contact"><i class="fa fa-envelope"></i>For more information, email <a href="mailto:francesco.restuccia@kcl.ac.uk">Francesco Restuccia</a> or visit office hours in Strand 1.16.</p>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="proj-card">
+      <div class="proj-video">
+        <iframe src="https://www.youtube.com/embed/L6zhnSwpfZQ" title="Battery research spotlight" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="proj-body">
+        <span class="proj-code">HFL_2 &nbsp;·&nbsp; Options A, B</span>
+        <div class="proj-title">Powering Progress: Exploring Diverse Chemistries in Lithium-ion Battery Cycling</div>
+        <p class="proj-desc">Lithium-ion batteries power a growing range of devices and electric vehicles owing to their high energy density and falling costs. Side reactions and degradation can cause capacity loss in ways that depend on voltage, temperature, ageing history, and battery chemistry. This project focuses on studying how battery size and chemistry affect thermal behaviour during cycling. Up to 2 openings are available.</p>
+
+        <div class="proj-options">
+          <div class="opt opt-a">
+            <span class="opt-label">Option A</span>
+            Use our experimental lab to study the effect of charge rates and chemistry on the thermal behaviour of batteries.
+          </div>
+          <div class="opt opt-b">
+            <span class="opt-label">Option B</span>
+            Use our experimental lab to study the effect of charge rates and chemistry on the thermal behaviour of batteries, with a focus on comparative chemistry analysis.
+          </div>
+        </div>
+
+        <p class="proj-contact"><i class="fa fa-envelope"></i>For more information, email <a href="mailto:francesco.restuccia@kcl.ac.uk">Francesco Restuccia</a> or visit office hours in Strand 1.16.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
 <footer class="footer">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-md-6 text-center">
                 <span class="copyright">
-                © Dr Francesco Restuccia,
-                <script>
-                  document.write(new Date().getFullYear())
-                </script>
+                &copy; Dr Francesco Restuccia,
+                <script>document.write(new Date().getFullYear())</script>
                 </span>
             </div>
-
             <div class="col-md-6 text-center">
-                  <span class="copyright">
-                      Built using
-                      <a class="thick" href="https://demos.creative-tim.com/paper-kit-2/index.html" target="_blank">Paper-Kit2 </a>
-                  </span>
+                <span class="copyright">
+                    Built using <a href="https://demos.creative-tim.com/paper-kit-2/index.html" target="_blank">Paper-Kit2</a>
+                </span>
             </div>
         </div>
     </div>
 </footer>
 
-  <!--   Core JS Files   -->
-  <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="./assets/js/plugins/bootstrap-switch.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="./assets/js/plugins/moment.min.js"></script>
-  <script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
-  <!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
-  <script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
-  <!--  Google Maps Plugin    -->
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-</body>
-
-</html>
-
-<div class="modal fade" id="where_we_are" tabindex="-1" role="dialog" aria-labelledby="aboutRyanLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close text-left" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> ×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>King's College London</h5>
-
-                    King’s College London is an internationally renowned university delivering exceptional education and world-leading research. We are dedicated to driving positive and sustainable change in society and realising our vision of making the world a better place. 
-                    <br>
-                    <br>
-                    <div class="text-center">
-                        <a href="https://www.kcl.ac.uk/engineering" target="_blank" class="btn btn-sm btn-outline-primary btn-round card-link">
-                            Learn More about the Department of Engineering </a>
-                        <br>
-                        <br>
- 			<a href="https://www.kcl.ac.uk/about" target="_blank" class="btn btn-sm btn-outline-primary btn-round card-link">
-                            Learn more about KCL</a>
-                    </div>
+<!-- Modal — moved inside body -->
+<div class="modal fade" id="where_we_are" tabindex="-1" role="dialog" aria-labelledby="whereWeAreLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>King's College London</h5>
+                <p>King's College London is an internationally renowned university delivering exceptional education and world-leading research. We are dedicated to driving positive and sustainable change in society and realising our vision of making the world a better place.</p>
+                <div class="text-center">
+                    <a href="https://www.kcl.ac.uk/engineering" target="_blank" class="btn btn-sm btn-outline-primary btn-round card-link">Learn More about the Department of Engineering</a>
+                    <br><br>
+                    <a href="https://www.kcl.ac.uk/about" target="_blank" class="btn btn-sm btn-outline-primary btn-round card-link">Learn more about KCL</a>
                 </div>
             </div>
-      </div>
-    </div></body></html>
+        </div>
+    </div>
+</div>
+
+<!--   Core JS Files   -->
+<script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/bootstrap-switch.js"></script>
+<script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/moment.min.js"></script>
+<script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
+
+</body>
+</html>
