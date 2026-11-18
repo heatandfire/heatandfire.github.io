@@ -94,6 +94,30 @@ The above copyright notice and this permission notice shall be included in all c
   .section-dark .card-description {
     font-family: 'Jost', system-ui, sans-serif;
   }
+
+  /* Match cursor: unlit by default, lights when a link or button is pressed (mouse/trackpad only) */
+  html.match-cursor, html.match-cursor * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cline x1='11' y1='13' x2='24' y2='30' stroke='%236b4426' stroke-width='3.8' stroke-linecap='round'/%3E%3Cline x1='11' y1='13' x2='24' y2='30' stroke='%23e8c48a' stroke-width='2.2' stroke-linecap='round'/%3E%3Cellipse cx='10' cy='11.5' rx='3.2' ry='4.2' transform='rotate%28-37 10 11.5%29' fill='%23b5301a' stroke='%235e1a0e' stroke-width='1'/%3E%3C/svg%3E") 10 10, auto !important;
+  }
+  html.match-cursor a, html.match-cursor button, html.match-cursor .btn {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cline x1='11' y1='13' x2='24' y2='30' stroke='%236b4426' stroke-width='3.8' stroke-linecap='round'/%3E%3Cline x1='11' y1='13' x2='24' y2='30' stroke='%23e8c48a' stroke-width='2.2' stroke-linecap='round'/%3E%3Cellipse cx='10' cy='11.5' rx='3.2' ry='4.2' transform='rotate%28-37 10 11.5%29' fill='%23b5301a' stroke='%235e1a0e' stroke-width='1'/%3E%3C/svg%3E") 10 10, pointer !important;
+  }
+  html.match-cursor.match-lit, html.match-cursor.match-lit * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='10' cy='8' r='8' fill='%23ffb13b' fill-opacity='.22'/%3E%3Cline x1='11' y1='13' x2='24' y2='30' stroke='%236b4426' stroke-width='3.8' stroke-linecap='round'/%3E%3Cline x1='11' y1='13' x2='24' y2='30' stroke='%23e8c48a' stroke-width='2.2' stroke-linecap='round'/%3E%3Cellipse cx='10' cy='11.5' rx='3.2' ry='4.2' transform='rotate%28-37 10 11.5%29' fill='%233a1d12'/%3E%3Cpath d='M10 .8C13.2 4.6 15.2 7.4 14.3 10.6 13.5 13.3 6.5 13.3 5.7 10.6 4.8 7.4 7.4 4.6 10 .8Z' fill='%23ff8a1c'/%3E%3Cpath d='M10 5C11.7 7.4 12.4 9 11.8 10.9 11.3 12.2 8.7 12.2 8.2 10.9 7.6 9 8.4 7.4 10 5Z' fill='%23ffe36b'/%3E%3C/svg%3E") 10 10, pointer !important;
+  }
+  .match-spark {
+    position: fixed; width: 0; height: 0; pointer-events: none; z-index: 9999;
+  }
+  .match-spark i {
+    position: absolute; left: -2px; top: -2px; width: 4px; height: 4px; border-radius: 50%;
+    background: #ffb13b; box-shadow: 0 0 6px 2px rgba(255,140,30,.7);
+    animation: match-spark .55s ease-out forwards;
+    transform: rotate(var(--a)) translateY(0);
+  }
+  .match-spark i:nth-child(even) { background: #ff7a1a; }
+  @keyframes match-spark {
+    to { transform: rotate(var(--a)) translateY(-22px); opacity: 0; }
+  }
 </style>
 </head>
 
@@ -667,6 +691,35 @@ The above copyright notice and this permission notice shall be included in all c
             </div>
       </div>
     </div>
+
+<!-- Match cursor: lights on press of any link or button, with a small burst of sparks -->
+<script>
+(function () {
+  if (!window.matchMedia || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var root = document.documentElement;
+  var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timer;
+  root.classList.add('match-cursor');
+  document.addEventListener('pointerdown', function (e) {
+    if (!e.target.closest('a, button, .btn')) return;
+    root.classList.add('match-lit');
+    clearTimeout(timer);
+    timer = setTimeout(function () { root.classList.remove('match-lit'); }, 900);
+    if (calm) return;
+    var burst = document.createElement('div');
+    burst.className = 'match-spark';
+    burst.style.left = (e.clientX - 0) + 'px';
+    burst.style.top = (e.clientY - 4) + 'px';
+    for (var i = 0; i < 7; i++) {
+      var s = document.createElement('i');
+      s.style.setProperty('--a', (-75 + i * 25) + 'deg');
+      burst.appendChild(s);
+    }
+    document.body.appendChild(burst);
+    setTimeout(function () { burst.remove(); }, 600);
+  });
+})();
+</script>
 
 </body>
 
